@@ -32,6 +32,9 @@ contenidoFrameName = "contenido"
 busquedaLinkXPath = "//a[@href='javascript:hideOrShow();']"
 busquedaLinkXPartialLinkName = "Búsqueda de Cliente"
 
+numeroLineaMock = '4.7910'
+buscaBotonName = 'buscaBtn'
+
 def Login(browser):
     try:
         #Introduce Username
@@ -60,6 +63,7 @@ def Login(browser):
 
 def ByPassSesionAnterior(browser):
     try:
+        time.sleep(1)
         WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.XPATH,loginCerrarSesionElementXpath)))
         loginCerrarSesionButonElement = browser.find_element_by_xpath(loginCerrarSesionElementXpath)
         loginCerrarSesionButonElement.click()
@@ -80,14 +84,16 @@ def areFramesLoaded(browser):
 
     return isTopFrameLoaded and isLeftFrameLoaded and isContenidoFrameLoaded
 
+import time
 
 def Buscar(browser):
     try:
-        WebDriverWait(browser,timeout).until(areFramesLoaded(browser))
+        time.sleep(1)
+        WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.NAME,busquedaPanelFrameName)))
         leftFrameElement = browser.find_element_by_name(busquedaPanelFrameName)
-        topFrameElement = browser.find_element_by_name(busquedaLinkFrameName)
-        contenidoFrameElement = browser.find_element_by_name(contenidoFrameName)
-        defaultBrowser = browser
+        # topFrameElement = browser.find_element_by_name(busquedaLinkFrameName)
+        # contenidoFrameElement = browser.find_element_by_name(contenidoFrameName)
+        # defaultBrowser = browser
 
         browser.switch_to.frame(leftFrameElement)
         # dnInputElement = browser.find_element_by_xpath("//input[@name='dn']")
@@ -96,10 +102,12 @@ def Buscar(browser):
         # irButtonElement = browser.find_element_by_id("btIr")
         # irButtonElement.click()
 
-        cuentaInputElement = browser.find_element_by_id('contrato')
-        cuentaInputElement.send_keys('4.7901')
 
-        buscaButtonElement = browser.find_element_by_name('buscaBtn')
+        WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.NAME,buscaBotonName)))
+        cuentaInputElement = browser.find_element_by_id('contrato')
+        cuentaInputElement.send_keys(numeroLineaMock)
+
+        buscaButtonElement = browser.find_element_by_name(buscaBotonName)
         buscaButtonElement.click()
 
         #WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.LINK_TEXT, busquedaLinkXPartialLinkName)))
@@ -107,8 +115,34 @@ def Buscar(browser):
         #busquedaLinkElement = browser.find_element_by_xpath(busquedaLinkXPath)
         #busquedaLinkElement2 = browser.find_element_by_link_text(busquedaLinkXPartialLinkName)
         #busquedaLinkElement.click()
-
         
+        WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.PARTIAL_LINK_TEXT,numeroLineaMock)))
+        lineasLinkItems = browser.find_elements_by_partial_link_text(numeroLineaMock)
+
+        for idx,_ in enumerate(lineasLinkItems):
+            WebDriverWait(browser,timeout).until_not(EC.visibility_of_element_located((By.XPATH,'//img[@src="/IusacellDist/img/indicator.gif"]')))
+            WebDriverWait(browser,timeout).until(EC.visibility_of_all_elements_located((By.PARTIAL_LINK_TEXT,numeroLineaMock)))
+            
+            lineasLink = browser.find_elements_by_partial_link_text(numeroLineaMock)
+            lineaLink = lineasLink[idx]
+            lineaLink.click()
+
+        WebDriverWait(browser,timeout).until_not(EC.visibility_of_element_located((By.XPATH,'//img[@src="/IusacellDist/img/indicator.gif"]')))
+        WebDriverWait(browser,timeout).until(EC.visibility_of_all_elements_located((By.PARTIAL_LINK_TEXT,numeroLineaMock)))
+
+        pageSource = browser.page_source
+
+        from bs4 import BeautifulSoup
+        soup = BeautifulSoup(pageSource,'lxml')
+
+        numeroLineaFinder = soup.find_all("a", class_='CUENTAS4')
+
+        print(numeroLineaFinder)
+
+        for numero in numeroLineaFinder:
+            print(numero.string)
+
+
         pass
     except Exception as ex:
         print(ex)
