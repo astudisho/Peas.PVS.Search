@@ -8,6 +8,8 @@ from selenium.common.exceptions import TimeoutException
 import pandas as pd
 
 timeout = 12
+timeoutContenido = 30
+sleepForSwitch = 0.1
 
 #Data variables
 loginUser = "D303433012"
@@ -25,15 +27,18 @@ loginBotonPassXPath = "//img[@onclick='document.forms[0].submit();']"
 loginCerrarSesionElementXpath = "//button[@onclick='javascript:enviaLogin();']"
 
 #a href="javascript:hideOrShow();" class="menuNVTC"
-busquedaLinkFrameName = "topFrame"
-busquedaPanelFrameName = "leftFrame"
+leftFrameName = "leftFrame"
 contenidoFrameName = "contenido"
 
-busquedaLinkXPath = "//a[@href='javascript:hideOrShow();']"
-busquedaLinkXPartialLinkName = "Búsqueda de Cliente"
+topFrameName = "topFrame"
+busquedaClienteXPath = "//a[@href='javascript:hideOrShow();']"
+topFramePartialLinkName = "Búsqueda de Cliente"
 
 numeroLineaMock = '4.7910'
 buscaBotonName = 'buscaBtn'
+
+busquedaDnInputXpath = "//input[@name='dn']"
+busquedaBotonId = 'btIr'
 
 def Login(browser):
     try:
@@ -78,8 +83,8 @@ def isFrameLoaded(browser, frameName):
     return EC.visibility_of_element_located((By.NAME, frameName))
 
 def areFramesLoaded(browser):
-    isTopFrameLoaded = isFrameLoaded(browser,busquedaLinkFrameName)
-    isLeftFrameLoaded = isFrameLoaded(browser,busquedaPanelFrameName)
+    isTopFrameLoaded = isFrameLoaded(browser,topFrameName)
+    isLeftFrameLoaded = isFrameLoaded(browser,leftFrameName)
     isContenidoFrameLoaded = isFrameLoaded(browser, contenidoFrameName)
 
     return isTopFrameLoaded and isLeftFrameLoaded and isContenidoFrameLoaded
@@ -89,8 +94,8 @@ import time
 def Buscar(browser):
     try:
         time.sleep(1)
-        WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.NAME,busquedaPanelFrameName)))
-        leftFrameElement = browser.find_element_by_name(busquedaPanelFrameName)
+        WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.NAME,leftFrameName)))
+        leftFrameElement = browser.find_element_by_name(leftFrameName)
         # topFrameElement = browser.find_element_by_name(busquedaLinkFrameName)
         # contenidoFrameElement = browser.find_element_by_name(contenidoFrameName)
         # defaultBrowser = browser
@@ -137,12 +142,44 @@ def Buscar(browser):
         soup = BeautifulSoup(pageSource,'lxml')
 
         numeroLineaFinder = soup.find_all("a", class_='CUENTAS4')
+        # numeroCuentaFinder = soup.find_all("a", class_='CUENTAS1')
 
-        print(numeroLineaFinder)
+        listaNumeros = [num.string for num in numeroLineaFinder]
 
-        for numero in numeroLineaFinder:
-            print(numero.string)
+        print("Numeros:")
+        print(listaNumeros)        
 
+        for numero in listaNumeros:
+            browser.switch_to_default_content()
+            WebDriverWait(browser,timeout).until(EC.frame_to_be_available_and_switch_to_it((By.NAME,topFrameName)))
+            time.sleep(sleepForSwitch)
+            # topFrame = browser.find_element_by_xpath(topFrameXPath)
+            # browser.switch_to_frame(topFrame)
+            browser.find_element_by_xpath(busquedaClienteXPath).click()
+            WebDriverWait(browser,timeout).until(EC.element_to_be_clickable((By.XPATH,busquedaClienteXPath)))
+            browser.find_element_by_xpath(busquedaClienteXPath).click()
+
+            browser.switch_to_default_content()
+            WebDriverWait(browser,timeout).until(EC.frame_to_be_available_and_switch_to_it((By.NAME,leftFrameName)))
+            time.sleep(sleepForSwitch)
+            # browser.switch_to_frame(browser.find_elements_by_name(leftFrameName))
+
+            browser.find_element_by_xpath(busquedaDnInputXpath).send_keys(numero)
+            browser.find_element_by_id(busquedaBotonId).click()
+
+            '''Cargar contenido y parsear linea'''
+            browser.switch_to_default_content()
+            WebDriverWait(browser,timeoutContenido).until(EC.frame_to_be_available_and_switch_to_it((By.NAME,contenidoFrameName)))
+            time.sleep(sleepForSwitch)
+            WebDriverWait(browser,timeoutContenido).until(EC.visibility_of_element_located((By.ID,'telefonopacambio')))
+
+            soupContenido = BeautifulSoup(browser.page_source, 'lxml')
+            soupContenido.find('td',{'id':'telefonopacambio'})
+
+
+
+        # numeroLineaXpath = "\\table[tbody]"
+        # //*[@id="treeViewcustcode*4.7910"]/table/tbody/tr/td/table
 
         pass
     except Exception as ex:
