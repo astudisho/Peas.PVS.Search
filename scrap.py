@@ -122,6 +122,7 @@ def Buscar(browser):
         for idx,_ in enumerate(lineasLinkItems):
             WebDriverWait(browser,timeout).until_not(EC.visibility_of_element_located((By.XPATH,'//img[@src="/IusacellDist/img/indicator.gif"]')))
             WebDriverWait(browser,timeout).until(EC.visibility_of_all_elements_located((By.PARTIAL_LINK_TEXT,numeroLineaMock)))
+            time.sleep(0.01)
             
             lineasLink = browser.find_elements_by_partial_link_text(numeroLineaMock)
             lineaLink = lineasLink[idx]
@@ -151,7 +152,7 @@ def Buscar(browser):
 
 if __name__ == "__main__":
     try:
-        browser = webdriver.Chrome(r'..\web-driver\chromedriver.exe')
+        browser = webdriver.Chrome(r'..\web-driver\chromedriver.exe', service_args=["--verbose",r"--log-path=..\web-driver\peas.log"])
         browser.get('http://pvs.iusacell.com.mx/')
         Login(browser)
         ByPassSesionAnterior(browser)
