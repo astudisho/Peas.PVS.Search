@@ -10,6 +10,7 @@ import pandas as pd
 timeout = 12
 timeoutContenido = 30
 sleepForSwitch = 0.1
+sleepForReload = 0.3
 
 #Data variables
 loginUser = "D303433012"
@@ -114,6 +115,7 @@ def Buscar(browser):
 
         buscaButtonElement = browser.find_element_by_name(buscaBotonName)
         buscaButtonElement.click()
+        time.sleep(sleepForReload)
 
         #WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.LINK_TEXT, busquedaLinkXPartialLinkName)))
         #WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.XPATH, busquedaLinkXPath)))
@@ -127,11 +129,11 @@ def Buscar(browser):
         for idx,_ in enumerate(lineasLinkItems):
             WebDriverWait(browser,timeout).until_not(EC.visibility_of_element_located((By.XPATH,'//img[@src="/IusacellDist/img/indicator.gif"]')))
             WebDriverWait(browser,timeout).until(EC.visibility_of_all_elements_located((By.PARTIAL_LINK_TEXT,numeroLineaMock)))
-            time.sleep(0.01)
             
             lineasLink = browser.find_elements_by_partial_link_text(numeroLineaMock)
             lineaLink = lineasLink[idx]
             lineaLink.click()
+            time.sleep(sleepForReload)
 
         WebDriverWait(browser,timeout).until_not(EC.visibility_of_element_located((By.XPATH,'//img[@src="/IusacellDist/img/indicator.gif"]')))
         WebDriverWait(browser,timeout).until(EC.visibility_of_all_elements_located((By.PARTIAL_LINK_TEXT,numeroLineaMock)))
@@ -151,6 +153,7 @@ def Buscar(browser):
 
         for numero in listaNumeros:
             browser.switch_to_default_content()
+            time.sleep(sleepForSwitch)
             WebDriverWait(browser,timeout).until(EC.frame_to_be_available_and_switch_to_it((By.NAME,topFrameName)))
             time.sleep(sleepForSwitch)
             # topFrame = browser.find_element_by_xpath(topFrameXPath)
@@ -160,23 +163,24 @@ def Buscar(browser):
             browser.find_element_by_xpath(busquedaClienteXPath).click()
 
             browser.switch_to_default_content()
+            time.sleep(sleepForSwitch)
             WebDriverWait(browser,timeout).until(EC.frame_to_be_available_and_switch_to_it((By.NAME,leftFrameName)))
             time.sleep(sleepForSwitch)
             # browser.switch_to_frame(browser.find_elements_by_name(leftFrameName))
-
+            WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.XPATH, busquedaDnInputXpath)))
             browser.find_element_by_xpath(busquedaDnInputXpath).send_keys(numero)
+            WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.ID,busquedaBotonId)))
             browser.find_element_by_id(busquedaBotonId).click()
 
             '''Cargar contenido y parsear linea'''
             browser.switch_to_default_content()
+            time.sleep(sleepForSwitch)
             WebDriverWait(browser,timeoutContenido).until(EC.frame_to_be_available_and_switch_to_it((By.NAME,contenidoFrameName)))
             time.sleep(sleepForSwitch)
             WebDriverWait(browser,timeoutContenido).until(EC.visibility_of_element_located((By.ID,'telefonopacambio')))
 
             soupContenido = BeautifulSoup(browser.page_source, 'lxml')
             soupContenido.find('td',{'id':'telefonopacambio'})
-
-
 
         # numeroLineaXpath = "\\table[tbody]"
         # //*[@id="treeViewcustcode*4.7910"]/table/tbody/tr/td/table
@@ -198,5 +202,6 @@ if __name__ == "__main__":
     except Exception as ex:
         print(ex)
     finally:
+
         browser.quit()
         pass
