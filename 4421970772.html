@@ -1,0 +1,3062 @@
+<html><head><meta http-equiv="expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<!-- ECS -->
+
+<!--CAQUINOA 180107 BITACORA DE TRANSACCIONES (5 ULTIMOS REGISTROS)INICIO-->
+
+<!--CAQUINOA 180107 BITACORA DE TRANSACCIONES (5 ULTIMOS REGISTROS)FIN-->
+
+<!-- JORTIZ - WKR142679_DesgloceFactura -->
+
+<!-- JORTIZ - WKR142679_DesgloceFactura -->
+
+<script language="javascript">
+{document.write('<LINK HREF="http://pvs.iusacell.com.mx:80/IusacellDist/css/file_search.css" REL="STYLESHEET" TYPE="text/css">')}
+if (navigator.appName == "Microsoft Internet Explorer")
+	{document.write('<LINK HREF="http://pvs.iusacell.com.mx:80/IusacellDist/css/estilos_exp.css" REL="STYLESHEET" TYPE="text/css">')}
+else
+	{document.write('<LINK HREF="http://pvs.iusacell.com.mx:80/IusacellDist/css/estilos_net.css" REL="STYLESHEET" TYPE="text/css">')}
+</script><link href="http://pvs.iusacell.com.mx:80/IusacellDist/css/file_search.css" rel="STYLESHEET" type="text/css"><link href="http://pvs.iusacell.com.mx:80/IusacellDist/css/estilos_net.css" rel="STYLESHEET" type="text/css">
+
+<!-- JVPL FAF -->
+<script src="http://pvs.iusacell.com.mx:80/IusacellDist/js\jquery-1.8.3.min.js"></script>
+<script src="http://pvs.iusacell.com.mx:80/IusacellDist/js\jquery-ui-1.9.2.custom.min.js"></script>
+
+
+
+
+<!-- PAIN POINT 31 EDGAR LOPEZ 24 ENERO 2012 -->
+
+ <!--FIN PAIN POINT 31 EDGAR LOPEZ 24 ENERO 2012 -->
+
+
+<!-- etuxpan 29/05/2015 Cliente renoPrograma INICIA-->
+
+
+
+<!-- etuxpan 29/05/2015 Cliente renoPrograma FIN-->
+<script>
+
+
+// *** GSL 10/09/09 ***
+//PopUp. Muestra los servicios de VA
+var newHTML1;
+function showServicios(dnNum ){
+
+	if(gettrailobjnostyleSVA().innerHTML == "" )  {
+	   styleOpacityA.style.visibility ="visible";
+	   document.body.style.overflow = "hidden";
+   
+		   }else {
+
+			    document.body.style.overflow = "hidden";
+	 			gettrailobjSVA().visibility="visible";
+				document.onmousemove="";
+				gettrailobjSVA().left="250px";
+				set_opacityA(styleOpacityA, 0.7 );
+	    		styleOpacityA.style.visibility ="visible";
+			}
+}// *** GSL 10/09/09 ***
+
+//AAJR 07072011 Req. 12448 Pop up info KYH
+function showSucesosKYH(dnNum ){
+	
+	if(gettrailobjnostyleSVA().innerHTML == "" )  {
+	   styleOpacityA.style.visibility ="visible";
+	   document.body.style.overflow = "hidden";
+    
+	  		styleOpacityA.style.visibility ="visible";
+  			newHTML1= '<div align="CENTER" style="padding: 0px; border: 0px solid #888;overflow:auto; background-color : #FFFFFF; ">';
+			newHTML1+='	<table width="400" height="200" border="3" bordercolor="#CC0000" cellspacing="0" cellpadding="0" align="center">       ';
+			newHTML1+='		 <tr>       ';
+			newHTML1+='		 	<td align="center" width="50%">                     ';
+			newHTML1+='				<table width="100%" align="center" border="0">       ';
+			newHTML1+='					<tr>                ';
+			newHTML1+='						<th width="100%" align="center" valing="center" class = "txtRojo">Cliente en KYH</th>   ';
+			newHTML1+='						<td><a href="javascript:hidetrailA();"><img src="img/miniDsh/cerrarPrep.jpg" width="33" height="30" border="0" ></a></td>';
+			newHTML1+='					</tr>             ';
+			newHTML1+='					<tr>     ';
+			newHTML1+='						<td width="100%"  height="10%" ><hr></td>  ';
+			newHTML1+='					</tr>';
+			newHTML1+='					<tr>     ';
+			newHTML1+='						<td width="100%"  height="10%">';
+     		newHTML1+='					    	<table width="100%" border="0" cellspacing="0" cellpadding="0"> ';
+     		newHTML1+='								<tr>     ';
+			newHTML1+='					    			<td>&nbsp; </td>  ';
+			newHTML1+='								</tr>';
+			newHTML1+='						  		<tr>     ';
+     		newHTML1+='									<td width="30%" align="left" class="txtContenidoBold">Datos del Vendedor:</td> ';
+     		newHTML1+='									<td width="50%" align="left" class="txtContenido">null		null </td> ';
+     		newHTML1+='								</tr>	 ';
+     		newHTML1+='						  		<tr>     ';
+   		    newHTML1+='									<td width="30%" align="left" class="txtContenidoBold">Punto de Venta:</td> ';
+   		    newHTML1+='									<td width="50%" align="left" class="txtContenido">null		null </td> ';
+		    newHTML1+='						  		</tr>     ';
+		    newHTML1+='						  		<tr>     ';
+     		newHTML1+='									<td width="30%" align="left" class="txtContenidoBold">Fecha de Modificación</td> ';
+     		newHTML1+='									<td width="50%" align="left" class="txtContenido">NO DISPONIBLE</td> ';
+     		newHTML1+='								</tr>	 ';
+			newHTML1+='							</table>       ';
+			newHTML1+='					     </td>  ';
+			newHTML1+='					</tr>';
+		    newHTML1+='				</table>	';
+			newHTML1+='			</td> ';	
+		    newHTML1+='		</tr>   ';
+			newHTML1+='	</table>  '; 
+            newHTML1+='</div>';
+			gettrailobjnostyleSVA().innerHTML = newHTML1;
+			gettrailobjSVA().visibility="visible";
+			gettrailobjSVA().top="400px";
+			gettrailobjSVA().left="500px";
+			set_opacityA(styleOpacityA, 0.7 );
+            styleOpacityA.style.visibility ="visible";
+		    
+		   }else {
+			    document.body.style.overflow = "hidden";
+	 			gettrailobjSVA().visibility="visible";
+				document.onmousemove="";
+				gettrailobjSVA().left="250px";
+				set_opacityA(styleOpacityA, 0.7 );
+	    		styleOpacityA.style.visibility ="visible";
+			}
+}
+//AAJR 07072011 Req. 12448 Pop up info KYH
+
+//************************
+
+
+	top.frames[ 'topFrame' ].validationCorpoNewAplica = "";
+
+
+
+	top.frames[ 'topFrame' ].calificaTelesale = "";
+
+
+</script>
+
+<script>
+//JONATHAN AVILA SALAZAR 23/OCT/2008 PATERNIDAD
+
+//FIN JONATHAN AVILA SALAZAR PATERNIDAD
+
+
+
+// CRM_BR_4
+function verlas() {
+	newWindow = window.open('distrib?action=reserveEquipment&controller=CustomerInfoBusinessController','','toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=420,height=185,left=400,top=100');
+	newWindow.focus();
+}
+//CRM_BR_4
+
+
+//PopUp unicamente para clientes cuya valor sea mayor a el especificado 
+function showtrail3(nombre,segmento,antiguedad,prom, idSys , mostrar, montoMostrar, dnNum){
+	parent.topFrame.enviaMailGGS.dnNum.value="";
+	parent.topFrame.enviaMailGGS.permiteEnviar.value=false;
+	/*Buscar si lo debe mostrar para pospagos */	
+	if (mostrar == 1 ){ 	
+
+		var imagen= '';
+		var imgVar ;
+
+		var	promAux = prom;
+		if (nombre == 'null')
+			nombre = 'Dato no disponible';
+		if (antiguedad == 'null')
+			antiguedad = 'Dato no disponible';
+		if (prom == 'null')
+			prom = 0;
+		/*Obteniendo el valor promedio de facturación quitando el formato */
+		
+		if (prom.substring(0,1)=='$'){
+			var longitud =prom.length - 3;
+			prom = prom.substring(1,longitud);
+			prom = prom.replace(',', '');		
+		}
+		/*Se muestra popUp unicamente si el cliente rebasa el monto especificado */	
+		if ((validarEntero(prom) > validarEntero(montoMostrar)) && ( segmento == 'ORO' || segmento == 'PLATA' || segmento == 'BRONCE' ) ){	
+			parent.topFrame.enviaMailGGS.dnNum.value=dnNum;
+			parent.topFrame.enviaMailGGS.permiteEnviar.value=true;
+			styleOpacity.style.visibility ="visible";
+			
+
+
+			//document.onmousemove=followmouse;
+			//if (segmento == 'ORO' || segmento == 'PLATA' || segmento == 'BRONCE' || segmento == 'DIAMANTE' || segmento == 'CONCIERGE' || segmento == 'PLATINO' ){
+			if (segmento == 'ORO' || segmento == 'PLATA' || segmento == 'BRONCE'){
+				imagen = '<img src="img/miniDsh/'+segmento+'.jpg">';
+			}
+		
+			var newHTML = '<div  style="padding: 1px; background-color: #FFFFFF; border: 0px solid #888;">';
+			newHTML+='<table width="800" border="0" cellspacing="5" cellpadding="0" >';
+			newHTML+='  <tr>                                                                                                                                                  ';
+			newHTML+='    <td align="center" width="100%">                                                                                                                    ';
+			newHTML+='		<table width="100%" border="3" bordercolor="#CC0000" cellspacing="0" cellpadding="0" align="center" >                                                    ';
+			newHTML+='			<tr>                                                                                                                                              ';
+			newHTML+='				<td align="center" width="100%">                                                                                                                ';
+			newHTML+='					<table width="100%" align="center" cellspacing="2">                                                                        ';
+			newHTML+='						<tr>                                                                                                                                        ';
+			newHTML+='							<td align="right"><table width="100%" border="0" cellspacing="0" cellpadding="0">                                                         ';
+			newHTML+='								<tr>                                                                                                                                    ';
+			newHTML+='								  <td width="100%" align="middle" class = "txtRojo"><h2>null</h2></td>                                  ';
+			newHTML+='								  <td><a href="javascript:hidetrail();"><img src="img/miniDsh/cerrar.jpg" width="33" height="30" border="0" ></a></td>';
+			newHTML+='								</tr>                                                                                                                                   ';
+			newHTML+='							  </table>                                                                                                                                ';
+			newHTML+='							</td>                                                                                                                                     ';
+			newHTML+='						  </tr>                                                                                                                                     ';
+			newHTML+='						  <tr>                                                                                                                                      ';
+			newHTML+='							<td><hr></td>                                                                                                                             ';
+			newHTML+='						  </tr>';
+			newHTML+='						  <tr >';
+			newHTML+='							<td  width="100%">                              ';
+			newHTML+='							    <table width="100%" border="0" cellspacing="0" cellpadding="0">                                                                       ';
+			newHTML+='								  <tr>                                                                                                                                  ';
+			newHTML+='									<td width="300" valign="middle"><div align="right" class="style2"><img src="img/miniDsh/nombre.jpg" ></div></td>                                                 ';
+			newHTML+='									<td width="5">&nbsp;</td>                                                                                                                      ';
+			newHTML+='									<td align="left"><span class="style2">'+nombre+' </span></td>                                                                                     ';
+			newHTML+='								  </tr>                                                                                                                                 ';
+			newHTML+='								</table>                                                                                                                                ';
+			newHTML+='							</td>                                                                                                                                     ';
+			newHTML+='						  </tr> ';
+			newHTML+='						  <tr>  ';
+			newHTML+='							<td bgcolor="#FFFFFF">  ';
+			newHTML+='								<table width="100%" border="0" cellspacing="0" cellpadding="0"> ';
+			newHTML+='								  <tr>    ';
+			newHTML+='									<td width="300" valign="middle"><div align="right" class="style2"><img src="img/miniDsh/segmento.jpg" ></div></td>     ';
+			newHTML+='									<td width="5">&nbsp;</td>    ';
+			newHTML+='									<td align="left"><span class="style2">'+segmento+'</span></td>';
+			if (imagen != ''){
+				newHTML+='									<td align="left">'+imagen+'</td>';
+			}
+		
+			newHTML+='								  </tr>   ';
+			newHTML+='								</table>							';
+			newHTML+='							</td> ';
+			newHTML+='						  </tr>						  ';
+			newHTML+='						  <tr>  ';
+			newHTML+='							<td>  ';
+			newHTML+='							    <table width="100%" border="0" cellspacing="0" cellpadding="0">     ';
+			newHTML+='								  <tr>    ';
+			newHTML+='									<td width="300" valign="middle"><div align="right" class="style2"><img src="img/miniDsh/antiguedad.jpg" ></div></td>   ';
+			newHTML+='									<td width="5">&nbsp;</td>    ';
+			newHTML+='									<td align="left"><span class="style2">'+antiguedad+'</span></td>   ';
+			newHTML+='								  </tr>   ';
+			newHTML+='								</table>							';
+			newHTML+='							</td> ';
+			newHTML+='						  </tr> ';
+			newHTML+='						  <tr>  ';
+			newHTML+='							<td bgcolor="#FFFFFF" >  ';
+			if (idSys ==1){			
+				newHTML+='								<table width="100%" border="0" cellspacing="0" cellpadding="0"> ';
+				newHTML+='								  <tr>    ';
+				newHTML+='									<td width="300" valign="middle"><div align="right" class="style2"><img src="img/miniDsh/abonos.jpg" ></div></td>    ';
+				newHTML+='									<td width="5">&nbsp;</td>    ';
+				newHTML+='									<td align="left"><span class="style2"> $'+prom+'.00</span></td>    ';
+				newHTML+='								  </tr>   ';
+				newHTML+='								</table>							';
+			}else{
+				newHTML+='								<table width="100%" border="0" cellspacing="0" cellpadding="0"> ';
+				newHTML+='								  <tr>    ';
+				newHTML+='									<td width="300" valign="middle"><div align="right" class="style2"><img src="img/miniDsh/fact.jpg" ></div></td>    ';
+				newHTML+='									<td width="5">&nbsp;</td>    ';
+				newHTML+='									<td align="left" ><span class="style2"> '+promAux+'</span></td>    ';
+				newHTML+='								  </tr>   ';
+				newHTML+='								</table>							';
+			}
+			
+			
+			newHTML+='							</td> ';
+			newHTML+='						  </tr>						  ';
+			newHTML+='					</table>  ';
+			newHTML+='				</td> ';
+			newHTML+='			</tr>   ';
+			newHTML+='		</table>  ';
+			newHTML+='	</td> ';
+			newHTML+='  </tr>  ';
+			newHTML+='</table>';
+		
+
+			newHTML += '</div>';
+			gettrailobjnostyle().innerHTML = newHTML;
+			gettrailobj().visibility="visible";
+			set_opacity(styleOpacity, 0.5 );
+		}
+	}	
+}//showtrail
+</script>
+
+
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+
+
+<!-- +----------------------------------------------------------------------------+ -->
+<!-- LRSO(CRM)(21/04/2006)                                                          -->
+<!-- +----------------------------------------------------------------------------+ -->	
+
+
+<!---------------------- Quotes Deleted CRM 09/02/2012 --------------------->
+
+<!------------------------------------------------------------------------------------>
+<!-- +----------------------------------------------------------------------------+ -->	
+
+<!-- YLEON 280406 -->
+		
+<!-- YLEON 280406 -->
+
+<!-- +----------------------------------------------------------------------------+ -->
+<!-- LRSO. Puntos Red Club. (08/08/2006)                                            -->
+<!-- +----------------------------------------------------------------------------+ -->	
+
+<!-- +----------------------------------------------------------------------------+ -->	
+
+<!-- IRIVAS 151206 -->
+
+<!-- Fin IRIVAS -->
+
+<!--MABC 11/03/2008-->
+
+<!-- Fin MABC -->  
+
+<!-- ACR) ESTADO DE CUENTA -->
+<!-- Added by Arpita as a part of defect 15172*****Start***-->
+
+<script language="javascript">	
+	top.frames['topFrame'].document.getElementById('cuentaEnc1').value = '1JdRrOQgxKVPuiX0fhio7Q==';
+</script>
+<!-- Added by Arpita as a part of defect 15172*****end***-->
+
+
+<script>
+	
+		var customerId = "1325683";
+		
+	//MSF Actualiza emcabezado deacuerdo a la compañia
+	function loockAF(){
+      var tMenu = 'OR'
+      if(tMenu == 'NE' || tMenu == 'ND'){
+       top.frames['topFrame'].msfemisor = 7 ;
+       top.frames['topFrame'].cambiacolor();		  
+	  }
+	}
+	function executaBAZ() {	    
+		try {
+			startRequest1();
+		} catch( e ) {}
+	}
+</script>
+<!-- ACR) FIN -->
+
+<!-- JVPL FAF -->
+<script language="javascript">
+var arregloVacios;
+
+function callRegisterFunction(datos){
+	// RMC URL Con campo nuevo
+	var url =  '/IusaRRPVS/validarNumeros.do?method=registraNuevos&idUser=0&idLinea=0&datos='+datos+'&nuevoFaF=false';
+	var mapaEscrito = writeMap();
+	url += "&datosMapa="+mapaEscrito;
+	
+		try{
+			$.ajax({
+				type : "GET",
+				url  : url,
+				dataType : 'html',
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success : function(result){
+				
+				if (result != null && result.length > 0){
+					document.getElementById("divWaitingImg").style.visibility = 'hidden';
+					document.getElementById("divRegistraRespuesta").style.visibility = 'visible';
+					document.getElementById("divRegistraResponse").innerHTML = result;
+				}
+			},
+			error : function(error){
+				alert("Ocurrio un error en la llamada ajax a IusaRRPVS en function callRegisterFunction: " + error.statusText); 
+			},
+			async: false
+			});
+		}catch(exp){  
+			alert("EXCEPTION.-[].callRegisterFunction:\n" + exp.message);
+		}
+	
+}
+
+function solicitaValidarNumeracion(numero){
+
+	var indiceNum = document.getElementById("spanNumRegistro").innerText;
+	// RMC URL Con campo nuevo
+	var url = '/IusaRRPVS/validarNumeros.do?method=validarNumeracion&telefono='+numero+'&indice='+indiceNum+'&idUser=0&idLinea=0&nuevoFaF=false';
+	var mapaEscrito = ""+writeMap();
+	url += "&datosMapa="+mapaEscrito;
+	
+		try{
+			$.ajax({
+				type : "GET",
+				url  : url,
+				dataType : 'html',
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success : function(result){
+				
+				if (result != null && result.length > 0){
+					toggleImgLoad(1);
+					document.getElementById("DivMsgContent").innerHTML= result;
+					reloadMapaAjax();
+				}
+			},
+			error : function(error){
+				alert("Ocurrio un error en la llamada ajax a IusaRRPVS en function solicitaValidarNumeracion: " + error.statusText); 
+			},
+			async: false
+			});
+		}catch(exp){  
+			alert("EXCEPTION.-[].solicitaValidarNumeracion:\n" + exp.message);
+		}
+	
+}
+
+function reloadMapaAjax(){
+
+	var url = '/IusaRRPVS/validarNumeros.do?method=mapaNumeros&idUser=0&idLinea=0&nuevoFaF=false';
+	
+		try{
+			$.ajax({
+				type : "GET",
+				url  : url,
+				dataType : 'html',
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success : function(result){
+				
+				if (result != null && result.length > 0){
+					document.getElementById("verNumerosFrecuentesDIV").innerHTML= result;
+				}
+			},
+			error : function(error){
+				alert("Ocurrio un error en la llamada ajax a IusaRRPVS en function reloadMapaAjax: " + error.statusText); 
+			},
+			async: false
+			});
+		}catch(exp){  
+			alert("EXCEPTION.-[].reloadMapaAjax:\n" + exp.message);
+		}
+	
+}
+
+function hideResponse(){
+	document.getElementById("divRespuestaWS").style.visibility = "hidden";
+	document.getElementById("botonCambioNumero").style.visibility = "visible";
+	document.getElementById("botonRegistraNumero").style.visibility = "visible";
+	showBoxes();
+}
+
+function dialogoCambioNumero(registroElegido){
+	document.getElementById("spanNumRegistro").innerText = ""+registroElegido;
+	hideBoxes();
+	document.getElementById("txtCambioNumero").value = "";
+	document.getElementById("divCambioNumeroFF").style.visibility = "visible";
+	document.getElementById("botonCambioNumero").style.visibility = "hidden";
+	document.getElementById("botonRegistraNumero").style.visibility = "hidden";
+}
+
+function hideBoxes(){
+	var element = document.getElementsByName("boxes");		
+	for(var i = 0; i< element.length;i++){		
+		element[i].style.visibility = 'hidden';
+	}
+}
+
+function notInRegisters(){
+	for(var i = 0; i< arregloVacios.length ; i++){
+		var strDat = document.getElementById("txtRegistraNumero"+arregloVacios[i]).value;		
+		if(strDat.length != 0){ 
+			for(var j = 0; j<arregloVacios.length ; j++){
+				var strDat2 = document.getElementById("txtRegistraNumero"+arregloVacios[j]).value;
+				if( strDat == strDat2 && arregloVacios[i] != arregloVacios[j]){
+					return true;
+				}
+			}
+		}			
+	}
+	return false;
+}
+
+function compareToAll(dnCompara){	
+	var element = document.getElementsByName("boxes");	
+	var vali = true;
+	for(var i = 1; i<= element.length;i++){
+		var valorDn = document.getElementById("dnFamilia"+i).value;				
+		if(valorDn == dnCompara ){			
+			vali = false;//estaba como var str = false ??;
+			break;
+		}
+	}		
+	return vali;
+}
+
+function notSameNumber(dnCompara){
+	var res = true;	
+	if(dnCompara == document.getElementsByName('phone').value)
+	{
+		res = false;
+	}	
+	return res;
+}
+
+function isNumeric(sText){
+	var ValidChars = "0123456789";
+	var Char;	 
+	for (i = 0; i < sText.length; i++) 
+	{ 
+		Char = sText.charAt(i); 
+		if (ValidChars.indexOf(Char) == -1) 
+		{
+			return false;
+		}
+	}
+	return true;	   
+}
+
+function mostrarNumerosFrecuentes(){
+	var element = document.getElementById('verNumerosFrecuentesDIV');
+	if (element){
+		if (element.style.visibility == "hidden"){
+			element.style.visibility="visible";
+		}else{
+			element.style.visibility="hidden";
+		}
+	}
+}
+
+function hideHistory(){
+	document.getElementById("divHistoryContainer").style.visibility = "hidden";
+	document.getElementById("botonCambioNumero").style.visibility = "visible";
+	document.getElementById("botonRegistraNumero").style.visibility = "visible";	
+}
+
+function emptyNumbers(){
+	//Validar que el numero sea solo numeros y longitud correcta    
+	var datosEnviar = "";
+	var nuevoFaF = 'false';
+	//Si el numero esta vacio no se envia para salvar
+	for(var i = 0; i< arregloVacios.length ; i++){
+		var strDat = document.getElementById("txtRegistraNumero"+arregloVacios[i]).value;
+		// RMC validacion FaF
+		if(nuevoFaF == 'true'){
+			if(strDat.length != 10 && strDat.length != 0){
+				if (strDat.length == 11){
+					if( strDat.substring(0,1) != "1") {
+						alert("El numero proporcionado no pertenece a Estados Unidos y Canadá. Favor de validar");
+						return;
+					}
+				} else {
+					alert("El número debe ser de  10 dígitos (nacional y fijo) o de 11 dígitos (Estados Unidos y Canadá)");
+					return;
+				}
+			}
+		} else {
+			if(strDat.length != 10 && strDat.length != 0){
+				alert("El telefóno "+arregloVacios[i]+" debe ser de 10 digitos");
+				return;
+			}
+		}
+		if( !isNumeric(strDat)  ){
+			alert("El teléfono "+arregloVacios[i]+" contiene caracteres no validos");
+			return;
+		}	
+		if( !notSameNumber(strDat)  ){
+			alert("No se permite introducir el mismo dn de la linea.");
+			return;
+		}	
+		if( !compareToAll(strDat)  ){
+			alert("El teléfono "+arregloVacios[i]+" ya existe en el mapa de números");
+			return;
+		}		
+		if(strDat.length > 0){
+			datosEnviar += ""+ arregloVacios[i]+","+strDat+";";
+		}
+	}
+
+	if( notInRegisters() ){
+		alert("No puedes registrar dos veces el mismo número");
+		return;
+	}
+
+	datosEnviar = datosEnviar.substring(0, datosEnviar.length-1 );
+
+	if(datosEnviar.length > 0 ){
+		document.getElementById("divRegistraContainer").style.visibility = 'hidden';
+		document.getElementById("divWaitingImg").style.visibility = 'visible';		
+		callRegisterFunction(datosEnviar);		
+	}
+}
+
+function cancelRegisterCall(){
+	document.getElementById("divRegistraContainer").style.visibility = 'hidden';
+	document.getElementById("divWaitingImg").style.visibility = 'hidden';
+}
+
+function closeRegistraResponse(){
+	document.getElementById("divRegistraRespuesta").style.visibility = 'hidden';		
+	reloadMapaAjax();
+}
+
+function selectEmptyNumbers(){
+	try{	
+		var element = document.getElementsByName("boxes");		
+		var str = "";		
+		if (element){		
+			for(var i = 1; i<= element.length;i++){			
+				var valorDn = document.getElementById("dnFamilia"+i).value;				
+				if(valorDn.indexOf("_") != -1 ){
+					str += ""+i+",";
+				}
+			}
+		}			
+
+		if(str.length>0){
+			str = str.substring(0,str.length-1);			
+			var arr = str.split(",");
+			var registerBoxes = "";
+			for(var j = 0;j<arr.length;j++){				
+				var alineador = "";
+				if(arr[j] < 10)
+				{
+					alineador = "0";
+				}
+				// RMC tamaño campo de acuerdo al servicio
+				registerBoxes += "<span>Telefono"+alineador+arr[j]+" ::</span> <input type='textbox' id='txtRegistraNumero"+arr[j]+"' name='txtRegistraNumero"+arr[j]+"' size='12'  MAXLENGTH='10'/> <BR>" ;
+			}
+			document.getElementById("divRegistraContainer").style.visibility = 'visible';
+			document.getElementById("divRegistraDatos").innerHTML = registerBoxes;
+			arregloVacios = arr;			
+		}else{
+			alert("Todas las casillas estan ocupadas, utilice el boton de cambio");
+		}
+	}catch(e){alert("El servicio de números frecuentes no esta disponible en este momento. Favor de intentar mas tarde");}
+}
+
+function cancelarDialogoCambio(){
+	showBoxes();
+	document.getElementById("txtCambioNumero").value = "";
+	document.getElementById("divCambioNumeroFF").style.visibility = "hidden";
+	document.getElementById("botonCambioNumero").style.visibility = "visible";
+	document.getElementById("botonRegistraNumero").style.visibility = "visible";
+}
+function toggleImgLoad(state){
+	if(state==1){
+		document.getElementById("DivMsgContent").style.display = "block";
+		document.getElementById("DivImgLoading").style.display = "none";
+	}else{
+		document.getElementById("DivMsgContent").style.display = "none";
+		document.getElementById("DivImgLoading").style.display = "block";
+	}
+}
+
+function validarNumero(nuevoNumero){
+	var newFaF = 'false';
+	if(nuevoNumero == "" || nuevoNumero.length <=0){
+		alert("El campo número no puede estar vacío");
+		return;
+	}
+	// RMC ValidacionFaF
+	if (newFaF == 'true' ){
+		if (nuevoNumero.length != 10){
+			//RMC Valida que en caso de ser 11 digitos empiece con "1"
+			if (nuevoNumero.length == 11){
+				if( nuevoNumero.substring(0,1) != "1") {
+					alert("El numero proporcionado no pertenece a Estados Unidos y Canadá. Favor de validar");
+					return;
+				}
+			} else {
+				alert("El número debe ser de  10 dígitos (nacional y fijo) o de 11 dígitos (Estados Unidos y Canadá)");
+				return;
+			}
+		}
+
+	} else {
+		if(nuevoNumero.length != 10){
+			alert("El número debe ser de 10 dígitos");
+			return;
+		}
+	}
+	if( !isNumeric(nuevoNumero)  ){
+		alert("El número contiene caracteres no válidos");
+		return;
+	}
+	if( !notSameNumber(nuevoNumero)  ){
+		alert("No se permite introducir el mismo dn de la línea.");
+		return;
+	}
+	if( !compareToAll(nuevoNumero)  ){
+		alert("El número ya esta registrado");
+		return;
+	}
+	//alert("La entrada de datos es valida");
+	cambiarNumero(nuevoNumero);
+}
+
+function cambiarNumero(nuevoNumero){
+	document.getElementById("divCambioNumeroFF").style.visibility = "hidden";		
+	document.getElementById("divRespuestaWS").style.visibility = "visible";    	
+	toggleImgLoad(0);		
+	solicitaValidarNumeracion(nuevoNumero);	
+}
+
+
+
+function writeMap(){
+	var str = "";
+	var element = document.getElementsByName("boxes");
+	str += element.length+";";
+	for(var i = 0; i< element.length;i++){
+		var valorDn = document.getElementById("dnFamilia"+(i+1)).value;			
+		if(valorDn.indexOf("_") != -1 ){
+			valorDn = "_";
+		}
+		str+= (i+1)+":"+valorDn+",";
+	}
+	str = str.substring(0, str.length-1 );
+	return str;
+}
+
+function alertaCosto(){
+	document.getElementById("divAlertaCosto").style.visibility = "visible";
+	document.getElementById("botonCambioNumero").style.visibility = "hidden";
+	document.getElementById("botonRegistraNumero").style.visibility = "hidden";
+}
+
+function hideAlertaCosto(){
+	document.getElementById("divAlertaCosto").style.visibility = "hidden";
+	document.getElementById("botonCambioNumero").style.visibility = "visible";
+	document.getElementById("botonRegistraNumero").style.visibility = "visible";
+	showBoxes();
+}
+
+function showBoxes(){
+	try{
+		var element = document.getElementsByName("boxes");
+
+		for(var i = 0; i< element.length;i++){
+			element[i].style.visibility = 'visible';
+			element[i].checked = false;
+		}
+	}catch(e){
+		alert("El servicio de números frecuentes no esta disponible en este momento. Favor de intentar mas tarde");
+	}
+}
+
+function lookupHistory(numero){
+	var url = '/IusaRRPVS/validarNumeros.do?method=mostrarHistorial&idLinea=0';
+	waitingForHistory();
+
+	$.ajax({
+		type : "GET",
+		url  : url,
+		dataType : 'html',
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		success : function(result){
+		if (result != null && result.length > 0){
+			document.getElementById("divWaitingImg").style.visibility = "hidden";
+			document.getElementById("divHistoryContainer").style.visibility = "visible";
+			document.getElementById("divHistoryData").innerHTML== result;
+		}
+	},
+	error : function(error){
+		alert("Ocurrio un error en la llamada ajax a IusaRRPVS en function lookupHistory: " + error.statusText); 
+	},
+	async: false
+	});
+}
+
+function waitingForHistory(){
+	document.getElementById("botonCambioNumero").style.visibility = "hidden";
+	document.getElementById("botonRegistraNumero").style.visibility = "hidden";	
+	document.getElementById("divWaitingImg").style.visibility = "visible";
+}
+
+</script>
+
+
+
+<style type="text/css">
+a.vid:link {color:#CC0000;font-size: 8.5pt;font-weight : bold;font-family: Arial, Helvetica, sans-serif}      
+a.vid:visited {color:#CC0000} 
+a.vid:hover {color:#FF0000} 
+</style>
+<title>IUSACELL</title>
+
+<!-- JVPL FAF -->
+<link rel="stylesheet" href="http://pvs.iusacell.com.mx:80/IusacellDist/css/alta_baja.css" type="text/css">
+
+<!-- FAVILA -->
+	<script type="text/javascript">
+
+	function gotoLink(link){
+	    top.frames['topFrame'].load(1);
+	    location.replace(link);
+	}
+	
+	</script>
+<!-- FAVILA -->
+
+<!-- ACR) ESTADO DE CUENTA -->
+<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/common.js"></script>
+<!-- ACR) FIN -->
+<!-- 400911 jquery- 1.8.3 -->
+<script src="js/jquery-1.8.3.js"></script>	
+	<!--400911 CRM Modal -->
+<link rel="stylesheet" type="text/css" href="css/modalCRM.css">
+<script src="js/modalCRM.js"></script>
+<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js\mouseOverTable.js"></script>
+<!--CAQUINOA 130207 BITACORA DE TRANSACCIONES INICIO-->
+<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/javascript\historicoTransacciones.js"></script>
+<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/javascript\filesearchhover.js"></script></head><body onload="executaBAZ();" topmargin="0" rightmargin="0" marginwidth="0" marginheight="0" leftmargin="0" bgcolor="#FFFFFF"><div id="imagendetalle"></div>
+<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/javascript\filesearchhover2.js"></script><div id="imagendetalleSVA"></div>
+<!--CAQUINOA 130207 BITACORA DE TRANSACCIONES FIN-->
+<!--CAQUINOA 221107-->
+<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/modifInfoDn.js"></script>
+<!--CAQUINOA 221107-->
+
+<!-- JORTIZ REQ106214 - ABANDERAMIENTO CUENTAS ELITE -->
+	<link href="http://pvs.iusacell.com.mx:80/IusacellDist/css/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css">
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/json2.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/jquery.blockUI.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/jquery.bgiframe.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/abanderamientoCuentasEliteCommon.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/busquedaDNCuentasElite.js"></script>
+<!-- JORTIZ REQ106214 - ABANDERAMIENTO CUENTAS ELITE -->
+
+<script language="JavaScript">
+
+/**
+ * JORTIZ - WKR142679_DesgloceFactura
+ * DOCUMENT READY
+ */
+$(document).ready(function(){
+	//TABLE INFO PLAN
+	backGroundTableStyle($("#tableInfoPlan"));
+});
+//JORTIZ - WKR142679_DesgloceFactura
+
+//<!--  inicio AJCP  26/06/06 , modificacion 17/08/06 --> 
+function setValorHeader(){
+	var custIdBSCS = "1325683";
+	var custDnBSCS = "4421970772";
+	var ctaBSCS = "4.7916";
+	var contrato = "1479017";
+	//CAQUINOA 010307 VALIDAR STATUS
+	var custEstatus = "d";
+	//CAQUINOA 050307 AGREGAR IDUSER
+	var idUser = "488342";
+	top.frames['topFrame'].sendCust.custId.value = custIdBSCS;
+	top.frames['topFrame'].sendCust.dn.value = custDnBSCS;
+	top.frames['topFrame'].sendCust.custcode.value = ctaBSCS;
+	top.frames['topFrame'].sendContrato.dn.value = custDnBSCS;
+	top.frames['topFrame'].sendContrato.contrato.value = contrato;
+	//CAQUINOA 010307 VALIDAR STATUS
+	top.frames['topFrame'].sendCust.estatus.value = custEstatus;
+	//CAQUINOA 050307 AGREGAR IDUSER
+	top.frames['topFrame'].sendCust.idUser.value = idUser;
+}
+//<!--  fin AJCP 26/06/06 , modificacion 17/08/06 --> 
+
+
+<!-- VISION UNICA -->
+
+function ActualLinkVU1() {
+	document.actualLinkVU1.submit();
+}
+
+<!-- FIN VISION UNICA -->
+
+
+
+<!-- EGH  Actualizacion de datos CRM  -->
+function ActualDatLink(){
+		document.ActualDataLink.submit();		
+}
+
+<!-- FIN EGH - CRM  -->
+
+function Enviar() {
+		var idval="";
+		var ValRet=window.showModalDialog("distrib?action=displayReinvoiceReasons&controller=CustomerInfoBusinessController", idval, "dialogHeight:285px; dialogWidth: 500px; help:no; scroll:no; resizable:no");
+		var arr_split=ValRet.split("_");
+		var idMoti=arr_split[1];
+		document.FACTURA.idMotivo.value=idMoti;
+		
+		if(ValRet!=0)
+		{
+			var ancho = screen.availWidth;
+			var largo = screen.availHeight;
+			document.FACTURA.submit();
+		}
+}
+			
+function EnviarA() {
+		var idval="";
+		var ValRet=window.showModalDialog("distrib?action=displayReinvoiceReasons&controller=CustomerInfoBusinessController", idval, "dialogHeight:285px; dialogWidth: 500px; help:no; scroll:no; resizable:no");
+		var arr_split=ValRet.split("_");
+		var idMoti=arr_split[1];
+		document.FACTURAA.idMotivo.value=idMoti;
+		
+		if(ValRet!=0)
+		{
+			var ancho = screen.availWidth;
+			var largo = screen.availHeight;
+			ancho=0;
+			largo=0;
+			document.FACTURAA.submit();
+		}
+		
+}	
+		
+			
+function EnviarB() {
+		var idval=""
+		var ValRet=window.showModalDialog("distrib?action=displayReinvoiceReasons&controller=CustomerInfoBusinessController", idval, "dialogHeight:285px; dialogWidth: 500px; help:no; scroll:no; resizable:no");
+		var arr_split=ValRet.split("_");
+		var idMoti=arr_split[1];
+		document.FACTURAB.idMotivo.value=idMoti;
+		
+		if(ValRet!=0)
+		{
+			var ancho = screen.availWidth;
+			var largo = screen.availHeight;
+			document.FACTURAB.submit();
+		}
+}
+
+
+function EnviarD() {
+		var idval = "";
+		
+		var ValRet = window.showModalDialog( "distrib?action=displayReinvoiceReasons&controller=CustomerInfoBusinessController", idval, "dialogHeight:285px; dialogWidth: 500px; help:no; scroll:no; resizable:no" );
+		var arr_split = ValRet.split( "_" );
+		var idMoti = arr_split[1];
+		document.FACTURAD.idMotivo.value = idMoti;
+		
+		if( ValRet != 0 )
+		{	
+			var ancho = screen.availWidth;
+			var largo = screen.availHeight;
+			document.FACTURAD.submit();
+		}
+}
+
+function EnviarE() {
+		var idval = "";
+		
+		var ValRet = window.showModalDialog( "distrib?action=displayReinvoiceReasons&controller=CustomerInfoBusinessController", idval, "dialogHeight:285px; dialogWidth: 500px; help:no; scroll:no; resizable:no" );
+		var arr_split = ValRet.split( "_" );
+		var idMoti = arr_split[1];
+		document.FACTURAE.idMotivo.value = idMoti;
+		
+		if( ValRet != 0 )
+		{	
+			var ancho = screen.availWidth;
+			var largo = screen.availHeight;
+			document.FACTURAE.submit();
+		}
+}
+
+
+
+/* YLEON 280406 */
+function EnviarFactura1() {
+		var idval=""
+		
+		var ValReturn=window.showModalDialog("distrib?action=showSendInvoice&controller=CustomerInfoBusinessController&typePerson=null&legalName=null&customerName=HECTOR PINA SOTO&eMail=nada@hotmail.com&key2=null&key4=08&key5=2011", idval, "dialogHeight:285px; dialogWidth: 600px; help:no; scroll:no; resizable:no");	
+		
+}
+function EnviarFactura2() {
+		var idval=""					
+		
+		var ValReturn=window.showModalDialog("distrib?action=showSendInvoice&controller=CustomerInfoBusinessController&typePerson=null&legalName=null&customerName=HECTOR PINA SOTO&eMail=nada@hotmail.com&key2=null&key4=07&key5=2011", idval, "dialogHeight:285px; dialogWidth: 600px; help:no; scroll:no; resizable:no");	
+		
+}
+function EnviarFactura3() {
+		var idval=""					
+		
+		var ValReturn=window.showModalDialog("distrib?action=showSendInvoice&controller=CustomerInfoBusinessController&typePerson=null&legalName=null&customerName=HECTOR PINA SOTO&eMail=nada@hotmail.com&key2=null&key4=06&key5=2011", idval, "dialogHeight:285px; dialogWidth: 600px; help:no; scroll:no; resizable:no");	
+		
+}
+/* YLEON 280406 */
+
+
+function EnviarFactura4() {
+		var idval = "";
+		
+		
+				var ValReturn = window.showModalDialog( "distrib?action=showSendInvoice&controller=CustomerInfoBusinessController&typePerson=null&legalName=null&customerName=HECTOR PINA SOTO&eMail=nada@hotmail.com&key2=null&key4=05&key5=2011", idval, "dialogHeight:285px; dialogWidth: 600px; help:no; scroll:no; resizable:no" );
+		
+}
+
+function EnviarFactura5() {
+		var idval = "";
+		
+		
+				var ValReturn = window.showModalDialog( "distrib?action=showSendInvoice&controller=CustomerInfoBusinessController&typePerson=null&legalName=null&customerName=HECTOR PINA SOTO&eMail=nada@hotmail.com&key2=null&key4=04&key5=2011", idval, "dialogHeight:285px; dialogWidth: 600px; help:no; scroll:no; resizable:no" );
+		
+}
+
+
+
+
+	/* HSB nueva busqueda en arbol */
+		function getTreeFunction(cuenta){ 
+			var	punto=0;	
+			var raiz=null;	
+				
+			punto = cuenta.indexOf(".",2);
+			if (punto==-1){
+				raiz = cuenta;
+			}else{
+				raiz = cuenta.substring(0,punto);				
+			}	
+			top.frames['leftFrame'].document.location='jsp/principal/pri_AdvSearch.jsp?enpostpago=true';
+			top.frames['topFrame'].currentAccount=raiz;				
+			top.frames['topFrame'].load(1);									
+			var url = "busquedaArbol.do?method=busquedaInicial&custcode=" + cuenta;
+			window.open(url,'leftFrame');			
+		}		
+	/* HSB nueva busqueda en arbol */
+//CAQUINOA 180107 INICIO 
+//Ir a la consulta general de transacciones de la cuenta
+function goToConsultasGeneral(){
+	top.frames['topFrame'].load(1);
+	var cuenta = "4.7916";
+	var url = "BitacoraActionHandler?action=logTransacHeader&cuenta="+cuenta;
+	window.open(url,"contenido");
+}
+//Ir al estado de cuenta de la línea
+function goToEdoCta(){
+	document.sendCust.submit();
+}
+//CAQUINOA 180107 FIN
+</script>
+<script language="JavaScript">
+var characteristicsWindow;
+
+function mostrarCharacteristics() {
+       if (characteristicsWindow != null)
+       characteristicsWindow.close();   
+	   var mensaje = 'jsp/customerInfo/inf_Characteristics.jsp?modelo=';
+	   
+					   mensaje += 'MOTOROLA RAZR V3M PLATA' ;
+	  
+
+        characteristicsWindow = window.open(mensaje,'VentanaCaracteristicas','menubar=no,toolbar=no,status=no,width=500,height=500,top='+((screen.availHeight/2)-(450/2))+',left='+((screen.availWidth/2)-(250)));
+}
+
+a201=new Image(108,30)
+a201.src= "http://pvs.iusacell.com.mx:80/IusacellDist/img/nvpm_consulta_off.gif"
+a301=new Image(108,30)
+a301.src= "http://pvs.iusacell.com.mx:80/IusacellDist/img/nvpm_consulta_on.gif"
+a202=new Image(86,30)
+a202.src= "http://pvs.iusacell.com.mx:80/IusacellDist/img/nvpm_serviciospre_off.gif"
+a302=new Image(86,30)
+a302.src= "http://pvs.iusacell.com.mx:80/IusacellDist/img/nvpm_serviciospre_on.gif"
+a203=new Image(87,30)
+a203.src= "http://pvs.iusacell.com.mx:80/IusacellDist/img/nvpm_serviciospos_off.gif"
+a303=new Image(87,30)
+a303.src= "http://pvs.iusacell.com.mx:80/IusacellDist/img/nvpm_serviciospos_on.gif"
+a204=new Image(89,30)
+a204.src= "http://pvs.iusacell.com.mx:80/IusacellDist/img/nvpm_serviciosadi_off.gif"
+a304=new Image(89,30)
+a304.src= "http://pvs.iusacell.com.mx:80/IusacellDist/img/nvpm_serviciosadi_on.gif"
+a205=new Image(99,30)
+a205.src= "http://pvs.iusacell.com.mx:80/IusacellDist/img/nvpm_configura_off.gif"
+a305=new Image(99,30)
+a305.src= "http://pvs.iusacell.com.mx:80/IusacellDist/img/nvpm_configura_on.gif"
+
+function filter(imagename,objectsrc) {
+	var n=navigator.appName
+	var v=parseInt(navigator.appVersion)
+	var browsok=((n=="Netscape")&&(v>=3))
+	var browsok2=((n=="Microsoft Internet Explorer")&&(v>=4))
+	if ((browsok)||(browsok2))
+		document.images[imagename].src=eval(objectsrc+".src")
+}
+
+function dxonmouseover(selected,hi,name) {
+		filter(name,hi);
+		selected=true;
+}
+
+function dxonmouseout(selected,lo,name) {
+	if(!(currentpush==name)) {
+		filter(name,lo);
+		selected=false;
+	}
+}
+
+
+</script>
+
+<script language="JavaScript">
+	
+
+	function Redirecciona(telefono){
+			posicion= telefono.indexOf('_');
+			tel = telefono.substring(0 , posicion);
+			tipo = telefono.substring(posicion+1 ,telefono.length);
+			if(tipo==1){
+					document.FORMA.phoneNumber.options[document.FORMA.phoneNumber.selectedIndex].value=tel;
+					document.FORMA.TELEFONO.value = tel;
+					document.FORMA.TIPOTEL.value  =tipo;
+					document.FORMA.action.value = "retrieveClientPreData";
+					top.frames['topFrame'].changeOption('a102', 'a302', '102');
+					top.frames['topFrame'].loading(1);
+					<!--var elHdeArriba=top.frames['topFrame'].document.getElementById('default');
+					elHdeArriba.value="0";-->
+		
+	
+				}
+				
+			if(tipo==2){
+					document.FORMA.phoneNumber.options[document.FORMA.phoneNumber.selectedIndex].value=tel;
+					document.FORMA.TELEFONO.value = tel;
+					document.FORMA.TIPOTEL.value  =tipo;
+					document.FORMA.action.value = "retrieveClientPosData";
+					top.frames['topFrame'].changeOption('a103', 'a303', '103');
+					top.frames['topFrame'].loading(1);
+					<!--var elHdeArriba=top.frames['topFrame'].document.getElementById('default');
+					elHdeArriba.value="0";-->
+				}
+			return true;
+		}
+
+	function muestra_comp_espere()
+	{
+		top.frames['topFrame'].loading(1);
+	}
+
+	function js_showDiv(id){
+		if (id == "1") {
+			document.getElementById("plan1").style.display = 'block';
+			document.getElementById("plan2").style.display = 'none';
+		} else if (id == "2"){
+			document.getElementById("plan1").style.display = 'none';
+			document.getElementById("plan2").style.display = 'block';
+		} else if (id == "3"){
+			document.getElementById("cliente1").style.display = 'block';
+			document.getElementById("cliente2").style.display = 'none';
+		} else if (id == "4"){
+			document.getElementById("cliente1").style.display = 'none';
+			document.getElementById("cliente2").style.display = 'block';
+		}
+	}
+	function js_verSaldo() {
+	    newWindow = window.open('distrib?action=mostrarSaldoWIN&controller=CustomerInfoBusinessController','SaldosWIN','toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=470,height=410,left=400,top=100');
+	    newWindow.focus();
+	    /*Eric Oswaldo Gomez Reyes*/
+	    newWindow.scrollBy(50, 50);
+	    /*Eric Oswaldo Gomez Reyes*/
+	}
+	
+	/* IRIVAS BUC */
+	function insertaColaCodificador() { 		   		
+   		var strURLColaBuc = "/BUC/contactsQueue.do";
+   		strURLColaBuc = strURLColaBuc + "?idUser=" + "hpvwc9GTnilgBYD%2FmmhcHQ%3D%3D" +"&tipo=" + "OTY4KzJrmmvh2RYfiId6kQ%3D%3D" + "&contrato=" + "KkMHGny3DjBmea6baZS2aw%3D%3D" + "&mdn=" + "FyO0y9q63EfjYazTgbdzAA%3D%3D";
+		
+		var windowProperties = "resizable=0, width=0, height=0";
+		window.open(strURLColaBuc,'bucFrame',windowProperties);   		
+   		
+    }
+
+	insertaColaCodificador();
+    	    	
+	function abrirCodificador() {
+		
+		
+		     
+        var URL = "/BUC/codificador.do";     
+        URL = URL + "?idUser=" + "hpvwc9GTnilgBYD%2FmmhcHQ%3D%3D" + "&tipo=" + "OTY4KzJrmmvh2RYfiId6kQ%3D%3D" + "&contrato=" + "KkMHGny3DjBmea6baZS2aw%3D%3D" + "&mdn=" + "FyO0y9q63EfjYazTgbdzAA%3D%3D";		
+   		
+		
+		
+   		window.open(URL,"Codificador", "toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,width=600,height=600"); 	
+	}
+ 	
+	function abrirConsultas(){
+    	var URL = "/BUC/historico/consultas.do";
+    	URL = URL + "?idUser=" + "hpvwc9GTnilgBYD%2FmmhcHQ%3D%3D" + "&tipo=" + "OTY4KzJrmmvh2RYfiId6kQ%3D%3D" + "&contrato=" + "KkMHGny3DjBmea6baZS2aw%3D%3D" + "&customerId=" + "3KBJxalnL7gNQ9evny90LA%3D%3D" + "&mdn=" + "FyO0y9q63EfjYazTgbdzAA%3D%3D" + "&fechaActivacion=" + "mudNjOPoc9qNmqVw7f12EA%3D%3D" + "&login=" + "cwhqbPdK8D9nKdJ064vQbA%3D%3D";
+    	    	
+    	window.open(URL, "contenido");
+	}
+ 	/* FIN IRIVAS BUC */
+ 	
+ 	////////////////// FUNCION QUE MUESTRA EL HISTÓRICO DE LOS CONTACTOS 2/04/06 //////////////
+ 	
+ 	function mostrarReporte(callId, incidentId, estatus, fechaSolicitud, tipoConsulta){
+   
+			var accion = document.frameHistoricos.action;			
+			var call_Id= document.frameHistoricos.callId;				
+   		    var incident_Id= document.frameHistoricos.incidentId;				
+   		    var from_Dash= document.frameHistoricos.fromDashBoard;	
+   		    var status= document.frameHistoricos.estatus;							
+   		    
+			if(tipoConsulta == "NOTA PORTAL"){			
+				accion.value = "consultaInteracciones";
+			} else if(tipoConsulta == "SOLICITUD BO"){     			
+				accion.value = "consultaBackOffice";
+			} else if(tipoConsulta == "boss"){
+				accion.value = "consultaBackOfficeBoss";
+			} else if(tipoConsulta == "INTERACCION")
+				accion.value = "consultaInteracciones";
+            
+			
+			//accion.value = "consultaBackOffice";
+			call_Id.value = callId;
+            incident_Id.value = incidentId;
+            from_Dash.value = "YES";
+			status.value = estatus;
+			//call_Id.value =			
+			
+			top.frames['topFrame'].load(1);			
+			document.frameHistoricos.submit();
+		}
+ 	
+ 	////////////////////////// FIN FUNCIÓN HISTÓRICO DE CONTACTOS///////////////////////////////
+ 	
+    // LRSO(CRM)
+	function ShowCobranza (element) {
+    	var n = "";
+
+		// alert ('element' + element );
+
+    	n = document.getElementById(element).style.display;		  
+		  
+    	if(n =="none") {
+			document.getElementById(element).style.display ="inline";
+    	} else {
+			document.getElementById(element).style.display="none";         
+    	}
+	}       
+    // LRSO(CRM)
+ 	
+    function ShowDataBAM ( element ) {
+		
+	    	var n = document.getElementById( element ).style.display;
+			if( n == "none" ) {
+				document.getElementById( element ).style.display = "inline";
+	    	} else {
+				document.getElementById( element ).style.display = "none";         
+	    	}
+		
+	}
+	
+<!-- -------------------- rBastida ------------------------------------------------------- -->
+	function cambiatelcon(){
+		var tpc = document.getElementById("telefonopacambio")
+		var dn= document.getElementById("dnActualPhoneNumber");
+		var urlma = 'http://pvs.iusacell.com.mx:80/IusacellDist/distrib?action=displayChanceContactPostpaid&controller=additionalServicesController&dn='+dn.value
+		window.document.URL = urlma
+	}
+<!-- ---------------------------------------------------------------------------------------------------- -->
+
+	// AJCP 25/05/2006
+	function colapsaDiv(element){
+		n = document.getElementById(element).style.display;
+		if(n =="none")
+			document.getElementById(element).style.display="inline";
+		else
+			(document.getElementById(element).style.display="none");
+	}
+	//  AJCP
+	
+	function getLVC() {
+		try {
+			document.lvcForm.submit();
+		} catch( e ) {}
+	}
+	
+	function onloadLVC( obj ) {
+		obj.style.height = "130";
+	}
+	
+//OIAN
+function Alternar(Seccion){ 
+    if (Seccion.style.display=="none"){Seccion.style.display=""}
+    else{Seccion.style.display="none"} 
+}
+
+</script>
+
+
+
+
+
+
+
+
+<!-- MELOPEZ PopUp MiniDash INICIO -->
+<!-- JONATHAN AVILA SALAZAR 26/AGO/2008 cambio para el dashboard -->
+
+		
+
+	<div id="styleOpacityA" style="visibility:hidden; position: absolute;left: 0px; top: 0px; width: 100%; height: 100%; background: white; border-color: red; border-width: 2px; " onclick="javascript:hidetrailA();"> </div>  <!-- GSL -->
+	<div id="styleOpacity" style="visibility:hidden; position: absolute;left: 0px; top: 0px; width: 100%; height: 100%; background: white; border-color: red; border-width: 2px; " onclick="javascript:hidetrail();"> </div>
+<!-- MELOPEZ PopUp MiniDash FIN -->
+
+<!-- LVC -->
+
+<!-- IU400911 REQ79956 INI  -->
+
+
+<div id="modalPUODS" name="modalPUODS"></div>
+<!-- IU400911 REQ79956 FIN  -->
+
+<!-- VISION UNICA -->
+<form name="visionUnicaForm" method="POST" action="/IusacellDist/visionUnica.do" id="actualLinkVU1">
+	<input type="hidden" name="customerRFC" value="PISH670502G47">	
+	<input type="hidden" name="cliente" value="HECTOR PINA SOTO">	
+</form>
+<!-- VISION UNICA -->
+
+<!-- ACR) ESTADO DE CUENTA -->
+
+<!-- EGH  Actualizacion de datos para CRM-->
+<!--CAQUINOA 140307 BITACORA DE TRANSACCIONES INICIO-->
+<form name="dispBitTransForm" method="POST" action="/IusacellDist/dispBitTrans.do">
+	<input type="hidden" name="coId" value="1479017">
+	<input type="hidden" name="custcode" value="4.7916">
+</form>	
+<!--CAQUINOA 140307 BITACORA DE TRANSACCIONES FIN-->
+<form name="ActualDataLink" method="POST" action="header_actudata_crm.jsp">
+
+	<input type="hidden" name="Nombre" value="HECTOR PINA SOTO">	
+	<input type="hidden" name="Replegal" value="null">
+	<input type="hidden" name="DirCorr" value="XOCHILT No. 81 Col. COLONIA ESTRELLA DEL SUR IZTAPALAPA CIUDAD DE MEXICO 09820">
+	<input type="hidden" name="DirFis" value="XOCHILT No. 81 Col. COLONIA ESTRELLA DEL SUR IZTAPALAPA CIUDAD DE MEXICO 09820">
+	<input type="hidden" name="RFC" value="PISH670502G47">
+	<input type="hidden" name="TelOf" value="01 5530941995">	
+	<input type="hidden" name="TelCasa" value="01 5530941995">	
+	<input type="hidden" name="idUser" value="D303433012">
+	<input type="hidden" name="DN" value="4421970772">
+	<input type="hidden" name="NoDeCuenta" value="4.7916">
+	<input type="hidden" name="TipoPersona" value="null">
+	<input type="hidden" name="CustomerId" value="1325683">	
+	<input type="hidden" name="Origen" value="1"> <!-- YLEON 021006 -->
+	</form>
+	<!-- FIN EGH - CRM -->
+	
+
+<!-- Ejecuta de manera oculta -->
+<iframe name="showInvoice" src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" width="0" height="0">
+</iframe>
+<!-- Inicio b_e_t_i_t_o -->
+
+<form name="SendCRMInfo" method="POST" action="header_crm.jsp">
+	
+	<input type="hidden" name="desde" value="pospago">
+	<input type="hidden" name="customerName" value="HECTOR PINA SOTO">
+	<input type="hidden" name="NoDeCuenta" value="4.7916">	
+	<input type="hidden" name="idUser" value="D303433012">
+	<input type="hidden" name="phone" value="4421970772">
+	<input type="hidden" name="sistema" value="P">
+	<input type="hidden" name="statusCRM" value="D ">
+	<input type="hidden" name="claveDelCliente" value="1325683">
+	<!--OIRG INICIO -->
+	<input type="hidden" name="coId" value="1479017">
+	<input type="hidden" name="idRealUser" value="488342">
+	<!--OIRG FIN -->
+	
+</form>
+<!-- FIN b_e_t_i_t_o -->
+
+<!----------------------------- FORM CODIFICADOR FOG---------------------------------------------->
+<form name="codificador" class="Estilo1" method="POST" action="http://pvs.iusacell.com.mx:80/IusacellDist/Codifica">
+</form>
+<!----------------------------- END FORM CODIFICADOR FOG------------------------------------------>
+<!----------------- FROM HITORICO DE CONTACTOS FOG 17/04/06--------------------------------------->
+<form action="BitacoraActionHandler" target="contenido" name="frameHistoricos" method="GET">
+  <input type="hidden" name="fromDashBoard" value="">
+  <input type="hidden" name="fechaSolicitud" value="">
+  <input type="hidden" name="callId" value="">
+  <input type="hidden" name="incidentId" value="">  
+  <input type="hidden" name="action" value="">
+  <input type="hidden" name="estatus" value="">
+</form>
+<!----------------- END FROM HITORICO DE CONTACTOS FOG -------------------------------------------->
+
+<!--CAQUINOA 22/01/07 CONSULTA ESTADO DE CUENTA INICIO-->
+<form name="sendCust" method="POST" action="http://pvs.iusacell.com.mx:80/IusacellDist/jsp/crm/estadoCuenta/estadoCta.jsp" target="contenido">
+	<input type="hidden" name="custId" value="1325683">
+	<input type="hidden" name="custcode" value="4.7916">
+	<input type="hidden" id="dnActualPhoneNumber" name="dn" value="4421970772">
+	<input type="hidden" name="idUser" value="488342">
+	<input type="hidden" name="go" value="cargarJsp">
+</form>
+<!--CAQUINOA 22/01/07 CONSULTA ESTADO DE CUENTA FIN-->
+
+<form name="FACTURA" method="POST" action="distrib" target="showInvoice">
+<input type="hidden" name="action" value="retrieveInvoice">
+<input type="hidden" name="controller" value="CustomerInfoBusinessController">
+
+<input type="hidden" name="oActualPhoneNumber" value="4.7916">
+<input type="hidden" name="CustomerName" value="HECTOR PINA SOTO">
+<input type="hidden" name="billCycle" value="7">
+<input type="hidden" name="cdg_region" value="05">
+<input type="hidden" name="idUser" value="488342">
+<input type="hidden" name="idMotivo">
+
+						
+<input type="hidden" name="area" value="MEGON-ALCALDEJAL">
+
+
+<input type="HIDDEN" name="key2" value="null" id="ACCOUNT">
+
+<input type="HIDDEN" name="key4" value="08" id="MONTH">
+
+<input type="HIDDEN" name="key5" value="2011" id="YEAR">
+<input type="HIDDEN" name="dateInvoice" value="null">
+</form>
+
+
+<form name="FACTURAA" method="POST" action="distrib" target="showInvoice">
+<input type="hidden" name="action" value="retrieveInvoice">
+<input type="hidden" name="controller" value="CustomerInfoBusinessController">
+
+<input type="hidden" name="oActualPhoneNumber" value="4.7916">
+<input type="hidden" name="CustomerName" value="HECTOR PINA SOTO">
+<input type="hidden" name="billCycle" value="7">
+<input type="hidden" name="cdg_region" value="05">
+<input type="hidden" name="idUser" value="488342">
+<input type="hidden" name="idMotivo">
+<input type="hidden" name="area" value="MEGON-ALCALDEJAL">
+
+<input type="HIDDEN" name="key2" value="null" id="ACCOUNT">
+
+<input type="HIDDEN" name="key4" value="07" id="MONTH">
+
+<input type="HIDDEN" name="key5" value="2011" id="YEAR">
+<input type="HIDDEN" name="dateInvoice" value="null">
+</form>
+
+
+<form name="FACTURAB" method="POST" action="distrib" target="showInvoice">
+<input type="hidden" name="action" value="retrieveInvoice">
+<input type="hidden" name="controller" value="CustomerInfoBusinessController">
+
+<input type="hidden" name="oActualPhoneNumber" value="4.7916">
+<input type="hidden" name="CustomerName" value="HECTOR PINA SOTO">
+<input type="hidden" name="billCycle" value="7">
+<input type="hidden" name="cdg_region" value="05">
+<input type="hidden" name="idUser" value="488342">
+<input type="hidden" name="idMotivo">
+<input type="hidden" name="area" value="MEGON-ALCALDEJAL">
+
+<input type="HIDDEN" name="key2" value="null" id="ACCOUNT">
+
+<input type="HIDDEN" name="key4" value="06" id="MONTH">
+
+<input type="HIDDEN" name="key5" value="2011" id="YEAR">
+<input type="HIDDEN" name="dateInvoice" value="null">
+</form>
+
+
+<form name="FACTURAD" method="POST" action="distrib" target="showInvoice">
+	<input type="hidden" name="action" value="retrieveInvoice">
+	<input type="hidden" name="controller" value="CustomerInfoBusinessController">
+	
+	<input type="hidden" name="oActualPhoneNumber" value="4.7916">
+	<input type="hidden" name="CustomerName" value="HECTOR PINA SOTO">
+	<input type="hidden" name="billCycle" value="7">
+	<input type="hidden" name="cdg_region" value="05">
+	<input type="hidden" name="idUser" value="488342">
+	<input type="hidden" name="idMotivo">
+	<input type="hidden" name="area" value="MEGON-ALCALDEJAL">
+	
+	<input type="HIDDEN" name="key2" value="null" id="ACCOUNT">
+	
+		<input type="HIDDEN" name="key4" value="05" id="MONTH">
+	
+	<input type="HIDDEN" name="key5" value="2011" id="YEAR">
+	<input type="HIDDEN" name="dateInvoice" value="null">
+</form>
+
+<form name="FACTURAE" method="POST" action="distrib" target="showInvoice">
+	<input type="hidden" name="action" value="retrieveInvoice">
+	<input type="hidden" name="controller" value="CustomerInfoBusinessController">
+	
+	<input type="hidden" name="oActualPhoneNumber" value="4.7916">
+	<input type="hidden" name="CustomerName" value="HECTOR PINA SOTO">
+	<input type="hidden" name="billCycle" value="7">
+	<input type="hidden" name="cdg_region" value="05">
+	<input type="hidden" name="idUser" value="488342">
+	<input type="hidden" name="idMotivo">
+	<input type="hidden" name="area" value="MEGON-ALCALDEJAL">
+	
+	<input type="HIDDEN" name="key2" value="null" id="ACCOUNT">
+	
+		<input type="HIDDEN" name="key4" value="04" id="MONTH">
+	
+	<input type="HIDDEN" name="key5" value="2011" id="YEAR">
+	<input type="HIDDEN" name="dateInvoice" value="null">
+</form>
+
+
+
+<!-- YLEON 220506 -->
+<form name="SendPayMethod" method="POST" action="header_crmPayment.jsp">	
+	<input type="hidden" name="noCuenta" value="4.7916">	
+	<input type="hidden" name="idUser" value="D303433012">
+	<input type="hidden" name="phone" value="4421970772">
+	<input type="hidden" name="idCliente" value="1325683">			
+	<!--	
+	<input type="hidden" name="metodoPago" value="null">	
+	<input type="hidden" name="noTarjeta" value="null">	
+	<input type="hidden" name="venceTarjeta" value="null">	
+	-->
+</form>
+<!-- YLEON 220506 -->
+
+<form name="FORMA" method="POST" action="distrib">
+<div id="toolTipLayer" style="position:absolute; visibility: hidden"></div>
+
+<!-- HEADER -->
+
+<!-- BIENVENIDA -->
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="LEFT">
+<tbody><tr>
+<td width="30" bgcolor="#FFFFFF"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="30" height="1" border="0"></td><!-- Modified for IWR 4747- JAN 18,2013- Only this line -->
+<td width="20"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="20" height="1" border="0"></td>
+<td width="90%" valign="TOP" height="20"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="672" height="20" border="0"></td>
+<td width="20"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="20" height="1" border="0"></td>
+<td width="30" bgcolor="#FFFFFF"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="30" height="1" border="0"></td><!-- Modified for IWR 4747- JAN 18,2013- Only this line -->
+</tr>
+<!-- Se elimina VIDA LINEA CLIENTE: inf_ConsultClientPosDataDist-->
+<tr>
+<td width="30" bgcolor="#FFFFFF"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="30" height="1" border="0"></td><!-- Modified for IWR 4747- JAN 18,2013- Only this line -->
+<td width="20"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="20" height="1" border="0"></td>
+<td width="90%" valign="TOP" height="20"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="672" height="20" border="0"></td>
+<td width="20"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="20" height="1" border="0"></td>
+<td width="30" bgcolor="#FFFFFF"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="30" height="1" border="0"></td><!-- Modified for IWR 4747- JAN 18,2013- Only this line -->
+</tr>
+</tbody></table>
+
+<br clear="ALL">
+
+<!-- BODY -->
+<table width="100%" height="68%" cellspacing="0" cellpadding="0" border="0" align="LEFT">
+<tbody><tr>
+<!--MODIFIED 4747 19 NOV START-->
+<td width="20" bgcolor="#FFFFFF"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="30" height="1" border="0"></td><!-- Modified for IWR 4747- JAN 18,2013- Only this line -->
+<td width="20"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="20" height="1" border="0"></td>
+<!-- NOV 23 2012 UAT -IWR 4747-START-->
+<td width="27%" valign="TOP"> <!-- IWR 4747, 3 DEC 2012 ONLY THIS LINE CHANGED -->
+<!-- NOV 23 2012 UAT -IWR 4747-END-->
+	<!-- SELECCIONA TU TELEFONO TAB -->
+	<!--
+	Commented - 4747- 25 Nov- start
+	<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+	 <TR>
+		Modified for IWR 4747-01_01 start
+		 Modified for IWR 4747 Nov 20,2012 start
+		 NOV 23 2012 UAT -IWR 4747-START
+		 <TD><IMG SRC= "http://pvs.iusacell.com.mx:80/IusacellDist/img/plan_n.gif" WIDTH="280" HEIGHT="40" BORDER="0" ALT=""></TD>
+		  NOV 23 2012 UAT -IWR 4747-END
+		 <TD BACKGROUND= "http://pvs.iusacell.com.mx:80/IusacellDist/img/ppal_tab_background.gif"><IMG SRC= "http://pvs.iusacell.com.mx:80/IusacellDist/img/ppal_tab_seleccionatel.gif" WIDTH="160" HEIGHT="46" BORDER="0" ALT=""></TD>
+		 Modified for IWR 4747 Nov 20,2012 end
+		 Modified for IWR 4747-01_01 end 
+	 </TR>
+	</TABLE>
+	Commented - 4747- 25 Nov- end
+-->
+<!-- added - 4747- 25 Nov-start-->
+<table width="100%" height="40" cellspacing="0" cellpadding="0" border="0">
+	 <tbody><tr>
+		<td background="http://pvs.iusacell.com.mx:80/IusacellDist/img/plan_n.gif"> 
+		</td>
+	 </tr>
+	</tbody></table>
+<!-- added - 4747- 25 Nov-end-->
+
+<!--MODIFIED 4747 19 NOV END-->
+	
+	<!-- SELECCIONA TU TELEFONO CONTENIDO - MODIFIED for IWR 4747-01_02 Start -->
+	 <!--DEC 14- 4747- ONLY THIS LINE-->
+<table width="100%" cellspacing="0" cellpadding="0" bordercolor="#E0E1E3" border="1" bgcolor="#FFFFFF">
+   <tbody><tr>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->			
+	<!-- Laura width="80" height="80" -->  <!-- GRP ACAP-REQ-003185   -->
+
+<!-- modified for IWR 4747  22 NOV 2012 START-->
+
+	<td class="txtContenido" width="38%" valign="middle" align="CENTER"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/imagenServ">
+<!-- modified for IWR 4747  22 NOV 2012 END-->
+	<br>
+			MOTOROLA RAZR V3M PLATA
+			
+			</td>
+	
+
+<!-- Modified for IWR 4747 Nov 20,2012 end-->
+<!-- MODIFIED FOR IWR 4747-01_02 END-->
+<!-- IWR 4747 NOV 19, 2012 START-->
+	<td width="60%" valign="TOP" align="CENTER">
+	
+		<!-- JORTIZ - WKR142679_DesgloceFactura -->
+		<table id="tableInfoPlan" width="100%" cellspacing="0" cellpadding="2" border="0">
+		
+	    	<tbody><tr>
+	    	
+		       <td class="txtContenidoRojo" id="telefonopacambio2" colspan="2"><b>				
+				IUSACELL
+				&nbsp;SIN TECNOLOGIA</b></td>
+          <!-- IWR 4747 NOV 19, 2012 END-->
+			 <!--Added for UF_SRS_4747-01_05 END -->
+		  </tr>
+		  <tr>
+		  <!--MODIFIED for UF_SRS_4747-01_02 -start-->
+		    <td class="txtContenidoBold" bgcolor="#E0E1E3">Número</td> 
+		    <!--</TR>
+		    <TR>-->
+		    <td class="txtContenido" id="telefonopacambio" bgcolor="#E0E1E3">4421970772</td>
+		   <!--MODIFIED for UF_SRS_4747-01_02 -end--> 
+		 </tr>
+	 		
+		   <!-- CAQUINOA 221107 CAMBIO DE MODELO-->
+		   <!-- Deleted for UF_SRS_4747-01_04 START
+		   <TR>
+		   <TD BGCOLOR="#EEEEEE" CLASS="txtContenidoBold">
+			    
+				 	Modelo
+				
+		  </TD>
+		  </TR>
+		 <!-- CAQUINOA 221107 CAMBIO DE MODELO
+	     <TR>
+		 <TD CLASS="txtContenido">
+				
+					MOTOROLA RAZR V3M PLATA 	
+			
+		</TD>
+		</TR>
+		Deleted for UF_SRS_4747-01_04 END-->
+
+
+		<!--Deleted for IWR 4747-01_04 start
+		<TR>		
+		<TD BGCOLOR="#EEEEEE" CLASS="txtContenidoBold">Tecnología</TD>
+		</TR>
+		Deleted for IWR 4747-01_04 end-->
+		
+		<!-- Deleted for IWR 4747-01_04 start
+		<TR>
+		<TD CLASS="txtContenido">
+			
+			SIN TECNOLOGIA
+			
+			Deleted for IWR 4747-01_04 end -->
+			<!--INICIO redireccionamiento - d.llamadas  d. consumos
+                --Guillermo M. Granados R.
+              	 --05/11/2010-->
+            
+				  
+			<script>
+			    parent.topFrame.tecnologia.url.value = "goToLink('distrib?action=detalleConsumos&controller=CrmBusinessController',1,0,2);";
+			   	parent.topFrame.tecnologia.urlCDMA.value = "goToLink('distrib?action=detalleConsumos&controller=CrmBusinessController',1,0,2);";
+			</script>
+			<!--FIN redireccionamiento - d.llamadas  d. consumos
+                --Guillermo M. Granados R.
+              	 --05/11/2010-->
+              	
+				<!-- Deleted for IWR 4747-01_04 start		
+		</TD>
+		</TR>
+		Deleted for IWR 4747-01_04 end -->
+			
+	   <tr>
+	        <!--Modified for UF_SRS_4747-01_02 start-->
+		    <td class="txtContenidoBold" bgcolor="#FFFFFF">Estatus</td>
+		    <!-- </TR>
+		    <TR>-->
+		    <!--Modified for UF_SRS_4747-01_02 end-->
+	    	<td class="txtContenido" bgcolor="#FFFFFF"> <!-- IWR 4747 only this line changed-->
+		
+			Desactivado
+		
+		    </td>
+	  </tr>
+		<!-- INICIO JLAP-->
+	  <tr>
+			<td class="txtContenido">
+				
+			</td>
+	  </tr>								
+		<!-- FIN JLAP-->
+		<!--CAQUINOA 22/01/07 RAZON DE ESTATUS INICIO-->
+		
+      <tr>
+			<td class="txtContenidoBold" bgcolor="#E0E1E3"> <!-- 4747 only this line changed -->
+				Razón:
+			</td>
+			<!-- Modified for UF_SRS_4747-01_02 start-->
+			<!-- </TR>
+			<TR>-->
+			<!-- Modified for UF_SRS_4747-01_02 end-->
+			<td class="txtContenido" bgcolor="#E0E1E3"><!-- 4747 ONLY THIS LINE CHANGED -->
+				Baja Por Portabilidad Ext
+			</td>
+	</tr>
+	<!--CAQUINOA 22/01/07 RAZON DE ESTATUS FIN-->
+	<!--Modified for 4747- Dec 14, 2012 start-->
+ 
+	<!--Modified for 4747- Dec 14, 2012 end-->
+	<!--ADDED for UF_SRS_4747-01_12 START -->
+	
+
+    <!-- GSL  07/08/09-->
+    
+			
+		<tr><td colspan="2" class="txtContenidoBold" bgcolor="#FFFFFF">Nombre del Plan:</td></tr>
+		<tr><td colspan="2" class="txtContenido" bgcolor="#FFFFFF">
+        <!-- Begin ACAP-REQ-004109 JCA -->
+        <a href="#" onclick="javascript:showDetailedServices('A tu Medida Red R622','849','1479017','         $217.00')" class="txtContenidoRojoLink">A tu Medida Red R622 </a></td></tr>
+        <!-- End ACAP-REQ-004109 JCA  -->      
+   		
+	<!-- ADDED FOR UF_SRS_4747-01_12 END -->
+	<!-- ADDED FOR 4747 -START -->
+				
+	   <tr>
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+		        <td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">Tipo de Plan:</td>
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+        
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+		       <td class="txtContenido" width="50%" bgcolor="#E0E1E3">PostPago</td>
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+       
+	 </tr>
+	 <!-- ADDED FOR 4747 -END -->
+	 <!--ADDED for UF_SRS_4747-01_12 START-->		
+	 
+	 <!-- JORTIZ - WKR142679_DesgloceFactura -->
+	
+	 
+		
+		
+			<tr>
+				<td colspan="2" class="txtContenidoBold" width="100%" bgcolor="#FFFFFF">Información de servicios no disponible.</td>
+			</tr>
+		
+	
+	<!-- JORTIZ - WKR142679_DesgloceFactura -->
+	 
+		
+	 <tr>
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+		
+			<td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">Renta Mensual:</td>
+			<td class="txtContenido" width="50%" bgcolor="#E0E1E3">         $217.00</td>
+		
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+	</tr>
+	 <!--Modified for 4747- Dec 14, 2012 start-->
+	 
+	 <!--Modified for 4747- Dec 14, 2012 end-->
+	<!--ADDED for UF_SRS_4747-01_12 END-->
+	<!-- ADDED for IWR 4747-01_12 Addicional Servicios START-->
+	 <!--Modified for 4747- Dec 14, 2012 start-->
+	 
+		
+		<tr>
+		<!-- 18/Nov/2010 IdSAR:03031 Yadir Perez Granados -->
+		<td class="txtContenidoBold" colspan="2" width="50%" bgcolor="#FFFFFF">Servicios Adicionales</td>
+		</tr>
+		<tr>
+		<td class="txtContenido" colspan="2" width="50%" bgcolor="#E0E1E3">$217.00</td>
+		</tr>
+	
+	
+	<!-- added for IWR 4747-01_12 Addicional Servicios END-->
+	<!-- Modified for 4747 DEFECT END 12 NOV 2012-->
+	<!-- added for IWR 4747- START -->
+		
+	<tr>
+		<!-- 18/Nov/2010 IdSAR:03031 Yadir Perez Granados -->
+		<td class="txtContenidoBold" colspan="2" width="50%" bgcolor="#E0E1E3">Costo por Minuto Adicional:</td>
+	</tr>
+	<tr>
+		<td class="txtContenido" colspan="2" width="50%" bgcolor="#FFFFFF">Dato no disponible</td>
+	</tr>
+	<!-- added for IWR 4747- END-->	
+	<!--Modified for 4747- Dec 14, 2012 start-->
+	
+	<!--Modified for 4747- Dec 14, 2012 end-->
+	
+			
+	<!--Deleted for UF_SRS_4747-01_04 START-->
+	<!-- 	 <TR>
+			<TD class="txtContenidoBold" bgcolor="#EEEEEE">
+			Estatus RENAUT:
+			</TD>
+		</TR>
+		<TR>
+			<TD class="txtContenido">
+				
+			</TD>
+		</TR>-->
+	<!--DELETED FOR UF_SRS_4747-01_04 END-->
+				
+	<!-- Estatus de Enrutamiento-->
+	<!-- pcontrerasll 12/04/11 5362 Error en el desenrutamiento de lineas --> 
+		
+		
+		<!-- pcontrerasll 12/04/11 5362 Error en el desenrutamiento de lineas --> 
+	<!--IWR 4747- dec 14, 2012- - start -->
+		
+	<!--IWR 4747- dec 14, 2012-END-->
+	
+		</tbody></table>				
+	</td>
+	</tr>
+ </tbody></table>
+	
+	<!-- SELECCIONA TU TELEFONO CARACTERISTICAS--> 
+	 	
+	
+	
+<!-- UAT NOV 23 3013 start-->
+
+	
+<!-- Commented for 4747-  dec 14, 2012- start
+	
+         Commented for 4747-  dec 14, 2012- end-->
+	
+	
+	<!-- UAT NOV 23 3013 END -->
+	<!--ADDED for UF_SRS_4747-01_12 start-->
+	<!-- Minutos Incluidos -->
+	<!-- Modified for Defect ID 13331 for IWR 4747 ON Nov 16,2012 START -->
+	<table width="100%" cellspacing="0" cellpadding="0" bordercolor="#E0E1E3" border="1" bgcolor="#FFFFFF">
+	<tbody><tr>	
+	<td>
+	<!-- Modified for IWR 4747 Nov 20,2012 start-->
+		<table width="100%" cellspacing="0" cellpadding="3" border="0">
+	<!-- Modified for IWR 4747 Nov 20,2012 end-->
+	<!-- Modified for Defect ID 13331 for IWR 4747 ON Nov 16,2012 END -->
+    <!-- 4747- Dec 14, 2012 start -->
+    
+    <!-- 4747- Dec 14, 2012 end -->
+			
+		<tbody><tr>
+			<!-- 18/Nov/2010 IdSAR:03031 Yadir Perez Granados -->
+			<td class="txtContenidoBold" width="50%" bgcolor="#FFFFFF">Minutos Incluidos:</td>
+			<td class="txtContenido" width="50%" bgcolor="#FFFFFF">Dato no disponible</td>
+		</tr>
+	<!-- 4747- Dec 14, 2012 start -->
+	
+	<!-- 4747- Dec 14, 2012 start -->
+	<!--ADDED for UF_SRS_4747-01_12 end-->
+	<!--ADDED for 4747 START-->
+	<!-- +----------------------------------------------------------------------------+ -->
+	<!--                               LRSO(CRM)(21/04/2006)                            -->
+	<!-- +----------------------------------------------------------------------------+ -->	
+	
+       </tbody></table>
+       </td>
+       </tr>
+       </tbody></table>
+   
+   
+
+  <table width="100%" cellspacing="0" cellpadding="0" bordercolor="#E0E1E3" border="1" bgcolor="#FFFFFF">
+	<tbody><tr>	
+ 	 <td>
+ 	 
+	
+	  <table width="100%" cellspacing="0" cellpadding="3" border="0">
+	 	
+	 	  <!-- 4747- DEC 14- CODE DELETED , ADDED AFTER THE BELOW CONDITION-->
+	 	    
+	 	    
+	 	 	 <!--  4747 nov 28- only this line -->
+	 	  <!-- ADDED 4747- DEC 14- START-->
+	 	   
+			<!-- ADDED 4747- DEC 14- END-->	  
+	    <tbody><tr>
+	   
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+		
+		 <td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">Fecha de Vencimiento:</td>
+		 <td class="txtContenido" width="50%" bgcolor="#E0E1E3">06-Sep-2009</td>
+		<!-- UAT DEFECT FIX NOV 23 2012 END --> 
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+		
+		<!-- mmendez Jueves 10 de Agosto de 2006 -->
+			
+		
+		
+		
+		<!-- mmendez Jueves 10 de Agosto de 2006 -->
+
+		</tr>
+		<!-- UAT DEFECT FIX NOV 23 2012 start --> 
+		
+        <tr>
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+			<td class="txtContenidoBold" width="50%" bgcolor="#FFFFFF">Fecha de Contratación:</td>
+			<td class="txtContenido" width="50%" bgcolor="#FFFFFF">06-Mar-2008</td>
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+		</tr>
+		
+        <tr>
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+			<td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">Plazo Forzoso:</td>
+		
+			<td class="txtContenido" width="50%" bgcolor="#E0E1E3">18 Meses</td>
+		
+		</tr>
+		<!-- Tiempo para terminar el contrato -->
+		
+        <tr>
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+			<td class="txtContenidoBold" width="50%" bgcolor="#FFFFFF">Termina el contrato en:</td>
+		
+			<td class="txtContenido" width="50%" bgcolor="#FFFFFF">Terminó su plazo forzoso</td>
+		
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+		</tr>
+        
+		<!-- 18/Nov/2010 IdSAR:03031 Yadir Perez Granados  -->
+		
+		<tr>
+			<td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">Cliente en KYH:</td>
+			<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+		
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+			<td class="txtContenido" width="50%" bgcolor="#E0E1E3">Dato no disponible</td>
+		<!--CAQUINOA 220107 CAMBIO BGCOLOR-->
+		
+		</tr>
+		 <!-- 4747 28 nov- only this line -->
+    <!--ADDED for 4747 END--> 
+    
+    <!--   etuxpan 29/02/2015 inicio  novacionePagoc-->
+    
+	<!--   etuxpan 29/02/2015 fin novacionePagoc-->
+	
+<!--Modified for UF_SRS_4747-01_15 start-->		   	
+<!--INI PAIN POINT 31 EILA -->
+
+				
+						<tr>
+							<td class="txtContenidoBold" bgcolor="#FFFFFF">ICCID : </td>
+							<!-- /* Inicio Cambios para evitar el crash pp25 y 31 Edgar Lopez 22 Febrero (D)*/-->
+							 <td class="txtContenido" bgcolor="#FFFFFF">Información no disponible</td>
+							<!-- /* Fin Cambios para evitar el crash pp25 y 31 Edgar Lopez 22 Febrero (D)*/-->
+						</tr>
+						
+						<tr>
+							<td class="txtContenidoBold" bgcolor="#E0E1E3">PIN : </td>
+							<td class="txtContenido" bgcolor="#E0E1E3">Información no disponible</td>
+						</tr>
+						
+						<tr>
+							<td class="txtContenidoBold" bgcolor="#FFFFFF">PUK : </td>
+							<td class="txtContenido" bgcolor="#FFFFFF">Información no disponible</td>
+						</tr>
+											
+				
+						
+			
+			
+<!--Modified for UF_SRS_4747-01_15 end-->	
+<!--FIN PAIN POINT 31 -->
+<!-- ADDED for UF_SRS_4747-01_18 start -->
+
+    	   <tr>
+    		    <td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">Datos consumidos.</td>
+    		    <td class="txtContenido" width="50%" bgcolor="#E0E1E3"> Informacion no disponible </td>
+    	  </tr>
+    	  
+ <!-- UAT DEFECT FIX NOV 23 2012 END --> 
+    	  <!-- COMMENTED FOR UAT DEFECT FIX IWR 4747 NOV 23,2013 START -->
+    	  <!-- <TR>
+    		    <TD WIDTH="50%" BGCOLOR="#E0E1E3" CLASS="txtContenidoBold">Fecha reducción.</TD>
+    		    <TD WIDTH="50%" BGCOLOR="#E0E1E3" CLASS="txtContenido"> Informacion no disponible </TD>
+    	  </TR>-->
+    	  <!-- COMMENTED FOR UAT DEFECT FIX IWR 4747 NOV 23,2013 END-->
+    	
+	<!-- </DIV>-->
+	<!--ADDED for UF_SRS_4747-01_18 end -->
+	
+	<!--ADDED for UF_SRS_4747-01_19 start-->
+	<!-- 18/Nov/2010 IdSAR:03031 Yadir Perez Granados -->
+	<!-- UAT DEFECT FIX NOV 23 2012 start--> 
+	
+	 <!-- 4747- 28 nov- only this line-->
+	
+	    <tr>
+			<td class="txtContenidoBold" width="50%" bgcolor="#FFFFFF">
+				Vendedor/Distribuidor:
+			</td>
+				
+			<td class="txtContenido" width="50%" bgcolor="#FFFFFF">Dato no disponible</td>
+		</tr>
+		<!--CAQUINOA 190107 DATOS DE ACTIVACION FIN-->
+		<!-- JAS 23/OCT/08 EJECUTIVO ASIGNADO (PATERNIDAD) -->
+		
+   <!-- MODIFIED FOR 4747- DEC 14- START -->
+            
+<!-- IU400911 REQ79956 INI  -->
+ 
+<!-- IU400911 REQ79956 FIN  -->		
+ <!--4747- UAT FIX 17901- 29 JAN, 2013- END-->
+    <!-- 4747- DEC 14--COMMENTED-END-->
+	</tbody></table>
+	<!--ADDED for UF_SRS_4747-01_19 end-->
+	<!-- Modified for Defect ID 13331 for IWR 4747 ON Nov 16,2012 START -->
+	</td>
+	</tr>
+	</tbody></table>
+	<!-- Modified for Defect ID 13331 for IWR 4747 ON Nov 16,2012 END -->
+	
+	<!-- UAT NOV 23 2012 FR IWR 4747 START -->
+	<!--COMMENTED FOR 4747- DEC14-START-->
+	<!--
+-->
+<!--COMMENTED FOR 4747- DEC14-END-->
+<!-- UAT NOV 23 2012 FR IWR 4747 END -->
+	
+	<!-- +----------------------------------------------------------------------------+ -->
+	<!--                               LRSO(CRM)(21/04/2006)                            -->
+	<!-- +----------------------------------------------------------------------------+ -->	
+	
+	<!-- DELETED FOR 4747 TILL 	FAVILA RAGISTRO DE TARJETAS  -->
+   
+    <!------------------------------FOG 17/04/06----------------------------------------------------->
+	<input type="hidden" name="customerIdBscs" value="1325683">	
+	<!----------------------------------END FOG-------------------------------------------------------> 		
+
+	<!-- INFORMACION DE TU PLAN CONTENIDO -->
+	<!------------------------------------------------------------------>
+	
+	<br>
+	</td>
+	<td width="20"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="20" height="1" border="0"></td>
+	<!-- Modified for IWR 4747 Nov 20,2012 start-->
+	<!-- NOV 23 2012 UAT -IWR 4747-START-->
+	<td width="32%" valign="TOP"> <!-- 4747 -3 DEC -ONLY THIS LINE CHANGED-->	
+	<!-- added for IWR 4747- START-->
+	<table width="100%" height="40" cellspacing="0" cellpadding="0" border="0">
+	 <tbody><tr>
+		<td background="http://pvs.iusacell.com.mx:80/IusacellDist/img/customer_n.gif"> 
+		</td>
+	 </tr>
+	</tbody></table>
+	<!-- added for IWR 4747- END-->
+	
+	<!-- INFORMACION PERSONAL CONTENIDO -->
+	<table width="100%" cellspacing="" cellpadding="0" bordercolor="#EEEEEE" border="1" bgcolor="#CCCCCC"><!-- DEC 14- 4747-ONLY THIS LINE-->
+	 <tbody><tr>
+		<td>  
+		<!--HSB para eliminar los href de la tabla de informacion -->
+		<!-- Ini GAOJ 060906-->	
+		<!-- Modified for IWR 4747 Nov 20,2012 start-->
+		<table width="100%" cellspacing="1" cellpadding="3" border="0" bgcolor="#FFFFFF"><!-- DEC 14- 4747-ONLY THIS LINE-->
+		<!-- Modified for IWR 4747 Nov 20,2012 end-->
+		<!-- IRIVAS 051006 -->
+		
+		
+		
+		<!-- FOR 4747 ONLY THIS LINE-->
+		<!-- Informacion del Representante Legal -->
+		<!-- fix for IUS219859 - Abhilasha-Start -->
+		<tbody><tr>
+			<td id="nombreTitular" onmouseover="changeColorOver(this.id,2)" onmouseout="changeColorOut(this.id,1)" onclick="" class="txtContenidoBold" width="40%" bgcolor="#E0E1E3"><!-- FOR 4747 Only THIS LINE CHANGED-->						
+				Nombre:
+							
+			
+			</td>
+			<td id="nombreTitularValue" class="txtContenido" colspan="2" width="60%" bgcolor="#E0E1E3"><!-- 4747 -3 DEC -ONLY THIS LINE CHANGED-->
+			&nbsp;HECTOR PINA SOTO
+			</td>
+		</tr>
+		
+		
+		<!-- Informacion del Representante Legal -->
+		<!-- IRIVAS 051006 -->
+		
+		<!--IRIVAS 140906 Usuario/Tenedor de la Línea-->
+		<!--added for IWR 4747 START-->
+		
+			<!--ADDED FOR IWR 4747 END-->
+		<tr>
+			<td id="tenedorLinea" onclick="" class="txtContenidoBold" width="40%" bgcolor="#FFFFFF"> <!-- iwr 4747 only this line changed-->
+					
+				Usuario de la Línea:
+			</td>
+			<td id="tenedorLineaValue" class="txtContenido" colspan="2" width="60%" bgcolor="#FFFFFF"><!-- 4747 only this line changed-->
+				HECTOR PINA SOTO
+			</td>
+		</tr>
+		<!--Fin IRIVAS 140906-->	
+				
+		<!-- Informacion del Representante Legal -->
+		<!--added for iwr 4747 start-->
+		
+			<!-- added for iwr 4747 end-->
+		<tr><!-- YLEON 021006 -->
+			<td id="dirCorrespondecia" onmouseover="changeColorOver(this.id,2)" onmouseout="changeColorOut(this.id,1)" onclick="" class="txtContenidoBold" width="40%" bgcolor="#E0E1E3"><!--IWR 4747 ONLY THIS LINE-->
+					
+				Dirección de Correspondencia:
+			</td>			
+			<!-- YLEON 021006 -->
+			<td id="dirCorrespondeciaValue" class="txtContenido" colspan="2" width="60%" bgcolor="#E0E1E3"> <!-- iwr 4747 only this line changed-->
+				XOCHILT No. 81 Col. COLONIA ESTRELLA DEL SUR IZTAPALAPA CIUDAD DE MEXICO 09820
+			</td>			
+		</tr>
+		<!-- IWR 4747 START-->
+		
+			<!-- IWR 4747 END-->
+		<tr><!-- YLEON 021006 -->
+			<td id="dirFiscal" onmouseover="changeColorOver(this.id,1)" onmouseout="changeColorOut(this.id,2)" onclick="" class="txtContenidoBold" width="40%" bgcolor="#FFFFFF"><!-- IWR 4747 ONLY THIS LINE CHANGED-->
+					
+				Dirección Fiscal:
+			</td>			
+			<!-- YLEON 021006 -->
+			<td id="dirFiscalValue" class="txtContenido" colspan="2" width="60%" bgcolor="#FFFFFF"> <!-- ONLY THIS LINE CHANGED- 4747-->
+				XOCHILT No. 81 Col. COLONIA ESTRELLA DEL SUR IZTAPALAPA CIUDAD DE MEXICO 09820
+			</td>
+		</tr>
+
+		<!-- ACR vision unica -->
+		<!-- added for iwr 4747 start -->
+		
+		 <!-- added for iwr 4747 start -->
+		<tr>
+			<td id="rfcCliente" onmouseover="changeColorOver(this.id,2)" onmouseout="changeColorOut(this.id,1)" onclick="" class="txtContenidoBold" width="40%" bgcolor="#E0E1E3"><!-- iwr 4747 only this line-->
+					
+				R.F.C.
+			</td>			
+			<td id="rfcClienteValue" class="txtContenido" colspan="2" width="60%" bgcolor="#E0E1E3"><!-- iwr 4747 only this line-->
+				PISH670502G47
+			</td>
+		</tr>
+		
+		
+		<!--ADDED FOR IWR 4747 Defect 12 Nov 2012 Start-->
+		
+		
+		
+		<tr>
+			<td id="nacionalidad" class="txtContenidoBold" onmouseover="changeColorOver(this.id,1)" onmouseout="changeColorOut(this.id,2)" onclick="" width="40%" bgcolor="#FFFFFF">
+				Nacionalidad:
+			</td>
+			<td id="nacionalidadValue" class="txtContenido" colspan="2" width="60%" bgcolor="#FFFFFF">
+				SIN NACIONALIDAD
+			</td>
+		</tr>
+		
+		<tr>
+			<td id="pais" class="txtContenidoBold" onmouseover="changeColorOver(this.id,2)" onmouseout="changeColorOut(this.id,1)" onclick="" width="40%" bgcolor="#E0E1E3">
+				País:
+			</td>
+			<td id="paisValue" class="txtContenido" colspan="2" width="60%" bgcolor="#E0E1E3">
+				null
+			</td>
+		</tr>
+		
+		<tr>
+			<td id="usoFactura" class="txtContenidoBold" onmouseover="changeColorOver(this.id,1)" onmouseout="changeColorOut(this.id,2)" onclick="" width="40%" bgcolor="#FFFFFF">
+				Uso de Factura:
+			</td>
+			<td id="usoFacturaValue" class="txtContenido" colspan="2" width="60%" bgcolor="#FFFFFF">
+				null
+			</td>
+		</tr>
+		
+			</tbody></table>
+	</td>
+	</tr>
+	</tbody></table>
+	
+	<table width="100%" cellspacing="1" cellpadding="3" border="0" bgcolor="#E0E1E3">
+	<!--ADDED FOR IWR 4747 Defect 12 Nov 2012 END-->
+		
+		
+		<tbody><tr bgcolor="#FFFFFF"> <!-- Modified for 4747 DEFECT--- ONLY THIS LINE-->
+			<td id="telContacto" onmouseover="changeColorOver(this.id,2)" onmouseout="changeColorOut(this.id,1)" onclick="" class="txtContenidoBold" width="34%" bgcolor="#E0E1E3">
+					
+				Teléfonos:
+			</td>
+		
+		
+		
+	
+			<td id="telCasaCliente" onmouseover="changeColorOver(this.id,2)" onmouseout="changeColorOut(this.id,1)" onclick="" class="txtContenidoBold" width="33%" bgcolor="#E0E1E3">
+					
+				Casa:
+			</td>
+	
+		
+			
+		
+		
+		<!-- ACR fin vision unica -->
+	
+			<td id="telOficina" onmouseover="changeColorOver(this.id,2)" onmouseout="changeColorOut(this.id,1)" onclick="" class="txtContenidoBold" width="33%" bgcolor="#E0E1E3">
+					
+				Oficina:
+			</td>
+		
+		</tr>
+		
+		<tr bgcolor="#E0E1E3"> <!--Modified for 4747 - defect only this line-->
+			
+			<td id="telContactoValue" class="txtContenido" width="34%" bgcolor="#FFFFFF">
+				Dato no disponible
+			</td>
+			
+			<!-- Fin GAOJ 060906 casa-->
+			<td id="telCasaClienteValue" class="txtContenido" width="33%" bgcolor="#FFFFFF">
+				01 5530941995
+			</td>
+			<td id="telOficinaValue" class="txtContenido" width="33%" bgcolor="#FFFFFF">
+				01 5530941995
+			</td>
+				
+		
+	  </tr>
+
+	  <!--ADDED FOR IWR 4747 Defect 12 Nov 2012, Start-->
+	  </tbody></table>
+	  <table width="100%" cellspacing="1" cellpadding="3" border="0" bgcolor="#E0E1E3">
+	  <!--ADDED FOR IWR 4747 Defect 12 Nov 2012, end-->
+	  <!--Modified for UF_SRS_4747-01_24 end -->
+	  <!--HSB Para mostrar telefono de contacto del cliente-->				
+		
+			
+		</table>
+	
+	<!--deleted FOR IWR 4747 Defect 12 Nov 2012 start-->
+	<!--</TD>
+	</TR>
+	</TABLE>-->
+	<!--deleted FOR IWR 4747 Defect 12 Nov 2012 start-->	
+	<!--ADDED FOR UF_SRS_4747 START-->
+	<br>
+	<!--
+	Commented for 4747-25 nov - start
+	<TABLE WIDTH="100%" BORDER="0"  CELLSPACING="0" CELLPADDING="0" >
+		 Modified for IWR 4747 Nov 20,2012 start
+		<TR>
+		 NOV 23 2012 UAT -IWR 4747-START
+		<TD><IMG SRC= "http://pvs.iusacell.com.mx:80/IusacellDist/img/account_n.gif" WIDTH="300" HEIGHT="40" BORDER="0" ALT=""></TD>
+		 NOV 23 2012 UAT -IWR 4747-END
+		</TR>
+		 Modified for IWR 4747 Nov 20,2012 end
+	</TABLE>
+	Commented for 4747-25 nov - end
+	-->
+	<!-- added for 4747- 25 nov-start-->
+	<!-- fix for IUS219859 - Abhilasha-End -->
+	<table width="100%" height="40" cellspacing="0" cellpadding="0" border="0">
+	 <tbody><tr>
+	 	
+			<td background="http://pvs.iusacell.com.mx:80/IusacellDist/img/account_n.gif"> 
+			</td>
+		
+	 </tr>
+	</tbody></table>
+	<!-- added for 4747- 25 nov-end-->
+	<!-- none -->
+	<!--removed for 4747-->
+		<table width="100%" cellspacing="" cellpadding="0" bordercolor="#EEEEEE" border="1" bgcolor="#CCCCCC">
+			<tbody><tr>
+				<td>
+				    <!--4747- UAT 17901 FIX- 29 JAN 2013- ONLY THIS LINE-->
+					<table width="100%" cellspacing="1" cellpadding="3" border="0" bgcolor="#FFFFFF">
+					<!-- YESSICA  V-  07082015 Módulo para cliente corporativos y para todos los tipos de cliente masivos con facturación mensual -->
+						<tbody><tr>
+							<td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">No. de Cuenta</td>
+							<td class="txtContenido" width="50%" bgcolor="#E0E1E3"><a href="javascript:getTreeFunction('4.7916.00.00.100002');" class="txtContenidoRojoLink">4.7916.00.00.100002</a></td> 		<!-- YLEON arbol -->
+						</tr>
+					<!-- YESSICA  V-  07082015-->
+						<!-- YLEON 100806 -->
+						                                                                 		
+						 
+						         
+						
+				    	
+						
+							<tr>
+								<td class="txtContenidoBold" width="50%" bgcolor="#FFFFFF">Lim. Cred. Superior</td>
+								<td class="txtContenido" width="50%" bgcolor="#FFFFFF">Dato no disponible</td>
+							</tr>		
+								
+					   
+						
+						<tr>
+							<td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">No. de Contrato</td>
+							<td class="txtContenido" width="50%" bgcolor="#E0E1E3">1479017</td>
+						</tr>
+						
+				        <tr>
+							<td class="txtContenidoBold" width="50%" bgcolor="#FFFFFF">Cuenta activa desde</td>
+							<td class="txtContenido" width="50%" bgcolor="#FFFFFF">15-Abr-2005</td>
+						</tr>
+						
+						<tr>
+							<td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">Segmento</td>
+							<td class="txtContenido" width="50%" bgcolor="#E0E1E3">NOTHING</td>
+						</tr>
+						
+						<tr>
+							<td class="txtContenidoBold" width="50%" bgcolor="#FFFFFF">Tipo de Cliente</td>
+							<td class="txtContenido" width="50%" bgcolor="#FFFFFF">Corporativos Pyme</td>
+						</tr>
+						<!-- 20/05/2009 JJGV - Agregado dependencia -->
+						<!-- Removed for Defect ID 13326 for IWR 4747 ON Nov 15,2012 start-->
+						<!-- 
+						<!-- 20/05/2009 JJGV - Agregado dependencia 
+						<TR>
+							<TD WIDTH="50%" BGCOLOR="#E0E1E3" CLASS="txtContenidoBold">Dependencia del Cliente</TD>
+							<TD WIDTH="50%" BGCOLOR="#E0E1E3" CLASS="txtContenido"> Dato no disponible
+							</TD>
+						</TR>
+						<!-- 20/05/2009 JJGV - termina agregado dependencia 
+						
+				        <TR>
+							<TD WIDTH="50%" BGCOLOR="#FFFFFF" CLASS="txtContenidoBold">Clave del Cliente</TD>
+							<TD WIDTH="50%" BGCOLOR="#FFFFFF" CLASS="txtContenido">1325683</TD>
+						</TR>-->
+							
+						<!-- 20/05/2009 JJGV - termina agregado dependencia -->
+						<!-- Removed for Defect ID 13326 for IWR 4747 ON Nov 15,2012 end-->
+			
+						<!-- +----------------------------------------------------------------------------+ -->
+						<!-- LRSO(CRM)(21/04/2006)                                                          -->
+						<!-- +----------------------------------------------------------------------------+ --><!--								
+						-->
+						
+						
+					
+						
+						
+						<tr>
+							<td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">Límite de Uso </td>
+							<!--CAQUINOA 090207 SE INTRODUJO VALIDACION PARA DESACTIVAR LIGA SI EL STATUS ES d-->
+							<td class="txtContenido" width="50%" bgcolor="#E0E1E3"> 
+						                                                                 $313.00 
+						                                                        
+						    </td>
+						</tr>	
+									
+						
+						<!-- +----------------------------------------------------------------------------+ -->
+						
+						
+						
+						
+						<!----------------------------- 20/02/06 FOG DATOS BANCARIOS---------------------------->
+						
+						<tr>
+							<td class="txtContenidoBold" width="50%" bgcolor="#FFFFFF">Banco</td>
+							<td class="txtContenido" width="50%" bgcolor="#FFFFFF">Dato no disponible</td>
+						</tr>
+				
+								                          
+						
+						
+						
+						<tr>
+							<td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">No. de Tarjeta</td>
+							<td class="txtContenido" width="50%" bgcolor="#E0E1E3">Dato no disponible</td>
+						</tr>
+						
+						<tr>
+							<td class="txtContenidoBold" width="50%" bgcolor="#FFFFFF">Vencimiento</td>
+							<td class="txtContenido" width="50%" bgcolor="#FFFFFF">Dato no disponible</td>
+						</tr>
+						
+						<tr>
+							<td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">Supresión Cobranza</td>
+							<td class="txtContenido" width="50%" bgcolor="#E0E1E3">NO</td>
+						</tr>		
+						
+						
+						<!----------------------------------- FOG DATOS BANCARIOS ----------------------------->		
+						
+						<!--TR>
+						<TD colspan="2" BGCOLOR="#FFFFFF" CLASS="txtContenidoBold" align="center">
+						  <IMG SRC="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha_gris.gif" WIDTH="4" HEIGHT="7" HSPACE="5" BORDER="0" ALT=""><A HREF="#" CLASS="txtContenidoRojoLink" onClick="javascript:js_showDiv('4');"><B>Ocultar Detalles</B></A>
+						</TD>
+						</TR-->
+					</tbody></table>
+			
+					<!-- +----------------------------------------------------------------------------+ -->
+					<!--                               LRSO(CRM)(21/04/2006)                            -->
+					<!-- +----------------------------------------------------------------------------+ -->
+							
+				<!-- +----------------------------------------------------------------------------+ -->
+				<!-- YLEON 100806 -->	
+					
+				</td>
+			</tr>
+		</tbody></table>		
+
+	<!--ADDED FOR UF_SRS_4747 END-->
+	
+	<!--DELETED FOR 4747 FROM INFORMACION DE TU PLAN TAB TILL INFORMACION DE TU PLAN CONTENIDO -->
+	
+	<!-- added for 4747 start -->
+	<input type="hidden" name="customerIdBscs" value="1325683">
+	<!-- added for 4747 end -->
+	
+	<!-- INFORMACION DE TU PLAN CONTENIDO -->
+	
+	
+ <!--added for UF_SRS_4747-01_29 START-->
+ 
+<!--added for UF_SRS_4747-01_29 END-->
+<!--added for UF_SRS_4747 start-->
+<!-- inicio negative file -->
+	<table width="100%" cellspacing="" cellpadding="0" bordercolor="#EEEEEE" border="1" bgcolor="#E0E1E3">
+	 
+	    <tbody><tr>
+		   	<td class="txtContenidoBold" width="50%" bgcolor="#FFFFFF">
+				<!-- Deleted 
+				<a href="javascript:ShowDataBAM( 'DivNegativeFile' );" CLASS="txtContenidoRojoLink">-->
+					Archivo Negativo
+				<!-- </a>-->
+			</td>
+			<!-- DEFECT FIX NOV 22, 2012 START -->
+			
+			<td class="txtContenido" bgcolor="#FFFFFF">ESN/RFC NO SE ENCUENTRA ENRUTADO.</td>
+			
+			<!-- DEFECT FIX NOV 22, 2012 END -->
+		</tr>
+	</tbody></table>
+	
+	<!-- <DIV id=DivNegativeFile style="display: none" >
+    	<table width="100%" BORDER="1" bordercolor="#EEEEEE" CELLSPACING="" CELLPADDING="0" BGCOLOR="#E0E1E3">
+			
+			<TR>
+    		    <TD WIDTH="" BGCOLOR="#FFFFFF" CLASS="txtContenidoBold">ESN/RFC NO SE ENCUENTRA ENRUTADO.</TD>
+    		    <TD WIDTH="" BGCOLOR="#FFFFFF" CLASS="txtContenido">  </TD>
+    		</TR>
+			
+    	</table>
+	</DIV>-->
+	
+	<!--</DIV> ENDS -->
+	<!--added for UF_SRS_4747 END-->
+	
+	<!-- JORTIZ REQ106214 - ABANDERAMIENTO CUENTAS ELITE -->
+		
+	<!-- JORTIZ REQ106214 - ABANDERAMIENTO CUENTAS ELITE -->
+
+<!--added for UF_SRS_4747 start-->
+
+<!--added for UF_SRS_4747 end-->
+<!-- ACR) FIN DE ESTADO DE CUENTA -->
+	
+	<!-- INFORMACION DE TU PLAN CONTENIDO -->
+	<div id="plan1" style="display:block;"><!-- none -->
+	<table width="100%" cellspacing="1" cellpadding="0" border="0" bgcolor="#CCCCCC">
+	<tbody><tr>
+	<td>
+	<!--deleted for UF_SRS_4747 -->	
+	</td>
+	</tr>
+	</tbody></table>
+	</div>
+	
+	
+	
+	
+	<!-- +----------------------------------------------------------------------------+ -->
+	<!--                               LRSO(CRM)(21/04/2006)                            -->
+	<!-- +----------------------------------------------------------------------------+ -->	
+	
+	<!-- +----------------------------------------------------------------------------+ -->	
+   <!-- deleted for IWR 4747 -->	
+
+	<!-- ACR) ESTADO DE CUENTA -->
+		
+<!-- Quotes Deleted CRM 09/02/2012 -->	
+<!-- ACR) ESTADO DE CUENTA -->
+
+<br>
+<!-- JVPL FAF -->
+<!-- SERVICIOS ENCABEZADO -->
+
+<!-- fin JVPL FAF -->
+</td>
+<!-- Separador -->
+<td width="20" bgcolor="#FFFFFF"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="20" height="1" border="0"></td>
+
+<td width="27%" valign="TOP"><!-- 4747 -3 DEC -ONLY THIS LINE CHANGED-->
+ <!-- added for 4747- 25 nov-start-->
+ <table width="100%" height="40" cellspacing="0" cellpadding="0" border="0">
+	 <tbody><tr>
+		<td background="http://pvs.iusacell.com.mx:80/IusacellDist/img/frequent_n.gif"> 
+		</td>
+	 </tr>
+	</tbody></table>
+  <!-- added for 4747- 25 nov-end-->
+ <!-- MODIFIED for 4747 END-->
+	<table width="100%" cellspacing="1" cellpadding="0" border="0" bgcolor="#CCCCCC">
+		<tbody><tr>
+			<td>
+				<table width="100%" cellspacing="1" cellpadding="3" border="0" bgcolor="#FFFFFF">
+				
+				<tbody><tr>
+	<td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">
+		<table>
+			<tbody><tr>
+				<td class="txtContenidoBold">
+					<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha_gris.gif" alt="" width="4" hspace="5" height="7" border="0">
+				</td>
+				<td class="txtContenidoBold">
+<a href="javascript:abrirConsultas();" class="txtContenidoRojoLink">Consulta de Contactos</a>
+                </td>
+            </tr>
+       </tbody></table>
+	</td>
+	<td class="txtContenidoBold" width="50%" bgcolor="#E0E1E3">
+		<table>
+			<tbody><tr>
+				<td class="txtContenidoBold">
+					<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha_gris.gif" alt="" width="4" hspace="5" height="7" border="0">
+				</td>
+				<td class="txtContenidoBold">
+<a href="javascript:abrirCodificador()" class="txtContenidoRojoLink">Registro</a>
+                </td>
+            </tr>
+       </tbody></table>
+	</td>
+</tr>
+	
+				
+				<!-- Bitacora de transacciones - comentada - INI-->
+				<!-- %if(permission.isAllowed("distPostPaidServController","logTransaccional")) {% -->
+					<!-- TR>
+						<TD COLSPAN="2" BGCOLOR="#FFFFFF">
+							<form name="dispBitTransForm" method="POST" action="/IusacellDist/dispBitTrans.do">
+						 		<input type="hidden" name="coId" value="1479017">
+								<input type="hidden" name="custcode" value="4.7916">
+								<TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+									<TR>
+										<TD class="txtContenidoBold" colspan="3">
+											<IMG src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha_gris.gif" width="4" height="7" hspace="5"
+													 border="0" alt="">
+											<A href="javascript:goToHistorico(dispBitTransForm);" class="txtContenidoRojoLink"
+												onmouseover="status='Iusacell - Pensamos en ti'; return true;">
+										    	 Bitacora de Transacciones
+							    		 	</A>
+			    		    		 	</TD>
+								    </TR>
+								</TABLE>
+			    				<DIV id=DivHistoricReference style="display:none;" align="center"> 
+									<TABLE width="100%" border="1" cellspacing="1" cellpadding="1" bordercolor="#E0E1E3" 
+											onmouseover="status='Iusacell - Pensamos en ti'; return true;" id="tabBitTrans"
+											onclick="goToConsultasGeneral();">
+									</TABLE>
+								</DIV> 
+							</form>
+						</TD>
+					</TR-->
+				<!-- %}% -->
+				<!-- Bitacora de transacciones - comentada - END-->
+				<!-- MODIFIED FOR 4747 -3 DEC -START -->
+				<tr>
+					<td class="txtContenidoBold" width="50%" bgcolor="#FFFFFF">
+							<table>
+								<tbody><tr>
+									<td class="txtContenidoBold">
+										<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha_gris.gif" alt="" width="4" hspace="5" height="7" border="0">
+									</td>
+									<td class="txtContenidoBold">
+									<a href="javascript:gotoLink('distrib?action=capturaRegistroTarjeta&amp;controller=distPostPaidServController&amp;init=true',1,1,2);" class="txtContenidoRojoLink">Registro Para Autoservicio</a>
+									</td>
+								</tr>
+							</tbody></table>
+					</td>		
+					<td class="txtContenidoBold" width="50%" bgcolor="#FFFFFF">
+							<table>
+								<tbody><tr>
+									<td class="txtContenidoBold">
+	         							<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha_gris.gif" alt="" width="4" hspace="5" height="7" border="0">
+	         						</td>
+									<td class="txtContenidoBold">									
+	         					    <a href="javascript:verlas();" class="txtContenidoRojoLink">Ver las Reservas del Cliente </a>  
+	          						</td>
+									
+								 </tr>
+							</tbody></table>
+					</td>
+					</tr>
+				<!-- MODIFIED FOR 4747 -3 DEC -END -->			
+						
+				</tbody></table>
+			</td>
+		</tr>
+	</tbody></table>
+	
+	<br>
+	<!-- ACAP-REQ-004166 - IWR Links in dashboard - 20/02/2012 - mgonzal - OTRAS CONSULTAS - END --> 
+	
+	<!--Modified for UF_SRS_4747-01_31 START -->
+	<!-- REALIZA TU PAGO / FACTURACION TAB -->
+	<!--
+	commented for 4747- 25 nov-start
+	<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+	 <TR>
+	  Modified for IWR 4747 Nov 20,2012 start
+	  NOV 23 2012 UAT -IWR 4747-START
+		<TD><IMG SRC= "http://pvs.iusacell.com.mx:80/IusacellDist/img/billing_n.gif" WIDTH="280" HEIGHT="40" BORDER="0" ALT=""></TD>
+		 NOV 23 2012 UAT -IWR 4747-END
+	 Modified for IWR 4747 Nov 20,2012 end
+	 </TR>
+	</TABLE>
+	commented for 4747- 25 nov-end
+	--><!--Modified for UF_SRS_4747-01_31 END -->
+	<!-- added for 4747- 25 nov- start-->
+	<table width="100%" height="40" cellspacing="0" cellpadding="0" border="0">
+	 <tbody><tr>
+		<td background="http://pvs.iusacell.com.mx:80/IusacellDist/img/billing_n.gif"> 
+		</td>
+	 </tr>
+	</tbody></table>
+	<!-- added for 4747- 25 nov- -->
+<!-- ACR) ESTADO DE CUENTA -->
+
+<!-- ACR) FIN DE ESTADO DE CUENTA -->
+
+	<!-- REALIZA TU PAGO / FACTURACION CONTENIDO -->
+	<table width="100%" cellspacing="1" cellpadding="0" border="0" bgcolor="#CCCCCC">
+	<tbody><tr>
+	<td>
+		<table width="100%" cellspacing="1" cellpadding="3" border="0" bgcolor="#FFFFFF">
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->		
+
+
+                    
+       
+
+			<tbody><tr>
+			<td class="txtContenidoBold" width="40%" bgcolor="#E0E1E3">Saldo pendiente de pago:</td>
+			<td class="txtContenido" width="60%" bgcolor="#E0E1E3">
+			<!--CAQUINOA 22/01/07 ESTADO DE CUENTA INICIO-->	
+				
+					<a href="javascript:goToEdoCta();" class="txtContenidoRojoLink" onmouseover="status='Iusacell - Pensamos en ti'; return true;">			
+						$0.00
+					</a>
+						
+			<!--CAQUINOA 22/01/07 ESTADO DE CUENTA FIN-->	
+			</td>
+			</tr>
+
+			<tr>
+			<td class="txtContenidoBold" width="40%" bgcolor="#FFFFFF">Consumo pendiente de facturar:</td>
+			<td class="txtContenido" width="60%" bgcolor="#FFFFFF">Información no disponible</td>
+			</tr>			
+
+					<!--SALDO EXIGIBLE-->
+					
+			<tr><td class="txtContenidoRojo" width="50%">
+                       <img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha_gris.gif" alt="" width="4" hspace="5" height="7" border="0">
+                    	<a href="JavaScript:js_verSaldo()" class="txtContenidoRojoLink"><b>Saldo de Tiempo Aire</b></a></td>                       
+                       		
+		
+
+
+			
+			
+			</tr><tr bgcolor="#FFFFFF">
+				<td class="txtContenidoBold" width="40%">Fecha de Corte:</td>
+				<td class="txtContenido" width="60%">19-Ago-2011</td>
+			</tr>
+			
+			<tr bgcolor="#E0E1E3">
+				<td class="txtContenidoBold" width="40%">Pague antes de:</td>
+				<td class="txtContenido" width="60%">06-Sep-2011</td>	
+			</tr>
+		
+		
+			<tr>
+				<td colspan="2" class="txtContenidoRojo" width="100%" bgcolor="#E0E1E3" align="CENTER"><b></b></td>
+			</tr>
+		
+		<tr bgcolor="#FFFFFF">
+			<td class="txtContenidoBold" width="40%">Ciclo de Corte:</td>
+			<td class="txtContenido" width="60%">
+				
+					7 (Días 19 de cada mes)
+				
+			</td>
+		</tr>
+		
+		<tr bgcolor="#E0E1E3">
+			<td class="txtContenidoBold" width="40%">Pena convencional:</td>
+			<td class="txtContenido" width="60%">
+				
+					$0.00
+				
+			</td>
+		</tr> 
+		<!-- DORTEGA -->
+		<tr bgcolor="#FFFFFF">
+			<td class="txtContenidoBold" width="50%">Depósito en Garantía :</td>
+			<td class="txtContenido" width="50%">
+                <!-- ESM Deposito en Garantia -->
+				
+					
+						Dato no disponible
+					
+				
+			 <!-- ESM Deposito en Garantia -->
+			</td>
+		</tr>
+		<!-- DORTEGA -->
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+		
+		<tr>
+		<td colspan="2" class="txtContenidoRojo" width="100%" bgcolor="#E0E1E3" align="CENTER"><b>Facturación</b></td>
+		</tr>
+
+			
+
+
+
+		
+		
+		
+		
+		
+
+		<tr>
+			<td colspan="2" class="txtContenido" width="100%" valign="TOP" bgcolor="#FFFFFF">
+			
+			<table valign="TOP" width="100%" border="0">
+				<tbody><tr>
+					<td width="70%">
+						<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha2_rojo.gif" alt="" width="5" hspace="5" height="5" border="0"><a href="#" onclick="javascript:Enviar();" class="txtContenidoLink">Factura de Ago 2011</a>
+						<input type="HIDDEN" name="LIGA" value="" id="LIGA">
+					</td>
+					<td class="txtContenido" width="30%">
+						$3,230.43
+					</td>
+					<!-- YLEON 280406 -->
+							
+					<!-- YLEON 280406 -->																				
+				</tr><tr>
+
+				
+				</tr><tr>
+					<td width="70%">					
+						<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha2_rojo.gif" alt="" width="5" hspace="5" height="5" border="0"><a href="#" onclick="javascript:EnviarA();" class="txtContenidoLink">Factura de Jul 2011</a>
+						
+							<input type="HIDDEN" name="key4" value="07" id="MONTH">
+						
+					</td>
+					<td class="txtContenido" width="30%">
+						$3,355.00
+					</td>
+					<!-- YLEON 280406 -->	
+										
+					<!-- YLEON 280406 -->															
+				</tr>
+				
+
+				
+				<tr>
+					<td width="70%">
+						<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha2_rojo.gif" alt="" width="5" hspace="5" height="5" border="0"><a href="#" onclick="javascript:EnviarB();" class="txtContenidoLink">Factura de Jun 2011</a>
+						
+						
+							<input type="HIDDEN" name="key4" value="06" id="MONTH">
+						
+					</td>
+					<td class="txtContenido" width="30%">
+						$3,335.00
+					</td>
+					<!-- YLEON 280406 -->
+										
+					<!-- YLEON 280406 -->																				
+				</tr>
+				
+				
+				
+				
+					<tr>
+						<td width="70%">
+							<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha2_rojo.gif" alt="" width="5" hspace="5" height="5" border="0"><a href="#" onclick="javascript:EnviarD();" class="txtContenidoLink">Factura de May 2011</a>
+							
+							
+								<input type="HIDDEN" name="key4" value="05" id="MONTH">
+							
+						</td>
+						<td class="txtContenido" width="30%">
+							$3,335.00
+						</td>
+						
+					</tr>
+				
+				
+				
+					<tr>
+						<td width="70%">
+							<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha2_rojo.gif" alt="" width="5" hspace="5" height="5" border="0"><a href="#" onclick="javascript:EnviarE();" class="txtContenidoLink">Factura de Abr 2011</a>
+							
+							
+								<input type="HIDDEN" name="key4" value="04" id="MONTH">
+							
+						</td>
+						<td class="txtContenido" width="30%">
+							$3,335.00
+						</td>
+						
+					</tr>
+				
+				
+				
+			</tbody></table>
+			
+			</td>
+		</tr>
+		<tr bgcolor="#E0E1E3">
+			<td class="txtContenidoBold">Promedio:</td>
+			<td class="txtContenido">
+				$3,318.09
+			</td>
+		</tr>
+		
+		</tbody></table>
+	</td>
+	</tr>
+
+		
+	  <tr>
+    	<td width="100%" height="20" align="center">
+		
+    		<b class="txtContenido">No se puede reactivar el teléfono, la razón de desactivación fue:&nbsp; <br> Baja Por Portabilidad Ext.</b>
+		 
+    	</td>
+	  </tr>
+
+
+  <!-- INICIO CRM b_e_t_i_t_o 26-07-2006-->
+
+  <script language="JavaScript" src="http://pvs.iusacell.com.mx:80/IusacellDist/javascript/crm_scripts.js"></script>
+  
+  <!-- FIN b_e_t_i_t_o 26-07-2006 -->
+
+	</tbody></table>
+
+<!-- ACR) ESTADO DE CUENTA -->
+
+
+
+<!-- ACR) FIN DE ESTADO DE CUENTA -->
+
+
+
+
+<!-- ACAP-REQ-004166 - IWR Links in dashboard - 20/02/2012 - mgonzal - REMOVED TO OTRAS CONSULTAS --> 
+
+<!-- Deleted for UF_SRS_4747-01_32 start-->
+<!-- <br>-->
+
+<!-- Modified for IWR 4747 Nov 20,2012 start-->
+ <!-- Puntos Red Club -->
+
+<!-- ********************  comentado el 07_mayo_2014 por JABM por baja de Puntos Red Club ****************** -->
+<br>
+<!-- <TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="0" BGCOLOR="#CCCCCC">-->
+<!--  <TR>-->
+<!--    <TD>-->
+<!--      <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#FFFFFF">-->
+
+      <!-- modified for 4747- nov 26th --start-->
+<!--      <TR>-->
+
+<!--		<TD colspan="2" background="http://pvs.iusacell.com.mx:80/IusacellDist/img/redclub.gif" HEIGHT="40" width="100%"> </TD>-->
+
+		<!-- NOV 23 2012 UAT -IWR 4747-START-->
+		   <!--<TD COLSPAN="2" WIDTH="50%"> <IMG SRC= "http://pvs.iusacell.com.mx:80/IusacellDist/img/redclub_n.gif" WIDTH="280" HEIGHT="40" BORDER="0"> </TD>-->
+	  <!-- modified for 4747- nov 26th --end-->
+		   <!-- NOV 23 2012 UAT -IWR 4747-END-->
+		   <!-- <TD WIDTH="50%"> Red Club </TD> -->
+<!--		</TR>-->
+<!--		<TR>-->
+<!--		   <TD WIDTH="50%" BGCOLOR="#E0E1E3" CLASS="txtContenido">Saldo en Puntos</TD>-->
+<!--		   <TD WIDTH="50%" BGCOLOR="#E0E1E3" CLASS="txtContenido"> 0 </TD>-->
+<!--		</TR>-->
+		<!-- YLEON 180607 -->		
+<!--        -->
+<!--		<TR>           	                    	                    			-->
+<!--		   <TD COLSPAN="2" WIDTH="50%" BGCOLOR="#E0E1E3" CLASS="txtContenido" >-->
+<!--			   <IMG SRC="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha_gris.gif" WIDTH="4" HEIGHT="7" HSPACE="5" BORDER="0" ALT="">-->
+<!--			   -->
+<!--			   <A href="distrib?action=rcSaldosMov&controller=CustomerInfoBusinessController&cta=4.7916&ajst=0" CLASS="txtContenidoRojoLink"><B>Ver Detalle</B></A>		   			   -->
+<!--			   					   			   -->
+<!--		   </TD>		-->
+<!--		</TR>-->
+<!--				-->
+		<!-- YLEON 180607 -->
+<!--      </TABLE>-->
+<!--    </TD>-->
+<!--  </TR>-->
+<!--</Table>-->
+<br>
+<!--termino de comentario de puntos red club JABM -->
+
+<!-- CRM_BR_4 -->
+ <!-- Modified for IWR 4747 Nov 20,2012 end-->
+ <!-- <BR>
+ 		<TABLE>
+			<TR>
+				<TD>
+					<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+							<TR>
+		   						<TD WIDTH="50%" BGCOLOR="#E0E1E3" class="txtContenido">Reservas</TD>
+							</TR>
+					</TABLE>
+					<TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="0"	BGCOLOR="#CCCCCC">
+						<TR>
+							<TD>
+								<TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="3"	BGCOLOR="#FFFFFF">
+									<TR>
+										   <TD colspan="3" BGCOLOR="#FFFFFF" CLASS="txtContenidoBold">
+	         								 <IMG SRC="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha_gris.gif" WIDTH="4" HEIGHT="7" HSPACE="5" BORDER="0" ALT="">
+	         								 	<A href="javascript:verlas();" class="txtContenidoRojoLink"><B>Ver las Reservas del Cliente</B></A>
+	          								</TD>
+									</TR>
+								</TABLE>
+							</TD>
+						</TR>
+					</TABLE>
+				</TD>
+			</TR>
+		</TABLE>-->
+<!-- Deleted for UF_SRS_4747-01_32 end-->
+
+
+<!-- ADDED FOR UF_SRS_4747-01_35 and UF_SRS_4747-01_33 START-->
+	
+	
+	
+		  
+    
+<!-- ADDED FOR UF_SRS_4747-01_35 and UF_SRS_4747-01_33 END-->
+
+<!----------------------------------PRESENTACIÓN DE LAS LLAMADAS RECIENTES FOG 12/04/06---------------------> 
+
+<!-------------------------------------FIN LLAMADAS RECIENTES FOG 12/04/06-------------------------------------> 
+
+	<br><br>
+</td>
+<!-- IWR 4747 NOV 19, 2012 START-->
+<td width="20"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="20" height="1" border="0"></td>
+<td width="20" bgcolor="#FFFFFF"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="30" height="1" border="0"></td><!-- Modified for IWR 4747- JAN 18,2013- Only this line -->
+<!-- IWR 4747 NOV 19, 2012 end-->
+
+</tr>
+
+</tbody></table>
+
+<br clear="ALL">
+	<input type="hidden" name="rentMoreServices" value="$217.00">
+	<input type="hidden" name="rentAndServices" value="434.0">
+
+
+<br>
+
+
+
+<script>
+//MSF Lllama actualuizador de loock and feel
+loockAF();
+//
+
+	
+
+</script>
+
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+
+<script>
+
+var elHdeArriba = top.frames['topFrame'].document.getElementById('phoneType');
+
+if( elHdeArriba.value !=4){//GRP ACAP-REQ-003185
+/* START** Archana 10-SEP-2012  DROP-X***  */
+	if(elHdeArriba.value ==3){	
+    	top.frames['topFrame'].load(0);
+	 	top.frames['topFrame'].changeOption2('a108', 'a308', '108');
+	 	top.frames['topFrame'].hideIt();	
+	}
+	/* END** Archana 10-SEP-2012  DROP-X***  */
+	else{	
+		elHdeArriba.value='0';
+		top.frames['topFrame'].load(0);
+		top.frames['topFrame'].changeOption2('a102', 'a302', '102');
+		top.frames['topFrame'].hideIt();
+	}
+}
+else{
+	top.frames['topFrame'].load(0);
+ 	top.frames['topFrame'].changeOption2('a109', 'a309', '109');
+ 	top.frames['topFrame'].hideIt();	
+}
+</script>
+
+
+
+<script>
+function addingRequest(frm) {
+	top.frames['topFrame'].load(1);
+	self.location="distrib?action=displayServiceRequestCaptureFormDist&controller=CustomerInfoBusinessController";
+
+}
+
+function addingNote(frm, aPartyId) 
+{
+	top.frames['topFrame'].load(1);
+	self.location="distrib?action=displayServiceNoteCaptureFormDist&controller=distPostPaidServController&PartyId=" + aPartyId ;
+}
+
+function consultNotes(frm)
+{
+	top.frames['topFrame'].load(1);
+	self.location = 'distrib?action=consultBinnacle&controller=distPostPaidServController' ;
+}
+
+//HSB 27-10-2006 Factura virtual, solo la pueden activar o modificar los responsables de pago
+//YESSICA-  05072015 Módulo para todos los tipos de cliente corpórativos con facturación mensual
+function activarFacturaVirtual(activateModifyFacturaV,isGranCuenta,isInconsistencia) {
+	if(isInconsistencia){
+		alert('No puede realizar esta operacion, debido a que no se encontro el responsable de pago')
+		return false;
+	}
+	
+	if(isGranCuenta){	
+	top.frames['topFrame'].load(1);
+	self.location="distrib?action=activateVirtualInvoicePos&controller=distPostPaidServController&accion=no&account=null&coId=1479017&customerIdHigh=0";
+
+	}else{
+		//YESSICA-  05072015 Módulo para todos los tipos de cliente masivos con facturación mensual
+		if(!activateModifyFacturaV){
+			alert('Usted no puede realizar esta operacion, debido a que no es el responsble de pago');
+	
+			return false;
+		}
+	
+		top.frames['topFrame'].load(1);
+		self.location="distrib?action=activateVirtualInvoicePos&controller=distPostPaidServController&accion=no&account=4.7916.00.00.100002&coId=1479017";
+	}
+}
+//HSB 27-10-2006 Factura virtual, solo la pueden activar o modificar los responsables de pago
+
+setValorHeader();
+</script>
+</form></body></html>
