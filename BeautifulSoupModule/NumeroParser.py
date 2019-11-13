@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import re
 from dateutil import parser as duParser
 import BeautifulSoupModule.Modelos
+from datetime import date, datetime
 
 telefonoTdId = 'telefonopacambio'
 planTdText = 'Nombre del Plan:'
@@ -15,6 +16,21 @@ regexNumero = r'\d{10}'
 regexPlazo = r'\d{2}'
 
 terminoPlazoString = 'Terminó su plazo forzoso'
+
+mesesDiccionario = {
+    'Ene': 1,
+    'Feb': 2,
+    'Mar': 3,
+    'Abr': 4, 
+    'May': 5, 
+    'Jun': 6,
+    'Jul': 7, 
+    'Ago': 8,
+    'Sep': 9,
+    'Oct': 10, 
+    'Nov': 11,
+    'Dic': 12
+}
 
 class NumeroParser(object):
     def __init__(self, dom, debug = False):
@@ -52,20 +68,19 @@ class NumeroParser(object):
         #Fecha vencimiento
         fechaVencimientoRaw = self.removeAllNewLines(vencimientoTableTr[0].getText())
         fechaVencimientoValor = self.getValorDelimitado(fechaVencimientoRaw)
-        aux = self.getFechaFromString(fechaVencimientoValor)
+        fechaVencimiento = self.getDateFromText(fechaVencimientoValor)
         #fechaVencimiento = duParser.parse(fechaVencimientoValor)
 
         linea.fechaVencimientoText = fechaVencimientoValor
-        #linea.fechaVencimiento = fechaVencimiento
+        linea.fechaVencimiento = fechaVencimiento
 
         #Fecha de contratacion
         fechaContratacionRaw = self.removeAllNewLines(vencimientoTableTr[1].getText())
         fechaContratacionValor = self.getValorDelimitado(fechaContratacionRaw)
-        #fechaContratacion = duParser.parse(fechaContratacionValor)
-        aux2 = self.getFechaFromString(fechaContratacionValor)
+        fechaContratacion = self.getDateFromText(fechaContratacionValor)
         
         linea.fechaContratacionText = fechaContratacionValor
-        #linea.fechaContratacion = fechaContratacion
+        linea.fechaContratacion = fechaContratacion
 
         #Plazo forzoso
         plazoForzosoRaw = self.removeAllNewLines(vencimientoTableTr[2].getText())
@@ -96,14 +111,23 @@ class NumeroParser(object):
     def getValorDelimitado(self, texto ,delimitador = ':'):
         return texto.partition(delimitador)[2]
 
-    def getFechaFromString(self, dateString):
-        import locale
-        locale.setlocale(locale.LC_ALL, 'esp_esp')
-        from datetime import datetime as dt
+    # def getFechaFromString(self, dateString):
+    #     import locale
+    #     locale.setlocale(locale.LC_ALL, 'esp_esp')
+    #     from datetime import datetime as dt
 
-        date = dt.strptime(dateString, '%d-%B-%Y')
-        dateText = date.strftime('%Y-%m-%d')
-        return date
+    #     date = dt.strptime(dateString, '%d-%B-%Y')
+    #     dateText = date.strftime('%Y-%m-%d')
+    #     return date
+
+    def getDateFromText(self, text):
+        strings = text.split('-')
+        dia = int(strings[0])
+        mes = mesesDiccionario[strings[1]]
+        ano = int(strings[2])
+
+        return date(ano, mes, dia)
+
 if __name__ == "__main__":
     import os
     fileName = '4421970772.html'
