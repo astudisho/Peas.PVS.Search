@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import re
 from dateutil import parser as duParser
-from '..\Modelos\Linea' import Linea
+import BeautifulSoupModule.Modelos
 
 telefonoTdId = 'telefonopacambio'
 planTdText = 'Nombre del Plan:'
@@ -14,18 +14,15 @@ regexRenta = r'\d{3,4}\.00'
 regexNumero = r'\d{10}'
 regexPlazo = r'\d{2}'
 
+terminoPlazoString = 'Terminó su plazo forzoso'
+
 class NumeroParser(object):
-    def __init__(self, fileName = '4421970772.html', debug = False):
-        import os
-        print(os.getcwd())
-        f = open(fileName,'r')
-        self.dom = f.read()
-        f.close()
-        pass
+    def __init__(self, dom, debug = False):
+        self.dom = dom
 
     def parseNumero(self):
         soup = BeautifulSoup(self.dom, 'lxml')
-        linea = Linea()
+        linea = BeautifulSoupModule.Modelos.Linea()
 
         tableInfoPlan = soup.find(id=tableInfoPlanId)
         tableInfoPlanTr = tableInfoPlan.find_all('tr')
@@ -55,18 +52,20 @@ class NumeroParser(object):
         #Fecha vencimiento
         fechaVencimientoRaw = self.removeAllNewLines(vencimientoTableTr[0].getText())
         fechaVencimientoValor = self.getValorDelimitado(fechaVencimientoRaw)
-        fechaVencimiento = duParser.parse(fechaVencimientoValor)
+        aux = self.getFechaFromString(fechaVencimientoValor)
+        #fechaVencimiento = duParser.parse(fechaVencimientoValor)
 
         linea.fechaVencimientoText = fechaVencimientoValor
-        linea.fechaVencimiento = fechaVencimiento
+        #linea.fechaVencimiento = fechaVencimiento
 
         #Fecha de contratacion
         fechaContratacionRaw = self.removeAllNewLines(vencimientoTableTr[1].getText())
         fechaContratacionValor = self.getValorDelimitado(fechaContratacionRaw)
-        fechaContratacion = duParser.parse(fechaContratacionValor)
+        #fechaContratacion = duParser.parse(fechaContratacionValor)
+        aux2 = self.getFechaFromString(fechaContratacionValor)
         
         linea.fechaContratacionText = fechaContratacionValor
-        linea.fechaContratacion = fechaContratacion
+        #linea.fechaContratacion = fechaContratacion
 
         #Plazo forzoso
         plazoForzosoRaw = self.removeAllNewLines(vencimientoTableTr[2].getText())
@@ -79,8 +78,12 @@ class NumeroParser(object):
         #Termino contrato
         terminaContratoRaw = self.removeAllNewLines(vencimientoTableTr[3].getText())        
         terminaContrato = self.removeAllNewLines(self.getValorDelimitado(terminaContratoRaw))
+        terminoPlazo = False
+        if(terminaContrato == terminoPlazoString): terminoPlazo = True
 
-        
+        linea.plazoForzosoTermino = terminoPlazo
+
+        return linea
 
         pass
 
@@ -93,6 +96,21 @@ class NumeroParser(object):
     def getValorDelimitado(self, texto ,delimitador = ':'):
         return texto.partition(delimitador)[2]
 
+    def getFechaFromString(self, dateString):
+        import locale
+        locale.setlocale(locale.LC_ALL, 'esp_esp')
+        from datetime import datetime as dt
+
+        date = dt.strptime(dateString, '%d-%B-%Y')
+        dateText = date.strftime('%Y-%m-%d')
+        return date
 if __name__ == "__main__":
-    parser = NumeroParser()
+    import os
+    fileName = '4421970772.html'
+    print(os.getcwd())
+    f = open(fileName,'r')
+    dom = f.read()
+    f.close()    
+
+    parser = NumeroParser(dom)
     parser.parseNumero()

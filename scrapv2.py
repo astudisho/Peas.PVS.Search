@@ -9,6 +9,8 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException,
 from bs4 import BeautifulSoup
 import time
 
+import BeautifulSoupModule
+
 timeout = 6
 timeoutContenido = 30
 sleepForSwitch = 0.1
@@ -177,7 +179,9 @@ def getNumeroDom(browser,numero):
     WaitAndSwitchToLeftFrame(browser)
     WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.NAME,dnInputName)))
     WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.ID,busquedaBotonId)))
-    browser.find_element_by_name(dnInputName).send_keys(numero)
+    dnInputElement = browser.find_element_by_name(dnInputName)
+    dnInputElement.clear() 
+    dnInputElement.send_keys(numero)
     browser.find_element_by_id(busquedaBotonId).click()
     
     WaitAndSwitchToContenidoFrame(browser)
@@ -186,15 +190,21 @@ def getNumeroDom(browser,numero):
     html = browser.page_source
     
     print(html)
+
+    return html
     pass
 
 def parseNumeroFromContenidoDom(dom):
-    soup =  BeautifulSoup(browser.page_source,'lxml')
+    #soup =  BeautifulSoup(browser.page_source,'lxml')
 
     # numeroLineaFinder = soup.find_all("a", class_='CUENTAS4')
     #soup.find()
     #listaNumeros = [num.string for num in numeroLineaFinder]
-    pass
+
+    numeroParser = BeautifulSoupModule.NumeroParser(dom)
+    linea = numeroParser.parseNumero()
+    return linea
+    
 
 if __name__ == "__main__":
     try:
@@ -217,9 +227,15 @@ if __name__ == "__main__":
                 GetPanelBusquedaLimpio(browser)
                 telefonos = GetTelefonosDeCuenta(browser, cuenta)
                 print(cuenta, telefonos)
+
+                listaLineas = []
                 for tel in telefonos:
                     numeroDom = getNumeroDom(browser, tel)
-                    numeroObject = parseNumeroFromContenidoDom(numeroDom)
+                    linea = parseNumeroFromContenidoDom(numeroDom)
+                    print(linea)
+                    listaLineas.append(linea)
+
+                print(listaLineas)
             except UniCuentaException as ucex:
                 pass
             except TimeoutException as toex:

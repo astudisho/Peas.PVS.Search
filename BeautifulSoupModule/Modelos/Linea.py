@@ -5,12 +5,13 @@ class Linea(object):
         self.numero = ''
         self.nombrePlan = ''
         self.rentaMensual = -1
-        self.fechaVencimiento = dt.date()
+        self.fechaVencimiento = dt.date.today()
         self.fechaVencimientoText = ''
-        self.fechaContratacion = dt.date()
+        self.fechaContratacion = dt.date.today()
         self.fechaContratacionText = ''
         self.plazoForzosoText = ''
         self.plazoForzoso = -1
+        self.plazoForzosoTermino = False
     
     def __str__(self):
-        return self.numero + ' ' + self.nombrePlan + ' ' + self.fechaVencimiento
+        return self.numero + ' ' + self.nombrePlan + ' ' + self.fechaVencimientoText
