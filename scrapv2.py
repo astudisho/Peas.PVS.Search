@@ -11,8 +11,8 @@ import time
 
 import BeautifulSoupModule
 
-timeout = 6
-timeoutContenido = 30
+timeout = 30
+timeoutContenido = 45
 sleepForSwitch = 0.1
 sleepForReload = 0.3
 
@@ -189,10 +189,9 @@ def getNumeroDom(browser,numero):
 
     html = browser.page_source
     
-    print(html)
+    #print(html)
 
     return html
-    pass
 
 def parseNumeroFromContenidoDom(dom):
     #soup =  BeautifulSoup(browser.page_source,'lxml')
