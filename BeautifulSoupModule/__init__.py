@@ -1,1 +1,2 @@
 from BeautifulSoupModule.NumeroParser import NumeroParser
+from BeautifulSoupModule.CuentaInformacionParser import CuentaParser

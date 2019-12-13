@@ -1,0 +1,267 @@
+<html><head><script language="JavaScript">
+		
+		if (navigator.appName == "Microsoft Internet Explorer")
+			{document.write('<LINK HREF="http://pvs.iusacell.com.mx:80/IusacellDist/css/estilos_exp.css" REL="STYLESHEET" TYPE="text/css">')}
+		else
+			{document.write('<LINK HREF="http://pvs.iusacell.com.mx:80/IusacellDist/css/estilos_net.css" REL="STYLESHEET" TYPE="text/css">')}
+		
+
+		function getUserFunction(dn,esn,contrato,id){ 
+			document.getUserForm.dn.value=dn; 
+			document.getUserForm.esn.value=esn; 
+			document.getUserForm.contrato.value=contrato; 
+			document.getUserForm.iduser.value=id; 
+				
+			top.frames['topFrame'].load(1);	
+				
+			document.getUserForm.submit();
+		}
+//GRP ACAP-REQ-003185
+//		function goToTotalPlayEnlace(form, cuenta, companyId, company) {
+//	       	var elTyp = top.frames['topFrame'].document.getElementById('phoneT');
+//           	elTyp.value = 4;					
+//			var elType = top.frames['topFrame'].document.getElementById('phoneType');
+//			elType.value = "4";	
+
+//			top.frames['topFrame'].hideIt();
+//			top.frames['topFrame'].load(0);
+//			if (company == "") {
+//				top.frames['topFrame'].changeOption('a109', 'a309', '109');
+//			} else {
+//				top.frames['topFrame'].changeOption('a108', 'a308', '108');
+//			}
+//			document.getElementsByName('parametro.cuenta')[0].value = cuenta;
+//			document.getElementsByName('parametro.companyId')[0].value = companyId;
+//			form.submit();
+//		}  
+		
+		function getTreeFunction(cuenta){ 	
+			var	punto=0;	
+			var raiz=null;	
+				
+			punto = cuenta.indexOf(".",2);
+			if (punto==-1){
+				raiz = cuenta;
+			}else{
+				raiz = cuenta.substring(0,punto);				
+			}	
+			/** HSB para realizar nueva busqueda en arbol */
+			top.frames['topFrame'].currentAccount=raiz;				
+			top.frames['topFrame'].load(1);					
+			var url = "busquedaArbol.do?method=busquedaInicial&custcode=" + cuenta;
+			window.open(url,'leftFrame');
+			/** HSB para realizar nueva busqueda en arbol */
+		}		
+		
+		function getDedfisTreeFunction(cuenta){ 	
+			var	punto=0;	
+			var raiz=null;	
+				
+			punto = cuenta.indexOf(".",2);
+			if (punto==-1){
+				raiz = cuenta;
+			}else{
+				raiz = cuenta.substring(0,punto);				
+			}	
+			/** HSB para realizar nueva busqueda en arbol */
+			top.frames['topFrame'].currentAccount=raiz;				
+			top.frames['topFrame'].load(1);					
+			var url = "busquedaArbolDedfis.do?action=busquedaInicial&custcode=" + encode(cuenta);
+			window.open(url,'leftFrame');
+			/** HSB para realizar nueva busqueda en arbol */
+		}
+		
+	   function cancelForm(){
+			document.CancelForm.submit();
+	   }
+	   
+	   /*Agregado JJGV 18/01/2010*/
+	   function encode(strPass){
+	    		return (iusa_encrypte(strPass,true));
+		    }
+		
+			function iusa_encrypte(strPass,action){
+				var iaX = new Array(5,6,3,9,10,2,11,8,1,3,4,5,6,7,8,
+									4,3,2,3,4,5,8,7,6,5,4,3,2,3,4,5,
+									6,7,8,1,2,3,4,5,7,6,5,4,3,2,8,7,
+									6,5,4,3,4,5,6,9,8,7,6,5,1,3,2,6,
+									5,8,4,6,9,3,2,4,5,6,7,8,4,5,7,8,9);		
+				var caCPass='';
+				
+				for(var i = 0; i<strPass.length;i++){
+					if (strPass.charAt(i) != ' '){
+						caCPass+= strPass.charAt(i);
+					}		
+				}		
+				
+				var result='';				
+				for(var i = 0; i < caCPass.length; i++){
+					var character = caCPass.charCodeAt(i);
+					if (action){
+						character+=iaX[i];
+					}else{
+						character-=iaX[i];
+					}					
+					result+=String.fromCharCode(character); 
+				}
+				
+				return (result);		
+			}
+
+		</script><link href="http://pvs.iusacell.com.mx:80/IusacellDist/css/estilos_net.css" rel="STYLESHEET" type="text/css">
+
+		<!--	GRP ACAP-REQ-003185	
+		
+		<form action="" name="totalPlayForm" method="POST" target="contenido">
+			<input type="hidden" name="parametro.cuenta" value="">
+			<input type="hidden" name="parametro.companyId" value="">
+			<input type="hidden" name="parametro.userId" value="">			
+			<input type="hidden" name="parametro.cdgCsi" value="">
+			<input type="hidden" name="parametro.login" value="">
+		</form>  -->
+
+		</head><body><form name="getUserForm" action="distrib" method="POST" target="contenido">
+			<input type="hidden" name="action" value="putDNSessionDist">
+			<input type="hidden" name="controller" value="CustomerInfoBusinessController">
+			<input type="hidden" name="dn" value="">
+			<input type="hidden" name="esn" value="">
+			<input type="hidden" name="contrato" value="">
+			<input type="hidden" name="iduser" value="">			
+			<input type="hidden" name="frame" value="no">
+			<input type="hidden" name="firstTime" value="1">
+		</form>
+		<!-- BODY -->
+		<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" align="LEFT">
+		<tbody><tr>
+		<td width="20"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="20" height="1" border="0"></td>
+		<td width="99%" valign="TOP" align="CENTER">
+			<br>
+			<!-- ENCABEZADO -->
+			<table width="100%" cellspacing="1" cellpadding="2" border="0" bgcolor="#5D5D5E">
+			<tbody><tr>
+			<td bgcolor="#FFFFFF">
+				<table width="100%" cellspacing="1" cellpadding="0" border="0" bgcolor="#CC0000">
+				<tbody><tr>
+				<td class="txtContenidoBlanco" height="20" align="CENTER"><b>Resultados de Búsqueda Avanzada</b></td>
+				</tr>
+				</tbody></table>
+			</td>
+			</tr>
+			</tbody></table>
+			<br>
+			
+			<!-- TABLA 1 -->
+			<table width="100%" cellspacing="1" cellpadding="0" border="0" bgcolor="#CCCCCC">
+			<tbody><tr>
+			<td>
+				<table width="100%" cellspacing="1" cellpadding="3" border="0" bgcolor="#FFFFFF">
+				<tbody><tr bgcolor="#CC0000">
+				<!-- YLEON arbol -->
+				<td class="txtContenidoBlanco" align="CENTER"><b>Cuenta</b></td>
+				<td class="txtContenidoBlanco" align="CENTER"><b>Contrato</b></td>
+				<td class="txtContenidoBlanco" align="CENTER"><b>Nombre</b></td>
+				<td class="txtContenidoBlanco" align="CENTER"><b>Apellido</b></td>
+				<td class="txtContenidoBlanco" align="CENTER"><b>RFC</b></td>
+				<td class="txtContenidoBlanco" align="CENTER"><b>Compañía</b></td>
+				<td class="txtContenidoBlanco" align="CENTER"><b>Esquema</b></td>
+				<!-- YLEON arbol -->				
+				</tr>
+				
+				<tr bgcolor="#E0E1E3">
+						<td class="txtContenido" align="CENTER">
+						<!-- //GRP ACAP-REQ-003185 -->
+						
+							
+								<a href="javaScript:getDedfisTreeFunction('4.7917','1325665');" class="txtContenidoRojoLink">4.7917</a>
+							
+						
+						</td>												
+						<td class="txtContenido" align="CENTER"><b> </b></td>
+						<td class="txtContenido" align="CENTER">MARIA ISABEL BROCA OCAÑA</td>
+						<td class="txtContenido" align="CENTER">PROYECTOS SUPERVISION Y CONSTRUCCIONES ALIAM SA DE CV</td>
+						<!--
+						<TD ALIGN="CENTER"  class="txtContenido">
+						 <A HREF="javascript:top.frames['contenido'].getUserFunction('null','null','4.7917','1325665');" CLASS="txtContenidoLink" TARGET="contenido"></A></TD> -->
+						<td class="txtContenido" align="CENTER"></td>
+						<td class="txtContenido" align="CENTER">PROYECTOS SUPERVISION Y CONSTRUCCIONES ALIAM SA DE CV</td>
+						<td class="txtContenido" align="CENTER"><b>DEDFIS</b></td>
+					</tr>
+					
+					
+				<tr bgcolor="#FFFFFF">
+						<td class="txtContenido" align="CENTER">
+						<!-- //GRP ACAP-REQ-003185 -->
+						
+							
+								<a href="javaScript:getDedfisTreeFunction('4.7917','1325665');" class="txtContenidoRojoLink">4.7917</a>
+							
+						
+						</td>												
+						<td class="txtContenido" align="CENTER"><b> </b></td>
+						<td class="txtContenido" align="CENTER">MARIA ISABEL BROCA OCAÑA</td>
+						<td class="txtContenido" align="CENTER">PROYECTOS SUPERVISION Y CONSTRUCCIONES ALIAM SA DE CV</td>
+						<!--
+						<TD ALIGN="CENTER"  class="txtContenido">
+						 <A HREF="javascript:top.frames['contenido'].getUserFunction('null','null','4.7917','1325665');" CLASS="txtContenidoLink" TARGET="contenido"></A></TD> -->
+						<td class="txtContenido" align="CENTER"></td>
+						<td class="txtContenido" align="CENTER">PROYECTOS SUPERVISION Y CONSTRUCCIONES ALIAM SA DE CV</td>
+						<td class="txtContenido" align="CENTER"><b>DEDFIS</b></td>
+					</tr>
+					
+					
+				<tr bgcolor="#E0E1E3">
+				
+					  <td colspan="7" class="txtContenido" align="CENTER">
+					  	<input type="button" name="" value="Regresar" class="boton" onclick="cancelForm();">					  	
+					  </td>
+				  	</tr>
+				</tbody></table>
+			</td>
+			</tr>
+			</tbody></table>
+			<br><br>
+		</td>
+		<td width="20"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" alt="" width="20" height="1" border="0"></td>
+		</tr>
+		</tbody></table>
+		<form name="CancelForm" action="distrib" method="POST" target="_parent">
+			<input type="hidden" name="action" value="displayHomeDist">
+			<input type="hidden" name="controller" value="PrincipalBusinessController">
+		</form>
+			
+
+		<br clear="ALL">
+		
+	
+
+
+
+
+
+<!-- FOOTER -->
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="LEFT">
+<tbody><tr>
+<td width="100%" height="1" bgcolor="#5D5D5E"><img src="/IusacellDist/img/pix_1x1.gif" alt="" width="1" height="1" border="0"></td>
+</tr>
+<tr>
+<td class="footer" width="100%" height="18" bgcolor="#DADCDD" align="CENTER">
+© AT&amp;T Intellectual Property
+</td>
+</tr>
+</tbody></table>
+
+
+
+
+		
+
+				
+
+		<script language="Javascript">
+	  	top.frames['topFrame'].load(0);
+	 	top.frames['topFrame'].hideIt();
+		</script>
+		
+	</body></html>
