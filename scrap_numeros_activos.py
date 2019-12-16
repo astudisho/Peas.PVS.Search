@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 import time
 
 import BeautifulSoupModule
+import logging
 
 timeout = 30
 timeoutContenido = 45
@@ -41,7 +42,8 @@ topFramePartialLinkName = "Búsqueda de Cliente"
 leftFrameLoaderXpath = '//img[@src="/IusacellDist/img/indicator.gif"]'
 
 numeroLineaPrefijo = '4.'
-numeroLineaSufijo = '7917'
+#numeroLineaSufijo = '7917'
+numeroLineaSufijo = '7928'
 numeroLineaMock = '4.7910'
 buscaBotonName = 'buscaBtn'
 dnInputName = 'dn'
@@ -54,6 +56,7 @@ telefonoTdId = 'telefonopacambio'
 tablaInfoCuentaId = 'table_infoGeneralCuenta'
 tablaInfoCuentaSelector = '#BORDE > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2)'
 tablaCUentaExcepcionXPath = '/html/body/table[1]/tbody/tr/td[2]/table[1]'
+titlefacturaSelector = 'td.txtContenidoRojo > b'
 
 class UniCuentaException(Exception):    
     pass
@@ -166,11 +169,20 @@ def GetInformacionCuentaDom(browser,cuenta):
     #ValidarUniCuenta(browser)
 
     WaitAndSwitchToContenidoFrame(browser)
-
     #WebDriverWait(browser,timeoutContenido).until(EC.text_to_be_present_in_element((By.ID,tablaInfoCuentaId),cuenta) or EC.visibility_of_element_located((By.XPATH, tablaCUentaExcepcionXPath))) 
-    #WebDriverWait(browser,timeoutContenido).until(expectedConditionOr(browser,EC.text_to_be_present_in_element((By.ID,tablaInfoCuentaId),cuenta) , EC.visibility_of_element_located((By.XPATH, tablaCUentaExcepcionXPath))))
-    WebDriverWait(browser,timeoutContenido).until(expectedConditionOr(browser,EC.visibility_of_element_located((By.CSS_SELECTOR,tablaInfoCuentaSelector)) , EC.visibility_of_element_located((By.XPATH, tablaCUentaExcepcionXPath))))
+    #WebDriverWait(browser,timeoutContenido).until(expectedConditionOr(browser,EC.visibility_of_element_located((By.CSS_SELECTOR,tablaInfoCuentaSelector)) , EC.visibility_of_element_located((By.XPATH, tablaCUentaExcepcionXPath))))
     #WebDriverWait(browser,timeoutContenido).until(EC.visibility_of_any_elements_located()
+
+    #condition1 = EC.text_to_be_present_in_element((By.ID,tablaInfoCuentaId),cuenta)
+    condition1 = EC.text_to_be_present_in_element((By.CLASS_NAME,'txtContenido'),cuenta)
+    condition2 = EC.text_to_be_present_in_element((By.CSS_SELECTOR, titlefacturaSelector), 'Facturación')
+    condition3 = EC.visibility_of_element_located((By.XPATH, tablaCUentaExcepcionXPath))
+
+    conditionAnd = expectedConditionAnd(browser, condition1, condition2)
+
+    expectedCondition = expectedConditionOr(browser, conditionAnd,condition3)
+
+    WebDriverWait(browser,timeoutContenido).until(expectedCondition)
 
     infoLoaded = len(browser.find_elements_by_id(tablaInfoCuentaId)) > 0
 
@@ -188,6 +200,19 @@ def expectedConditionOr(browser, cond1, cond2):
         except NoSuchElementException:
             res2 = False
         return res1 or res2
+    return expected
+
+def expectedConditionAnd(browser, cond1, cond2):
+    def expected(browser):
+        try:
+            res1 = cond1(browser)
+        except NoSuchElementException:
+            res1 = False
+        try:
+            res2 = cond2(browser)
+        except NoSuchElementException:
+            res2 = False
+        return res1 and res2
     return expected
 
 def GetPanelBusquedaLimpio(browser):
@@ -255,6 +280,7 @@ def parseCuentaFromDom(dom):
     return cuenta
 
 if __name__ == "__main__":
+    logging.basicConfig(filename = 'scrap_numeros_activos.log')
     try:
         cuentaSufijo = int(numeroLineaSufijo)
 
@@ -281,8 +307,8 @@ if __name__ == "__main__":
                 if not cargoInformacion: continue
 
                 cuenta = parseCuentaFromDom(dom)
-
                 listaCuentas.append(cuenta)
+                print(cuenta)
                 # print(cuenta, telefonos)
 
                 # listaLineas = []
@@ -294,8 +320,16 @@ if __name__ == "__main__":
 
                 # print(listaLineas)
             except UniCuentaException as ucex:
+                logging.warning(ucex)
+                print(ucex)
                 pass
             except TimeoutException as toex:
+                logging.warning(toex)
+                print(toex)
+                pass
+            except Exception as ex:
+                logging.error(ex)
+                print(ex)
                 pass
 
         print(listaCuentas)

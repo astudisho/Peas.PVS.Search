@@ -1,0 +1,492 @@
+<html><head><script>
+
+
+	top.frames[ 'topFrame' ].changeOption2('a102', 'a302', '102'); 
+	top.frames[ 'topFrame' ].calificaTelesale = "No se puede realizar una adicion telesales a este tipo de cliente";
+
+</script>
+
+
+
+
+	<link href="http://pvs.iusacell.com.mx:80/IusacellDist/css/estilos_exp.css" rel="stylesheet" type="text/css">
+	<script language="JavaScript" src="http://pvs.iusacell.com.mx:80/IusacellDist/javascript/crm_scripts.js"></script>
+	<!--CAQUINOA 110707 INFORMACION ADICIONAL PARA CIERRE DE KV INICIO-->
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/mouseOverTable.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/modifInfoGralCuenta.js"></script>
+	<!--CAQUINOA 110707 INFORMACION ADICIONAL PARA CIERRE DE KV FIN-->
+	<!-- AJCP 03/08/2007 INFORMACION ADICIONAL PARA CIERRE DE KV-->
+	<script language="JavaScript" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/date_picker_crm.js"></script>
+	<script language="JavaScript" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/busquedaArbol/showWindowDiv.js"></script>
+	<!-- ESM Deposito en Garantia -->
+	<script language="JavaScript1.2" src="/IusacellDist\js\pinpad\jquery-1.8.3.js"></script>  
+	<!-- AJCP 03/08/2007 INFORMACION ADICIONAL PARA CIERRE DE KV-->
+	
+	<!-- JORTIZ REQ106214 - ABANDERAMIENTO CUENTAS ELITE -->
+	<link href="http://pvs.iusacell.com.mx:80/IusacellDist/css/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css">
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/json2.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/jquery.blockUI.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/jquery.bgiframe.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/common.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/abanderamientoCuentasEliteCommon.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/busquedaCuentaElite.js"></script>
+	<!-- JORTIZ REQ106214 - ABANDERAMIENTO CUENTAS ELITE -->
+	
+	<script language="JavaScript">
+	//MSF Actualiza emcabezado deacuerdo a la compañia
+	function loockAF(){
+	   var tMenu = 'OR'
+	  
+	  if(tMenu == 'NE' || tMenu == 'ND' ){
+       top.frames['topFrame'].msfemisor = 7 ;
+       top.frames['topFrame'].cambiacolor();
+      }	
+	}
+		//JORTIZ REQ106214 - ABANDERAMIENTO CUENTAS ELITE
+		function cerrarDiv() {
+			if(top){
+				if(top.frames['topFrame'])
+					top.frames['topFrame'].load(0);
+				var iframe = top.frames['leftFrame'];
+				if(iframe && iframe.document){
+					var div = iframe.document.getElementById("divArbolWait");
+					var div2 = iframe.document.getElementById("divArbolWait2");
+					if( div && div.document && div.document.getElementById("overlay")!= null ){
+						var bodyTag = iframe.document.getElementsByTagName('body');
+						if(bodyTag && bodyTag.length > 0 ){
+							bodyTag[0].removeChild( div.document.getElementById("overlay") );
+						}
+						try {
+							if(div2)
+								div2.style.display = "none";
+						} catch( e ) {}
+					}
+				}
+			}
+			loockAF();
+		}
+		//JORTIZ REQ106214 - ABANDERAMIENTO CUENTAS ELITE
+	function getTreeFunction(cuenta){ 
+		var	punto=0;	
+		var raiz=null;				
+		punto = cuenta.indexOf(".",2);
+		if (punto==-1){
+			raiz = cuenta;
+		}else{
+			raiz = cuenta.substring(0,punto);				
+		}	
+		top.frames['topFrame'].currentAccount=raiz;				
+		top.frames['topFrame'].load(1);									
+		var url = "busquedaArbol.do?method=busquedaInicial&custcode=" + cuenta;
+		window.open(url,'leftFrame');
+	}		
+	
+	function ActualDatLink(){
+		document.ActualDataLink.submit();		
+	}	
+		
+	function ActualDirFiscal(){
+		document.ActualDataFiscal.submit();		
+	}	
+	
+	function ActualDirEnvio(){
+		document.ActualDataEnvio.submit();		
+	}		
+	
+	/* IRIVAS 091006 */
+	function Enviar1() {
+			var ValRet = window.showModalDialog("distrib?action=displayReinvoiceReasons&controller=CustomerInfoBusinessController", "", 
+				"dialogHeight:285px; dialogWidth: 500px; help:no; scroll:no; resizable:no");
+			var arrSplit = ValRet.split("_");
+			document.FACTURA1.idMotivo.value = arrSplit[1];
+			
+			if(ValRet != 0){			
+				document.FACTURA1.submit();
+			}
+	}
+				
+	function Enviar2() {
+			var ValRet = window.showModalDialog("distrib?action=displayReinvoiceReasons&controller=CustomerInfoBusinessController", "", 
+				"dialogHeight:285px; dialogWidth: 500px; help:no; scroll:no; resizable:no");
+			var arrSplit = ValRet.split("_");
+			document.FACTURA2.idMotivo.value = arrSplit[1];
+			
+			if(ValRet != 0){
+				document.FACTURA2.submit();
+			}
+			
+	}	
+							
+	function Enviar3() {
+			var ValRet = window.showModalDialog("distrib?action=displayReinvoiceReasons&controller=CustomerInfoBusinessController", "", 
+				"dialogHeight:285px; dialogWidth: 500px; help:no; scroll:no; resizable:no");
+			var arrSplit = ValRet.split("_");
+			document.FACTURA3.idMotivo.value = arrSplit[1];
+			
+			if(ValRet != 0){
+				document.FACTURA3.submit();
+			}
+	}
+
+	function EnviarMailFactura1() {
+			var ValReturn = window.showModalDialog("distrib?action=showSendInvoice&controller=CustomerInfoBusinessController&typePerson=B&legalName=Sr.  OSCAR DE LA FUENTE BUENROSTRO&customerName=HABITAT TEMIXCO SA DE CV&eMail=habitatemixco@hotmail.com&key2=4.7938&key4=11&key5=2019", 
+				"", "dialogHeight:285px; dialogWidth: 600px; help:no; scroll:no; resizable:no");	
+	}
+	
+	function EnviarMailFactura2() {					
+			var ValReturn = window.showModalDialog("distrib?action=showSendInvoice&controller=CustomerInfoBusinessController&typePerson=B&legalName=Sr.  OSCAR DE LA FUENTE BUENROSTRO&customerName=HABITAT TEMIXCO SA DE CV&eMail=habitatemixco@hotmail.com&key2=4.7938&key4=10&key5=2019", 
+				"", "dialogHeight:285px; dialogWidth: 600px; help:no; scroll:no; resizable:no");	
+	}
+	
+	function EnviarMailFactura3() {					
+			var ValReturn = window.showModalDialog("distrib?action=showSendInvoice&controller=CustomerInfoBusinessController&typePerson=B&legalName=Sr.  OSCAR DE LA FUENTE BUENROSTRO&customerName=HABITAT TEMIXCO SA DE CV&eMail=habitatemixco@hotmail.com&key2=4.7938&key4=09&key5=2019", 
+				"", "dialogHeight:285px; dialogWidth: 600px; help:no; scroll:no; resizable:no");	
+	}
+	/* Fin IRIVAS 091006 */
+	
+	/* IRIVAS BUC */
+	function insertaColaCodificador() { 		   		
+   		var strURLColaBuc = "/BUC/contactsQueue.do";
+   		strURLColaBuc = strURLColaBuc + "?idUser=" + "hpvwc9GTnilgBYD%2FmmhcHQ%3D%3D" + "&tipo=" + "uQk0S7SIIF%2FsuHVU5Rh5dQ%3D%3D" + "&cuenta=" + "%2Bh%2FggBXgfX%2FR%2FeAAGjEdng%3D%3D";
+   		
+		var windowProperties = "resizable=0, width=0, height=0";
+		window.open(strURLColaBuc,'bucFrame',windowProperties);  
+    }	
+
+	insertaColaCodificador();
+		
+	function abrirCodificador() {
+		
+        var URL = "/BUC/codificador.do";     
+        URL = URL + "?idUser=" + "hpvwc9GTnilgBYD%2FmmhcHQ%3D%3D" + "&tipo=" + "uQk0S7SIIF%2FsuHVU5Rh5dQ%3D%3D" + "&cuenta=" + "%2Bh%2FggBXgfX%2FR%2FeAAGjEdng%3D%3D";
+		
+		window.open(URL,"Codificador", "toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,width=600,height=600");		
+    }
+
+	function abrirConsultas(){
+    	var URL = "/BUC/historico/consultas.do";
+    	URL = URL + "?idUser=" + "hpvwc9GTnilgBYD%2FmmhcHQ%3D%3D" + "&tipo=" + "uQk0S7SIIF%2FsuHVU5Rh5dQ%3D%3D" + "&cuenta=" + "%2Bh%2FggBXgfX%2FR%2FeAAGjEdng%3D%3D" + "&customerId=" + "mQW7YY8p9aWNkoVa4nIc2Q%3D%3D" + "&login=" + "cwhqbPdK8D9nKdJ064vQbA%3D%3D";
+    	    	
+    	window.open(URL, "contenido");
+	}
+ 	/* FIN IRIVAS BUC */	
+ 	
+	//Factura Virtual
+	function goFacturaVirtual() {	
+        document.sendFacturaVirtual.submit();
+	}
+		
+    //Metodo de Pago
+	function goPaymentMethod() {		   
+        document.sendPaymentMethod.submit();
+	}
+
+    //Supresión por Cobranza IRIVAS 140207
+	function goBillSupress() {
+		document.sendBillSupress.submit();
+	}		
+
+	/* AJCP INICIO 03/08/2007 INFORMACION ADICIONAL PARA CIERRE DE KV */
+	function editarFecha(celda,accion,idHref){
+		inhibirHref(idHref);
+		var tdEdit = document.getElementById( celda );
+		var aux = tdEdit.innerHTML;
+		tdEdit.innerHTML = "";
+		var text = "<input type='text' id=\""+accion+"\" name=\""+accion+"\" class='txtBox' size='11' maxlength='11' value='" + aux + 
+					"' onKeypress='if(event.keyCode==13){aplicaCambio(this.value,\"" + aux + "\",\"" + accion + "\")}'/>";
+		var textImg = "<IMG src='http://pvs.iusacell.com.mx:80/IusacellDist/img/ic_4u_agenda.gif' align='center' width='16' border='0' id='calendar'/>";
+		var textLiga = "<A id='calendar' href='javascript:show_calendar(\"formTabla."+accion+"\",\"\",\"\",\"DD-MON-YYYY\",\"es\",\"http://pvs.iusacell.com.mx:80/IusacellDist/\");'></A>";
+		var textBoton = "<input type='button' id='but"+accion+"' value='OK' class='boton' onclick='aplicaCambio(document.getElementById(\"" +
+											accion + "\").value,\"" + aux + "\",\"" + accion + "\");'/>"
+											
+		var cajita = document.createElement(text);
+		var liga = document.createElement(textLiga);
+		var button = document.createElement(textBoton);
+		
+		tdEdit.innerHTML = textLiga+"   "+text+"   "+textBoton;
+		var auxLiga = document.getElementById('calendar');
+		auxLiga.innerHTML = textImg;
+	}
+	/* AJCP FIN 03/08/2007 INFORMACION ADICIONAL PARA CIERRE DE KV */
+		
+	/*Detalle Depósito Garantía por Cuenta ESM*/
+	
+	
+	function detalleDepositoGarantia(){
+		var error;
+	
+		var cuenta = '4.7938';
+		try{
+			$.ajax({
+				url: 'HistoricoDepositoGarantiaAction.do?action=detalleCuenta',
+				data: { aplicaCuenta: cuenta},
+				type: 'POST',
+				success: function(data) {
+					//if(data){
+						 var posicion_x; 
+						var posicion_y; 
+						posicion_x=(screen.width/2)-(700/2); 
+						posicion_y=(screen.height/2)-(400/2);  
+				        //WebContent/jsp/test.jsp
+				        var myWindow = window.open("jsp/depositoGarantia/detalleCuentaDepGarantia.jsp", "_blank", "status=yes, toolbar=no, menubar=no, location=no, addressbar=no, titlebar=no, scrollbars=yes, width=700, height=400,left="+posicion_x+",top="+posicion_y+"");				
+					//}
+	
+				},
+				error: function(error){
+								alert("Ocurrio un error durante la llamada/ejecucion: " + error.statusText); 
+						},
+				async: false
+			});
+		}catch(e){			
+			alert("Ocurrio un error: " + e.message);	
+		}
+	
+	}
+	
+	
+	
+	/*Fin Detalle Depósito Garantía por Cuenta ESM*/
+</script>
+	
+</head>
+<body onload="cerrarDiv()">
+	<form name="ActualDataLink" method="POST" action="header_actudata_crm.jsp">	
+		<input type="hidden" name="Nombre" value="">	
+		<input type="hidden" name="Replegal" value="">
+		<input type="hidden" name="DirCorr" value="">
+		<input type="hidden" name="DirFis" value="">
+		<input type="hidden" name="RFC" value="">
+		<input type="hidden" name="TelOf" value="">	
+		<input type="hidden" name="TelCasa" value="">	
+		<input type="hidden" name="idUser" value="D303433012">
+		<input type="hidden" name="DN" value="null">
+		<input type="hidden" name="NoDeCuenta" value="4.7938">
+		<input type="hidden" name="TipoPersona" value="Moral">
+		<input type="hidden" name="CustomerId" value="1326394">	
+		<input type="hidden" name="Origen" value="2"> 			
+	</form>	
+	<form name="ActualDataFiscal" action="http://pvs.iusacell.com.mx:80/IusacellDist/distrib" method="post" target="contenido">
+		<input type="hidden" name="action" value="displayBillAddress">
+		<input type="hidden" name="controller" value="CustomerInfoBusinessController">
+		<input type="hidden" name="key" value="pospago">						
+		<input type="hidden" name="account" value="4.7938">	
+		<input type="hidden" name="cusType" value="Moral">	
+		<input type="hidden" name="origen" value="2">						
+	</form>
+	<form name="ActualDataEnvio" action="http://pvs.iusacell.com.mx:80/IusacellDist/distrib" method="post" target="contenido">
+		<input type="hidden" name="action" value="displayHomeAddress">
+		<input type="hidden" name="controller" value="CustomerInfoBusinessController">
+		<input type="hidden" name="key" value="pospago">						
+		<input type="hidden" name="account" value="4.7938">			
+		<input type="hidden" name="cusType" value="Moral">			
+		<input type="hidden" name="origen" value="2">						
+	</form>			
+	<form name="codificador" class="Estilo1" method="POST" action="http://pvs.iusacell.com.mx:80/IusacellDist/Codifica">
+	</form>
+	<form action="BitacoraActionHandler" target="contenido" name="frameHistoricos" method="GET">
+	  <!--input type = "hidden" name="fromDashBoard" value="">
+	  <input type = "hidden" name="fechaSolicitud" value="">
+	  <input type = "hidden" name="callId" value="">
+	  <input type = "hidden" name="incidentId" value="">  
+	  <input type = "hidden" name="action" value="">
+	  <input type = "hidden" name="estatus" value=""-->
+	</form>
+	<br>
+
+	
+	<!--Inicio Facturacion Virtual  -->
+		<form name="sendFacturaVirtual" method="POST" action="distrib" target="contenido">
+			
+			
+			<input type="HIDDEN" name="action" value="activateVirtualInvoicePosGranCuenta">
+			<input type="HIDDEN" name="controller" value="distPostPaidServController">	
+			<input type="HIDDEN" name="custCode" value="4.7938">	
+			<input type="HIDDEN" name="paymntresp" value="Si">	
+		   	<input type="HIDDEN" name="customerId" value="1326394">
+		</form>
+	<!--Fin Facturacion Virtual  -->
+		
+	<!-- Inicio. Ajuste por Cuenta. LRSO. -->
+	<form name="sendAdjustBillByAccount" method="POST" action="http://pvs.iusacell.com.mx:80/IusacellDist/header_crm.jsp" target="contenido">
+	   <input type="hidden" name="desde" value="adjustBillByAccount">
+	   <input type="hidden" name="customerName" value="HABITAT TEMIXCO SA DE CV">
+	   <input type="hidden" name="custcode" value="4.7938">	   
+	   <input type="hidden" name="claveDelCliente" value="1326394">
+	</form>
+	<!-- Fin. Ajuste por Cuenta. LRSO. -->
+
+	<!-- Inicio. Metodo de Pago. LRSO. -->
+	<form name="sendPaymentMethod" method="POST" action="http://pvs.iusacell.com.mx:80/IusacellDist/header_crmPayment.jsp" target="contenido">
+	   <input type="hidden" name="noCuenta" value="4.7938">	
+	   <input type="hidden" name="idUser" value="D303433012">
+	   <input type="hidden" name="phone" value="">
+	   <input type="hidden" name="idCliente" value="1326394">
+	</form>
+	<!-- Fin.    Metodo de Pago. LRSO. -->
+	
+	<!-- IRIVAS 091006 -->
+	<form name="FACTURA1" method="POST" action="distrib" target="showInvoice">
+		<input type="HIDDEN" name="action" value="retrieveInvoice">
+		<input type="HIDDEN" name="controller" value="CustomerInfoBusinessController">	
+		<input type="HIDDEN" name="oActualPhoneNumber" value="4.7938">
+		<input type="HIDDEN" name="CustomerName" value="HABITAT TEMIXCO SA DE CV">
+		<input type="HIDDEN" name="billCycle" value="28">
+		<input type="HIDDEN" name="cdg_region" value="05">
+		<input type="HIDDEN" name="idUser" value="488342">
+		<input type="HIDDEN" name="idMotivo">	
+		<input type="HIDDEN" name="area" value="MEGON-ALCALDEJAL">
+		<input type="HIDDEN" name="key2" value="4.7938" id="ACCOUNT">
+		<input type="HIDDEN" name="key4" value="11" id="MONTH">
+		<input type="HIDDEN" name="key5" value="2019" id="YEAR">
+		<input type="HIDDEN" name="dateInvoice" value="2019/11/28">
+	</form>
+	
+	<form name="FACTURA2" method="POST" action="distrib" target="showInvoice">
+		<input type="HIDDEN" name="action" value="retrieveInvoice">
+		<input type="HIDDEN" name="controller" value="CustomerInfoBusinessController">	
+		<input type="HIDDEN" name="oActualPhoneNumber" value="4.7938">
+		<input type="HIDDEN" name="CustomerName" value="HABITAT TEMIXCO SA DE CV">
+		<input type="HIDDEN" name="billCycle" value="28">
+		<input type="HIDDEN" name="cdg_region" value="05">
+		<input type="HIDDEN" name="idUser" value="488342">
+		<input type="HIDDEN" name="idMotivo">	
+		<input type="HIDDEN" name="area" value="MEGON-ALCALDEJAL">
+		<input type="HIDDEN" name="key2" value="4.7938" id="ACCOUNT">
+		<input type="HIDDEN" name="key4" value="10" id="MONTH">
+		<input type="HIDDEN" name="key5" value="2019" id="YEAR">
+		<input type="HIDDEN" name="dateInvoice" value="2019/10/28">
+	</form>
+	
+	<form name="FACTURA3" method="POST" action="distrib" target="showInvoice">
+		<input type="HIDDEN" name="action" value="retrieveInvoice">
+		<input type="HIDDEN" name="controller" value="CustomerInfoBusinessController">	
+		<input type="HIDDEN" name="oActualPhoneNumber" value="4.7938">
+		<input type="HIDDEN" name="CustomerName" value="HABITAT TEMIXCO SA DE CV">
+		<input type="HIDDEN" name="billCycle" value="28">
+		<input type="HIDDEN" name="cdg_region" value="05">
+		<input type="HIDDEN" name="idUser" value="488342">
+		<input type="HIDDEN" name="idMotivo">	
+		<input type="HIDDEN" name="area" value="MEGON-ALCALDEJAL">
+		<input type="HIDDEN" name="key2" value="4.7938" id="ACCOUNT">
+		<input type="HIDDEN" name="key4" value="09" id="MONTH">
+		<input type="HIDDEN" name="key5" value="2019" id="YEAR">
+		<input type="HIDDEN" name="dateInvoice" value="2019/09/28">
+	</form>
+	
+	<form name="SendPayMethod" method="POST" action="header_crmPayment.jsp">	
+		<input type="hidden" name="noCuenta" value="4.7938">	
+	</form>
+
+<iframe name="showInvoice" src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" width="0" height="0">
+</iframe>
+<!-- IRIVAS 091006 -->
+
+<!-- IRIVAS 140207 -->
+<form name="sendBillSupress" method="POST" action="distrib" target="contenido">
+		<input type="hidden" name="action" value="modSupression">
+		<input type="hidden" name="controller" value="CrmBusinessController">	
+		<input type="hidden" name="cuenta" value="4.7938">
+		<input type="hidden" name="dn" value="">
+</form>
+<!-- IRIVAS 140207 -->
+
+<!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV INICIO-->
+<form name="infoGralCuentaForm" action="distrib" method="post" target="contenido">
+	<input type="hidden" name="customerId" value="1326394">
+	<input type="hidden" name="tel" value="null"> <!-- YVLM CTC 10032015 -->
+	<input type="hidden" name="action" value="accountInfoTree">
+	<input type="hidden" name="controller" value="CustomerInfoBusinessController">	
+	<input type="hidden" name="account" value="4.7938">	
+	<input type="hidden" name="tipoPersonaAnt" value="MORAL">
+	<input type="hidden" name="rfcAnt" value="HTE001129473">
+	<input type="hidden" name="custResp" value="4.7938">
+
+<!--JONATHAN AVILA 15/SEP/2008 candado para cambio de usuario-->
+	<input type="hidden" name="saldoActual" value="                          
+									                 -0.75
+									                 ">
+
+</form>
+<!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV FIN-->
+
+<form action="\.do" method="post" name="formTabla">
+<table id="BORDE" width="95%" cellspacing="0" cellpadding="0" border="0" align="center">
+             
+             
+                                                                     
+    <tbody><tr>
+    <td width="60%" valign="top"> 
+        <!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV INICIO-->
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+	        <tbody><tr>
+	        	<td>
+    	     		<table id="tabMsg" width="100%" cellspacing="0" cellpadding="0" border="0">
+        	   			<tbody><tr id="trMsg">
+           					<td id="tdMsg" class="txtContenidoRojo"></td>
+           				</tr>
+	           		</tbody></table>
+    	       	</td>
+        	   </tr>
+		</tbody></table>                
+		<br>
+        <!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV FIN-->           
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tbody><tr>
+			 <td width="91%">
+			 	<!-- JORTIZ REQ106214 - ABANDERAMIENTO CUENTAS ELITE -->
+			 	<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/arbol/infoGralCuenta.gif" width="265" height="46">
+			 	
+			 	<!-- JORTIZ REQ106214 - ABANDERAMIENTO CUENTAS ELITE -->
+			 </td>
+			</tr>
+		</tbody></table>                
+		<table width="100%" cellspacing="1" cellpadding="0" border="0" bgcolor="#CCCCCC" align="left">
+			<tbody><tr bgcolor="#FFFFFF">
+				<td width="100%">
+					<table id="table_infoGeneralCuenta" width="100%" cellspacing="1" cellpadding="3" border="0" align="center">
+		                   <tbody><tr bgcolor="#E0E1E3">
+		                     <td class="txtContenidoBold" width="23%" height="25"> Número de cuenta:</td>
+		                     <td class="txtContenido" width="77%" height="25" bgcolor="#E0E1E3"><a href="javascript:getTreeFunction('4.7938');" class="txtContenidoRojoLink"><b>4.7938</b></a></td>
+		                   </tr>   
+		                   <tr bgcolor="#FFFFFF">
+	                     	 <!--CAQUINOA 220807 MODIFICAR RESPONSABLE DE PAGO INICIO-->
+	                     	 <td class="txtContenidoBold" height="25">
+		                     	 
+		                       		Resp. de Pago:
+		                       	 
+	                     	 </td>
+	                     	 <td class="txtContenido" id="respPagoEdit" height="25"> Si</td>
+	                     	 <!--CAQUINOA 220807 MODIFICAR RESPONSABLE DE PAGO FIN-->
+
+							<!--JMLJ 08/12/2011 Req 3315 informacion de DNMaster -->
+						   </tr> 
+							<!-- Added Condition by Suchitra on 12th Nov to display follwing fields for total play -->
+							 
+
+
+						   <!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV INICIO-->
+						   <tr bgcolor="#E0E1E3">              
+						   	 <td class="txtContenidoBold" width="23%" height="25">
+							 	
+				          		 Nombre Contacto:
+							 
+						   	 </td>
+						   	 
+							   	 <td class="txtContenido" id="nomContactoEdit" width="77%" height="25"></td>
+						   	 
+						   	 
+				           </tr>
+						   <!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV FIN-->
+		                   <tr bgcolor="#FFFFFF">
+		                     <td class="txtContenidoBold" height="25"> 
+		                     	
+										<a href="javascript:ActualDatLink();" class="txtContenidoRojoLink"> Compañia:</a>
+								
+		                     </td>
+		                                                              
+			                     <td class="txtContenido" height="25"> HABITAT TEMIXCO SA DE CV</td>
+			                                      
+		                   </tr>                   	                   	                                                         	
+	                       <tr bgcolor="#E0E1E3">
+	                         <td class="txtContenidoBold" width="23%" height="25"> R.F.C.:</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></form></body></html>

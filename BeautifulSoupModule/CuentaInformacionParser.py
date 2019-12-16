@@ -3,6 +3,7 @@ import re
 from dateutil import parser as duParser
 import BeautifulSoupModule.Modelos
 from datetime import date, datetime, timedelta
+import logging
 
 mesesDiccionario = {
     'Ene': 1,
@@ -21,7 +22,7 @@ mesesDiccionario = {
 
 tablaInfoCuentaId = 'table_infoGeneralCuenta'
 saldoTableXPath = '//*[@id="BORDE"]/tbody/tr/td[2]/table[2]'
-facturaTableXpath = '#BORDE > tbody > tr > td:nth-child(2) > table:nth-child(2) > tbody > tr > td > table > tbody > tr:nth-child(8) > td > table'
+facturaTableSelector = tablafacturaSelector = 'td.txtContenido > table > tbody'
 
 class CuentaParser(object):
     def __init__(self, dom):
@@ -29,36 +30,43 @@ class CuentaParser(object):
         self.soup = BeautifulSoup(dom, 'lxml')
 
     def __call__(self):
-        facturas = []
-        tablaFacturas = self.soup.select_one(facturaTableXpath)
-        trFacturas = tablaFacturas.find_all('tr')
+        try:
+            facturas = []
+            
+            tablaFacturas = self.soup.select_one(facturaTableSelector)
 
-        for factura in trFacturas:
-            fechaRaw = CuentaParser.removeAllNewLines(factura.td.text)
-            fechaFactura = CuentaParser.getDateFromText(fechaRaw)
-            monto =  CuentaParser.removeAllNewLines(factura.td.next_sibling.next_sibling.text)
+            if tablaFacturas != None:
+                trFacturas = tablaFacturas.find_all('tr')
 
-            facturas.append(BeautifulSoupModule.Modelos.Factura(fechaFactura, monto))            
+                for factura in trFacturas:
+                    fechaRaw = CuentaParser.removeAllNewLines(factura.td.text)
+                    fechaFactura = CuentaParser.getDateFromText(fechaRaw)
+                    monto =  CuentaParser.removeAllNewLines(factura.td.next_sibling.next_sibling.text)
 
-        tablaInformacion = self.soup.find(id = tablaInfoCuentaId)
-        trs = tablaInformacion.find_all('tr')
+                    facturas.append(BeautifulSoupModule.Modelos.Factura(fechaFactura, monto))
 
-        numCuenta =  CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[0].text))
-        nombres = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[2].text))
-        apellidos = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[3].text))
-        rfc = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[4].text))
-        sexo = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[6].text))
-        tipoPersona = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[7].text))
-        telefonos = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[9].text))
-        direccionFiscal = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[10].text)) #Dejar los espacios
-        direccionEnvio = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[11].text)) #Dejar los espacios
-        tipoCliente = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[12].text))
-        cuentaActiva = CuentaParser.isCuentaActive(facturas[0].fecha)
+            tablaInformacion = self.soup.find(id = tablaInfoCuentaId)
+            trs = tablaInformacion.find_all('tr')
 
-        cuenta = BeautifulSoupModule.Modelos.Cuenta(numCuenta, nombres, apellidos, rfc, sexo, tipoPersona, telefonos, direccionFiscal, direccionEnvio, tipoCliente, '',facturas, cuentaActiva)
-        return cuenta
-        #BeautifulSoupModule.Modelos.Cuenta()
-        pass
+            numCuenta =  CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[0].text))
+            nombres = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[2].text))
+            apellidos = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[3].text))
+            rfc = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[4].text))
+            sexo = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[6].text))
+            tipoPersona = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[7].text))
+            telefonos = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[9].text))
+            direccionFiscal = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[10].text)) #Dejar los espacios
+            direccionEnvio = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[11].text)) #Dejar los espacios
+            tipoCliente = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[12].text))
+            cuentaActiva = CuentaParser.isCuentaActive(facturas[0].fecha)
+
+            cuenta = BeautifulSoupModule.Modelos.Cuenta(numCuenta, nombres, apellidos, rfc, sexo, tipoPersona, telefonos, direccionFiscal, direccionEnvio, tipoCliente, '',facturas, cuentaActiva)
+            return cuenta
+            #BeautifulSoupModule.Modelos.Cuenta()
+        except Exception as e:            
+            logging.error(e)
+            logging.debug('dom: {}'.format(self.dom))
+            logging.debug('soup {}'.format(self.soup))
 
     @staticmethod
     def removeAllNewLines(text):

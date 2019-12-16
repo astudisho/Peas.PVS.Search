@@ -1,0 +1,471 @@
+<html><head>
+	<link href="http://pvs.iusacell.com.mx:80/IusacellDist/css/estilos_exp.css" rel="stylesheet" type="text/css">
+	<script language="JavaScript" src="http://pvs.iusacell.com.mx:80/IusacellDist/javascript/crm_scripts.js"></script>
+	<!--CAQUINOA 110707 INFORMACION ADICIONAL PARA CIERRE DE KV INICIO-->
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/mouseOverTable.js"></script>
+	<script language="JavaScript1.2" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/modifInfoGralCuenta.js"></script>
+	<!--CAQUINOA 110707 INFORMACION ADICIONAL PARA CIERRE DE KV FIN-->
+	<!-- AJCP 03/08/2007 INFORMACION ADICIONAL PARA CIERRE DE KV-->
+	<script language="JavaScript" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/date_picker_crm.js"></script>
+	<script language="JavaScript" src="http://pvs.iusacell.com.mx:80/IusacellDist/js/busquedaArbol/showWindowDiv.js"></script>
+	<!-- AJCP 03/08/2007 INFORMACION ADICIONAL PARA CIERRE DE KV-->
+	<script language="JavaScript">
+	//MSF Actualiza emcabezado deacuerdo a la compañia
+	function loockAF(){
+	   var tMenu = 'OR'
+	  
+	  if(tMenu == 'NE' || tMenu == 'ND' ){
+       top.frames['topFrame'].msfemisor = 7 ;
+       top.frames['topFrame'].cambiacolor();
+      }	
+	}
+
+	//JORTIZ REQ106214 - ABANDERAMIENTO CUENTAS ELITE
+	function cerrarDiv() {
+		if(top){
+			if(top.frames['topFrame'])
+				top.frames['topFrame'].load(0);
+			var iframe = top.frames['leftFrame'];
+			if(iframe && iframe.document){
+				var div = iframe.document.getElementById("divArbolWait");
+				var div2 = iframe.document.getElementById("divArbolWait2");
+				if( div && div.document && div.document.getElementById("overlay")!= null ){
+					var bodyTag = iframe.document.getElementsByTagName('body');
+					if(bodyTag && bodyTag.length > 0 ){
+						bodyTag[0].removeChild( div.document.getElementById("overlay") );
+					}
+					try {
+						if(div2)
+							div2.style.display = "none";
+					} catch( e ) {}
+				}
+			}
+		}
+		loockAF();
+	}
+	//JORTIZ REQ106214 - ABANDERAMIENTO CUENTAS ELITE
+		
+		
+	function getTreeFunction(cuenta){ 
+		var	punto=0;	
+		var raiz=null;				
+		punto = cuenta.indexOf(".",2);
+		if (punto==-1){
+			raiz = cuenta;
+		}else{
+			raiz = cuenta.substring(0,punto);				
+		}	
+		top.frames['topFrame'].currentAccount=raiz;				
+		top.frames['topFrame'].load(1);									
+		var url = "busquedaArbolDedfis.do?action=busquedaInicial&custcode=" + encode(cuenta);
+		window.open(url,'leftFrame');
+	}		
+	
+	function decode(strPass){
+				    return (iusa_encrypte(strPass,false));
+			    } 
+			function encode(strPass){
+	    		return (iusa_encrypte(strPass,true));
+		    }
+		
+			function iusa_encrypte(strPass,action){
+				var iaX = new Array(5,6,3,9,10,2,11,8,1,3,4,5,6,7,8,
+									4,3,2,3,4,5,8,7,6,5,4,3,2,3,4,5,
+									6,7,8,1,2,3,4,5,7,6,5,4,3,2,8,7,
+									6,5,4,3,4,5,6,9,8,7,6,5,1,3,2,6,
+									5,8,4,6,9,3,2,4,5,6,7,8,4,5,7,8,9);		
+				var caCPass='';
+				
+				for(var i = 0; i<strPass.length;i++){
+					if (strPass.charAt(i) != ' '){
+						caCPass+= strPass.charAt(i);
+					}		
+				}		
+				
+				var result='';				
+				for(var i = 0; i < caCPass.length; i++){
+					var character = caCPass.charCodeAt(i);
+					if (action){
+						character+=iaX[i];
+					}else{
+						character-=iaX[i];
+					}					
+					result+=String.fromCharCode(character); 
+				}
+				
+				return (result);		
+			}
+
+</script>
+	
+</head>
+<body onload="cerrarDiv()">
+
+<iframe name="showInvoice" src="http://pvs.iusacell.com.mx:80/IusacellDist/img/pix_1x1.gif" width="0" height="0">
+</iframe>
+<!-- IRIVAS 091006 -->
+
+
+
+<!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV INICIO-->
+<form name="infoGralCuentaForm" action="distrib" method="post" target="contenido">
+	<input type="hidden" name="customerId" value="1325880">
+	<input type="hidden" name="action" value="accountInfoTree">
+	<input type="hidden" name="controller" value="CustomerInfoBusinessController">	
+	<input type="hidden" name="account" value="4.7925">	
+	<input type="hidden" name="tipoPersonaAnt" value="FISICA">
+	<input type="hidden" name="rfcAnt" value="AIHI781009E77">
+	<input type="hidden" name="custResp" value="null">
+
+
+
+<!--JONATHAN AVILA 15/SEP/2008 candado para cambio de usuario-->
+	<input type="hidden" name="saldoActual" value="                          
+									                 17349.94
+									                 ">
+
+</form>
+<!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV FIN-->
+
+<form action="\.do" method="post" name="formTabla">
+<table id="BORDE" width="95%" cellspacing="0" cellpadding="0" border="0" align="center">
+             
+             
+                                                                     
+    <tbody><tr>
+    <td width="60%" valign="top"> 
+        <!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV INICIO-->
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+	        <tbody><tr>
+	        	<td>
+    	     		<table id="tabMsg" width="100%" cellspacing="0" cellpadding="0" border="0">
+        	   			<tbody><tr id="trMsg">
+           					<td id="tdMsg" class="txtContenidoRojo"></td>
+           				</tr>
+	           		</tbody></table>
+    	       	</td>
+        	   </tr>
+		</tbody></table>                
+		
+        <!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV FIN-->           
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tbody><tr>
+			 <td width="91%"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/arbol/infoGralCuenta.gif" width="265" height="46"></td>
+			</tr>
+		</tbody></table>                
+		<table width="100%" cellspacing="1" cellpadding="0" border="0" bgcolor="#CCCCCC" align="left">
+			<tbody><tr bgcolor="#FFFFFF">
+				<td width="100%">
+					<table width="100%" cellspacing="1" cellpadding="3" border="0" align="center">
+		                   <tbody><tr bgcolor="#E0E1E3">
+		                     <td class="txtContenidoBold" width="23%" height="25"> Número de cuenta:</td>
+		                     <td class="txtContenido" width="77%" height="25" bgcolor="#E0E1E3"><a href="javascript:getTreeFunction('4.7925');" class="txtContenidoRojoLink"><b>4.7925</b></a></td>
+		                   </tr>   
+		                   <tr bgcolor="#FFFFFF">
+	                     	 <!--CAQUINOA 220807 MODIFICAR RESPONSABLE DE PAGO INICIO-->
+	                     	 <td class="txtContenidoBold" height="25">
+		                       		Resp. de Pago:
+	                     	 </td>
+	                     	 <td class="txtContenido" id="respPagoEdit" height="25"> SI</td>
+	                     	 <!--CAQUINOA 220807 MODIFICAR RESPONSABLE DE PAGO FIN-->
+						   </tr> 
+						   <!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV INICIO-->
+						   <tr bgcolor="#E0E1E3">              
+						   	 <td class="txtContenidoBold" width="23%" height="25">
+				          		 Nombre(s):
+						   	 </td>
+						   	 
+								<td class="txtContenido" id="nomContactoEdit" width="77%" height="25">INGRID LISBETTE</td>
+							
+						   	 
+				           </tr>
+						   <!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV FIN-->
+						   
+		                   <tr bgcolor="#FFFFFF">
+		                     <td class="txtContenidoBold" height="25"> 
+		                     	
+		                     	   		 Apellidos:
+		                     	   	
+		                     </td>
+		                                                              
+			                     <td class="txtContenido" height="25"> INGRID LISBETTE AVILA HERNANDEZ</td>
+			                                      
+		                   </tr>                   	                   	                                                         	
+	                       <tr bgcolor="#E0E1E3">
+	                         <td class="txtContenidoBold" width="23%" height="25"> R.F.C.:</td>
+		                                                                                       
+	        	                 <!--CAQUINOA 020807 INFORMACION ADICIONAL PARA CIERRE DE KV INICIO-->
+	        	                 <td id="rfcCol" class="txtContenido" width="77%" height="25">
+       	                  			AIHI781009E77
+    	                  		 </td>
+	        	                 <!--CAQUINOA 020807 INFORMACION ADICIONAL PARA CIERRE DE KV FIN--> 
+	    	                                                               
+	                       </tr>
+	                       <!--CAQUINOA 010807 INFORMACION ADICIONAL PARA CIERRE DE KV INICIO-->
+	                       <tr bgcolor="#FFFFFF">
+	                       	<td class="txtContenidoBold" height="25">
+	                       		Fecha de Nacimiento:
+	                       	</td>
+	                       	<td class="txtContenido" id="fechNac" width="77%" height="25">09-Oct-1978</td>
+	                       </tr>
+
+	                       <tr bgcolor="#E0E1E3">
+	                       	<td class="txtContenidoBold" height="25">
+	                       	<!--  -->
+	                       		Sexo:
+	                       	</td>
+	                       	<td class="txtContenido" id="sexo" width="77%" height="25">Femenino</td>
+	                       </tr>
+
+	                       <tr bgcolor="#FFFFFF">
+	                       	<td class="txtContenidoBold" height="25">
+							   		Tipo de persona:
+	                       	</td><td class="txtContenido" id="tipPersCol" width="77%" height="25">
+			                	Fisica
+		                    </td>
+	                       </tr>
+	                       <!--CAQUINOA 010807 INFORMACION ADICIONAL PARA CIERRE DE KV FIN-->
+	                       
+	                       <tr bgcolor="#E0E1E3"> <!--CAQUINOA 010807-->
+	                         <td class="txtContenidoBold" height="25">
+			                     	
+                          	 </td>
+	                         <td class="txtContenido" height="25"> 
+	                         
+	                         
+
+	                         </td>
+	                       </tr>
+	                       
+	                       <tr bgcolor="#FFFFFF"> <!--CAQUINOA 010807-->
+	                         <td class="txtContenidoBold" height="25"> Teléfonos de contacto:</td>
+	                         
+	                         <td class="txtContenido" height="25"> 0 8717204989 ,  </td>
+	                         
+	                       </tr>
+	                       <tr bgcolor="#E0E1E3"> <!--CAQUINOA 010807-->
+		                     <td class="txtContenidoBold" height="40">
+		                     	Dirección fiscal:
+		                     </td>		                     
+	                         <td class="txtContenido" height="40"> AV.QUEBRADILLA NO. 315 COL. COLONIA ZACATECAS CENTRO ZACATECAS 98000</td>
+	                       </tr>
+	                       <tr bgcolor="#FFFFFF"> <!--CAQUINOA 010807-->
+	                         <td class="txtContenidoBold" height="40"> Dirección de envío:</td>
+	                         <td class="txtContenido" height="40"> AV. QUEBRADILLA NO. 315 COL. ZACATECAS CENTRO ZACATECAS 98000</td>
+	                       </tr>
+	<!-- IRIVAS 06106 -->	                       
+			               <tr bgcolor="#E0E1E3"> <!--CAQUINOA 010807-->
+			               	 <td class="txtContenidoBold" height="25">
+			               		Tipo de Cliente:
+			                 </td>
+			                 <td class="txtContenido" id="tCliente" height="25">Corporativos Pyme</td>
+			               </tr>
+			               <tr bgcolor="#FFFFFF"> <!--CAQUINOA 010807-->
+			                 <td class="txtContenidoBold" height="25"> Segmento: </td>
+			                                          
+			                 <td class="txtContenido" height="25"> BRONCE</td>
+			                                          
+			               </tr>
+			                      				               	                                                              
+	                       <tr bgcolor="#E0E1E3"> <!--CAQUINOA 010807-->
+	                         <td class="txtContenidoBold" height="25"> Fecha de registro:</td>
+	                                                                           	
+	                         	<td class="txtContenido" height="25"> 16-Apr-2005</td>
+	                                                                           
+	                       </tr>
+	                       <!-- IRIVAS 310107 -->
+	                       <tr bgcolor="#FFFFFF"> <!--CAQUINOA 010807-->
+	                         <td class="txtContenidoBold" height="25"> Supresión:</td>
+	                         	<td class="txtContenido" height="25"> NO</td>
+	                       </tr>
+	                       <!-- IRIVAS 310107 -->
+							<!-- JONATHAN AVILA SALAZAR 1/OCT/2008 Alta/Baja Buzon de Voz-->
+							
+							<!-- JONATHAN AVILA SALAZAR 1/OCT/2008 Alta/Baja Buzon de Voz -->
+	             	</tbody></table>
+	            </td>
+	    	</tr>
+	    </tbody></table>
+	</td>
+    <td width="40%" valign="top" align="right">
+                  
+
+		<table width="90%" cellspacing="0" cellpadding="0" border="0">
+			<tbody><tr>
+			<td background="http://pvs.iusacell.com.mx:80/IusacellDist/img/ppal_tab_background.gif"><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/ppal_tab_tucuenta.GIF" alt="" width="180" height="46" border="0"></td>
+			</tr>
+		</tbody></table>
+				
+		<table width="90%" cellspacing="1" cellpadding="0" border="0" bgcolor="#CCCCCC">
+		<tbody><tr>
+		<td>
+			<table width="100%" cellspacing="1" cellpadding="3" border="0" bgcolor="#FFFFFF">
+               <tbody><tr bgcolor="#E0E1E3">
+                 <td class="txtContenidoBold" width="40%"> Saldo Actual: </td>
+                                          
+                 <td class="txtContenido"> $17349.94</td>
+                                          
+               </tr>
+               
+                  
+                                     
+               <tr bgcolor="#FFFFFF">
+                 <td class="txtContenidoBold" width="40%"> Uso No Facturado: 
+                     
+                 </td>
+                                          
+                 <td class="txtContenido"> $                .00</td>
+                                          
+               </tr>  
+                       
+		       
+		     <tr bgcolor="#E0E1E3">
+				<td class="txtContenidoBold" width="40%">Base de Saldos</td>
+				<td class="txtContenido" width="60%">DEDFIS</td>
+			</tr>
+		       
+		                    					
+               <tr bgcolor="#FFFFFF">
+                 <td class="txtContenidoBold" width="40%"> Fecha de Corte: </td>
+                 
+                 <td class="txtContenido"> Dato No Disponible</td>
+                                          
+               </tr>
+               <tr bgcolor="#E0E1E3">
+                 <td class="txtContenidoBold" width="40%"> Ciclo de Corte: </td>
+                 
+                 <td class="txtContenido"> Dato No Disponible</td>
+                                          
+               </tr>			
+
+			<tr>
+			<td colspan="2" class="txtContenidoRojo" width="100%" bgcolor="#FFFFFF" align="CENTER"><b>Facturación</b></td>
+			</tr>
+			
+					<tr>
+						<td colspan="2" class="txtContenido" width="100%" bgcolor="#E0E1E3">						
+						<table width="100%">
+							<tbody><tr>
+								<td width="70%">					
+									<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha2_rojo.gif" alt="" width="5" hspace="5" height="5" border="0">
+									<a href="#" class="txtContenidoLink">Factura de May de 2013</a>
+								</td>
+								<td class="txtContenido" width="30%">
+									$.01
+								</td>
+							</tr>
+							
+							<tr>
+								<td width="70%">					
+									<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha2_rojo.gif" alt="" width="5" hspace="5" height="5" border="0">
+									<a href="#" class="txtContenidoLink">Factura de Abr de 2013</a>
+								</td>
+								<td class="txtContenido" width="30%">
+									$2545
+								</td>
+							</tr>							
+								
+							
+							<tr>
+								<td width="70%">					
+									<img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha2_rojo.gif" alt="" width="5" hspace="5" height="5" border="0">
+									<a href="#" class="txtContenidoLink">Factura de Mar de 2013</a>
+								</td>
+								<td class="txtContenido" width="30%">
+									$1870
+								</td>
+							</tr>							
+																													
+						</tbody></table>						
+						</td>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td class="txtContenidoBold" width="40%">Promedio:</td>
+						<td class="txtContenido" width="60%">
+							$1,471.67
+						</td>
+					</tr>								
+																		
+							
+					
+		   <!-- LRSO. Ajuste a Cuenta. --------------------------------------------------------------------------------------------------------------->
+			  <script language="JavaScript" src="http://pvs.iusacell.com.mx:80/IusacellDist/javascript/crm_scripts.js"></script>
+			  
+		   <!-- LRSO. Ajuste a Cuenta. --------------------------------------------------------------------------------------------------------------->
+			</tbody></table>
+		</td></tr>
+		</tbody></table><br>
+	<!-- Fin IRIVAS 061006 -->	
+			
+		<!--------------------------------------------INICIO REGISTRO DE SOLICITUDES Y CONSULTAS-------------------------------------------------->    
+		<table width="90%" cellspacing="0" cellpadding="0" border="0">
+				<tbody><tr>
+					<td><img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/ppal_tab_codificador.gif" alt="" width="292" height="46" border="0"></td>
+				</tr>
+		</tbody></table>		
+		<table width="90%" cellspacing="1" cellpadding="0" border="0" bgcolor="#CCCCCC">
+		  <tbody><tr>
+		    <td>
+		      <table width="100%" cellspacing="1" cellpadding="3" border="0" bgcolor="#FFFFFF">
+			    
+					<tbody><tr>
+			          <td colspan="3" class="txtContenidoBold" bgcolor="#E0E1E3">
+			          <img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha_gris.gif" alt="" width="4" hspace="5" height="7" border="0"><a href="#" class="txtContenidoRojoLink">Registro</a>		      
+			          </td>	         
+			        </tr>  
+			    
+		        			        
+			        <tr>
+			          <td colspan="3" class="txtContenidoBold" bgcolor="#FFFFFF">
+			          <img src="http://pvs.iusacell.com.mx:80/IusacellDist/img/bullet_flecha_gris.gif" alt="" width="4" hspace="5" height="7" border="0"><a href="#" class="txtContenidoRojoLink">Consultas</a>
+			          </td>
+			        </tr>	        
+		        				
+		    </tbody></table></td>
+		  </tr>			 
+		</tbody></table>        
+		<!--------------------------------------------END REGISTRO DE SOLICITUDES Y CONSULTAS-------------------------------------------------->		 	       
+		<!--AJCP 18/09/2007 MODELO DESCUENTO PARA CIERRE DE KV INICIO-->
+		
+		<!--AJCP 18/09/2007 MODELO DESCUENTO PARA CIERRE DE KV FIN-->
+		<!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV INICIO-->
+		<br>
+		<table width="90%" cellspacing="1" cellpadding="0" border="0" bgcolor="#CCCCCC">
+			<tbody><tr>
+		    	<td>
+			   		<table id="infoGralCuenta" width="100%" cellspacing="1" cellpadding="3" border="0" bgcolor="#FFFFFF">
+			    	
+				        <tbody><tr id="ejecAsignadoRen">
+					     	<td id="trEjecAsignado" class="txtContenidoBold" bgcolor="#FFFFFF">
+					   			
+			          			Ejecutivo Asignado:
+			          			
+					     	</td>
+					     	<td id="ejecAsignadoEdit" colspan="2" class="txtContenido" bgcolor="#FFFFFF">
+						     	.
+					     	</td>
+			        	</tr>
+			        	<tr id="ejecCobranzaRen">
+					     	<td id="trEjecCobranza" class="txtContenidoBold" bgcolor="#E0E1E3">
+			          		
+			          			Ejecutivo Cobranza:
+			          		
+					     	</td>
+					     	<td id="ejecCobranzaEdit" colspan="2" class="txtContenido" bgcolor="#E0E1E3">
+								Dato no disponible
+					     	</td>
+				        </tr>	        
+					</tbody></table>
+				</td>
+			</tr>
+		</tbody></table>		
+		<!--CAQUINOA 100707 INFORMACION ADICIONAL PARA CIERRE DE KV FIN-->
+     </td>
+     </tr>
+	</tbody></table>
+	
+	
+</form>
+
+
+</body></html>
