@@ -51,14 +51,17 @@ class CuentaParser(object):
             numCuenta =  CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[0].text))
             nombres = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[2].text))
             apellidos = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[3].text))
-            rfc = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[4].text))
-            sexo = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[6].text))
-            tipoPersona = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[7].text))
-            telefonos = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[9].text))
-            direccionFiscal = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[10].text)) #Dejar los espacios
-            direccionEnvio = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[11].text)) #Dejar los espacios
+            rfc = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[4].text)).strip()
+            sexo = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[6].text)).strip()
+            tipoPersona = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[7].text)).strip()
+
+            esPersonaMoral = tipoPersona == 'Moral'
+
+            telefonos = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[11 if esPersonaMoral else 9 ].text))
+            direccionFiscal = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[12 if esPersonaMoral else 10].text)) #Dejar los espacios
+            direccionEnvio = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[13 if esPersonaMoral else 11].text)) #Dejar los espacios
             tipoCliente = CuentaParser.getValorDelimitado(CuentaParser.removeAllNewLines(trs[12].text))
-            cuentaActiva = CuentaParser.isCuentaActive(facturas[0].fecha)
+            cuentaActiva = CuentaParser.isCuentaActive(facturas[0].fecha) if any(facturas) else False
 
             cuenta = BeautifulSoupModule.Modelos.Cuenta(numCuenta, nombres, apellidos, rfc, sexo, tipoPersona, telefonos, direccionFiscal, direccionEnvio, tipoCliente, '',facturas, cuentaActiva)
             return cuenta

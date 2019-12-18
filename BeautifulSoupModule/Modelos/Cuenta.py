@@ -31,13 +31,13 @@ class Cuenta(object):
     def to_dict(self):
         return{
             "Numero cuenta": self.numeroCuenta,
-            "Representante legal": self.representanteLegal.nombreCompleto,
+            "Razon social": self.representanteLegal.nombreCompleto,
             "Sexo": self.representanteLegal.sexo,
             "RFC": self.rfc,
             "Tipo persona": self.tipoPersona,
-            "Telefono": self.telefonos[0],
+            "Telefono": self.telefonos[0] if any(self.telefonos) else "No disponible",
             "Direccion fiscal": self.direccionFiscal,
-            "Ultima factura": str(self.facturas[0]),
+            "Ultima factura": str(self.facturas[0] if any(self.facturas) else "" ),
             "Activa": self.activa
         }
 
@@ -49,6 +49,9 @@ class Factura(object):
     def __str__(self):
         return str(self.fecha) + ' ' + self.monto
 
+    def __repr__(self):
+        return "Factura(fecha:{}, monto:{})".format(self.fecha, self.monto)
+
 class RepresentanteLegal(object):
     def __init__(self, nombres, apellidos, sexo):
         self.nombres = nombres
@@ -58,3 +61,6 @@ class RepresentanteLegal(object):
 
     def __str__(self):
         return '{} {}'.format(self.nombreCompleto, self.sexo)
+
+    def __repr__(self):
+        return 'RepresentanteLegal(NombreCompleto:{}, Sexo:{})'.format(self.nombreCompleto, self.sexo)

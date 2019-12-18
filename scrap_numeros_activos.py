@@ -13,9 +13,9 @@ import BeautifulSoupModule
 import logging
 
 timeout = 30
-timeoutContenido = 45
-sleepForSwitch = 0.1
-sleepForReload = 0.3
+timeoutContenido = 25
+sleepForSwitch = 0.5
+sleepForReload = 0.5
 
 #Data variables
 loginUser = "D303433012"
@@ -42,8 +42,8 @@ topFramePartialLinkName = "Búsqueda de Cliente"
 leftFrameLoaderXpath = '//img[@src="/IusacellDist/img/indicator.gif"]'
 
 numeroLineaPrefijo = '4.'
-#numeroLineaSufijo = '7917'
-numeroLineaSufijo = '7928'
+numeroLineaSufijo = '7917'
+#numeroLineaSufijo = '7994'
 numeroLineaMock = '4.7910'
 buscaBotonName = 'buscaBtn'
 dnInputName = 'dn'
@@ -57,6 +57,7 @@ tablaInfoCuentaId = 'table_infoGeneralCuenta'
 tablaInfoCuentaSelector = '#BORDE > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2)'
 tablaCUentaExcepcionXPath = '/html/body/table[1]/tbody/tr/td[2]/table[1]'
 titlefacturaSelector = 'td.txtContenidoRojo > b'
+registroSolicitudSelector = 'table > tbody >tr >td >img[src="http://pvs.iusacell.com.mx:80/IusacellDist/img/ppal_tab_codificador.gif"]'
 
 class UniCuentaException(Exception):    
     pass
@@ -104,6 +105,7 @@ def WaitAndSwitchToLeftFrame(browser):
     browser.switch_to.default_content()    
     # Espera a que el leftframe este disponible y hace el switch hacia el
     WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.NAME,leftFrameName)))
+    time.sleep(sleepForSwitch)
     WebDriverWait(browser,timeout).until(EC.frame_to_be_available_and_switch_to_it((By.NAME,leftFrameName)))
     time.sleep(sleepForSwitch)
 
@@ -111,6 +113,7 @@ def WaitAndSwitchToContenidoFrame(browser):
     browser.switch_to.default_content()    
     # Espera a que el leftframe este disponible y hace el switch hacia el
     WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.NAME,contenidoFrameName)))
+    time.sleep(sleepForSwitch)
     WebDriverWait(browser,timeout).until(EC.frame_to_be_available_and_switch_to_it((By.NAME,contenidoFrameName)))
     time.sleep(sleepForSwitch)
 
@@ -152,43 +155,47 @@ def GetTelefonosDeCuenta(browser,cuenta):
     return listaNumeros
 
 def GetInformacionCuentaDom(browser,cuenta):
-    WaitAndSwitchToLeftFrame(browser)
-    # Espera a que el input "cuenta" este disponible y escribe el numero de cuenta
-    # una vez hecho esto, da click al boton buscar
-    # WebDriverWait(browser,timeout).until(EC.element_to_be_clickable((By.NAME,buscaBotonName)))
-    WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.ID,'contrato')))
-    cuentaInputElement = browser.find_element_by_id('contrato')
-    time.sleep(sleepForReload)
-    cuentaInputElement.clear()
-    cuentaInputElement.send_keys(cuenta)
-    time.sleep(sleepForReload)
-    WebDriverWait(browser,timeout).until(EC.element_to_be_clickable((By.NAME,buscaBotonName)))
-    buscaButtonElement = browser.find_element_by_name(buscaBotonName)
-    buscaButtonElement.click()   
+    try:
+        WaitAndSwitchToLeftFrame(browser)
+        # Espera a que el input "cuenta" este disponible y escribe el numero de cuenta
+        # una vez hecho esto, da click al boton buscar
+        # WebDriverWait(browser,timeout).until(EC.element_to_be_clickable((By.NAME,buscaBotonName)))
+        WebDriverWait(browser,timeout).until(EC.visibility_of_element_located((By.ID,'contrato')))
+        cuentaInputElement = browser.find_element_by_id('contrato')
+        time.sleep(sleepForReload)
+        cuentaInputElement.clear()
+        cuentaInputElement.send_keys(cuenta)
+        time.sleep(sleepForReload)
+        WebDriverWait(browser,timeout).until(EC.element_to_be_clickable((By.NAME,buscaBotonName)))
+        buscaButtonElement = browser.find_element_by_name(buscaBotonName)
+        buscaButtonElement.click()   
 
-    #ValidarUniCuenta(browser)
+        #ValidarUniCuenta(browser)
 
-    WaitAndSwitchToContenidoFrame(browser)
-    #WebDriverWait(browser,timeoutContenido).until(EC.text_to_be_present_in_element((By.ID,tablaInfoCuentaId),cuenta) or EC.visibility_of_element_located((By.XPATH, tablaCUentaExcepcionXPath))) 
-    #WebDriverWait(browser,timeoutContenido).until(expectedConditionOr(browser,EC.visibility_of_element_located((By.CSS_SELECTOR,tablaInfoCuentaSelector)) , EC.visibility_of_element_located((By.XPATH, tablaCUentaExcepcionXPath))))
-    #WebDriverWait(browser,timeoutContenido).until(EC.visibility_of_any_elements_located()
+        WaitAndSwitchToContenidoFrame(browser)
+        #WebDriverWait(browser,timeoutContenido).until(EC.text_to_be_present_in_element((By.ID,tablaInfoCuentaId),cuenta) or EC.visibility_of_element_located((By.XPATH, tablaCUentaExcepcionXPath))) 
+        #WebDriverWait(browser,timeoutContenido).until(expectedConditionOr(browser,EC.visibility_of_element_located((By.CSS_SELECTOR,tablaInfoCuentaSelector)) , EC.visibility_of_element_located((By.XPATH, tablaCUentaExcepcionXPath))))
+        #WebDriverWait(browser,timeoutContenido).until(EC.visibility_of_any_elements_located()
 
-    #condition1 = EC.text_to_be_present_in_element((By.ID,tablaInfoCuentaId),cuenta)
-    condition1 = EC.text_to_be_present_in_element((By.CLASS_NAME,'txtContenido'),cuenta)
-    condition2 = EC.text_to_be_present_in_element((By.CSS_SELECTOR, titlefacturaSelector), 'Facturación')
-    condition3 = EC.visibility_of_element_located((By.XPATH, tablaCUentaExcepcionXPath))
+        #condition1 = EC.text_to_be_present_in_element((By.ID,tablaInfoCuentaId),cuenta)
+        condition1 = EC.text_to_be_present_in_element((By.CLASS_NAME,'txtContenido'),cuenta)
+        #condition2 = EC.text_to_be_present_in_element((By.CSS_SELECTOR, titlefacturaSelector), 'Facturación')
+        condition2 = EC.visibility_of_element_located((By.CSS_SELECTOR, registroSolicitudSelector))
+        condition3 = EC.visibility_of_element_located((By.XPATH, tablaCUentaExcepcionXPath))
 
-    conditionAnd = expectedConditionAnd(browser, condition1, condition2)
+        conditionAnd = expectedConditionAnd(browser, condition1, condition2)
 
-    expectedCondition = expectedConditionOr(browser, conditionAnd,condition3)
+        expectedCondition = expectedConditionOr(browser, conditionAnd,condition3)
 
-    WebDriverWait(browser,timeoutContenido).until(expectedCondition)
+        WebDriverWait(browser,timeoutContenido).until(expectedCondition)
 
-    infoLoaded = len(browser.find_elements_by_id(tablaInfoCuentaId)) > 0
+        infoLoaded = len(browser.find_elements_by_id(tablaInfoCuentaId)) > 0
 
-    html = browser.page_source
-    return html, infoLoaded
-
+        html = browser.page_source
+        return html, infoLoaded
+    except Exception as ex:
+        logging.error(ex)
+        raise ex
 def expectedConditionOr(browser, cond1, cond2):
     def expected(browser):
         try:
@@ -213,6 +220,19 @@ def expectedConditionAnd(browser, cond1, cond2):
         except NoSuchElementException:
             res2 = False
         return res1 and res2
+    return expected
+
+def expectedConditionAndArgs(browser, *args):
+    def expected(browser):
+        responses = []
+        for cond in args:
+            try:
+                res = args(browser)
+            except NoSuchElementException:
+                res = False
+            responses.append(res)
+            
+        return any(responses)
     return expected
 
 def GetPanelBusquedaLimpio(browser):
@@ -294,45 +314,53 @@ if __name__ == "__main__":
         Login(browser)
         ByPassSesionAnterior(browser)
 
-        listaCuentas = []
 
-        for i in range(100):
-            try:
-                time.sleep(1)
-                cuenta = numeroLineaPrefijo + str(cuentaSufijo + i)
-                GetPanelBusquedaLimpio(browser)
-                #telefonos = GetTelefonosDeCuenta(browser, cuenta)
-                dom, cargoInformacion = GetInformacionCuentaDom(browser, cuenta)
+        for i in range(5):
+            listaCuentas = []
 
-                if not cargoInformacion: continue
+            nombreExcel = 'lineas_' + str(numeroLineaPrefijo + str(cuentaSufijo)) + '_'
+            cuentaStr = ''
+            for i in range(10):
+                try:
+                    time.sleep(1)
+                    cuenta = numeroLineaPrefijo + str(cuentaSufijo + i)
+                    GetPanelBusquedaLimpio(browser)
+                    #telefonos = GetTelefonosDeCuenta(browser, cuenta)
+                    dom, cargoInformacion = GetInformacionCuentaDom(browser, cuenta)
 
-                cuenta = parseCuentaFromDom(dom)
-                listaCuentas.append(cuenta)
-                print(cuenta)
-                # print(cuenta, telefonos)
+                    if not cargoInformacion: continue
 
-                # listaLineas = []
-                # for tel in telefonos:
-                #     numeroDom = getNumeroDom(browser, tel)
-                #     linea = parseNumeroFromContenidoDom(numeroDom)
-                #     print(linea)
-                #     listaLineas.append(linea)
+                    cuentaObject = parseCuentaFromDom(dom)
+                    listaCuentas.append(cuentaObject)
+                    print(cuentaObject)
+                    # print(cuenta, telefonos)
 
-                # print(listaLineas)
-            except UniCuentaException as ucex:
-                logging.warning(ucex)
-                print(ucex)
-                pass
-            except TimeoutException as toex:
-                logging.warning(toex)
-                print(toex)
-                pass
-            except Exception as ex:
-                logging.error(ex)
-                print(ex)
-                pass
+                    # listaLineas = []
+                    # for tel in telefonos:
+                    #     numeroDom = getNumeroDom(browser, tel)
+                    #     linea = parseNumeroFromContenidoDom(numeroDom)
+                    #     print(linea)
+                    #     listaLineas.append(linea)
 
-        print(listaCuentas)
+                    # print(listaLineas)
+                except UniCuentaException as ucex:
+                    logging.warning(ucex)
+                    print(ucex)
+                    pass
+                except TimeoutException as toex:
+                    logging.warning(toex)
+                    print(toex)
+                    pass
+                except Exception as ex:
+                    logging.error(ex)
+                    print(ex)
+                    pass
+
+            import pandas
+
+            nombreExcel += str(cuentaObject.numeroCuenta) + '.xlsx'
+            df = pandas.DataFrame.from_records([x.to_dict() for x in listaCuentas])
+            df.to_excel(nombreExcel)
 
         # Buscar(browser)
         pass
